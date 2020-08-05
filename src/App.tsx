@@ -5,6 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Landing from './components/Landing';
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         <div>
           <Switch>
             <Route path="/" exact>
-              <h1>Home</h1>
+              <Landing />
             </Route>
 
             <Route path="/map">
