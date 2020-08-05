@@ -1,0 +1,19 @@
+
+// body{
+// background: #162B4D;
+// }
+
+.landing-page{
+  background: #162B4D;
+  height: 100%;
+  width: 100%;
+
+  .bg-gradient-primary {
+    $imageSRC:"https://i.pinimg.com/564x/a6/90/30/a69030263e95c43281d719936a36a61d.jpg";
+
+    background: linear-gradient(87deg,#080f50be 0,#1b055880 100%), url($imageSRC) !important;
+    background-size: cover !important;
+    background-position-y: -100px !important;
+    height: 70vh;
+}
+}
