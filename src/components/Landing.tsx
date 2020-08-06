@@ -7,7 +7,7 @@ const Landing = (props: any) => {
       <nav id="navbar-main" className="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
         <div className="container">
           <a className="navbar-brand" href="/map">
-            <img src="hydra.png" />
+            <img src="hlogo.png" alt="Hydra Logo" />
           </a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
@@ -17,7 +17,6 @@ const Landing = (props: any) => {
               <div className="row">
                 <div className="col-6 collapse-brand">
                   <a href="dashboard.html">
-                    <img src="../assets/img/brand/blue.png" />
                   </a>
                 </div>
                 <div className="col-6 collapse-close">
@@ -30,13 +29,13 @@ const Landing = (props: any) => {
             </div>
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <a href="dashboard.html" className="nav-link">
+                <a href="/map" className="nav-link">
                   <span className="nav-link-inner--text">Dashboard</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a href="login.html" className="nav-link">
-                  <span className="nav-link-inner--text">Login</span>
+                <a href="/events" className="nav-link">
+                  <span className="nav-link-inner--text">Events</span>
                 </a>
               </li>
               <li className="nav-item">
@@ -91,8 +90,16 @@ const Landing = (props: any) => {
             <div className="header-body text-center mb-7">
               <div className="row justify-content-center">
                 <div className="col-xl-5 col-lg-6 col-md-8 px-5">
+                  <img src="hlogo.png" alt="h-logo" className="landing-logo" />
                   <h1 className="text-white">Seantinel</h1>
                   <p className="text-lead text-white">Connecting people who protect our oceans</p>
+
+                  <a href="https://github.com/Hydraean" target="_blank" rel="noopener noreferrer" className="btn btn-neutral btn-icon">
+                    <span className="btn-inner--icon">
+                      <i className="fas fa-shopping-cart mr-2" />
+                    </span>
+                    <span className="nav-link-inner--text">View on Github</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -104,10 +111,6 @@ const Landing = (props: any) => {
           </div>
         </div>
         {/* Page content */}
-
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
 
 
 
@@ -140,7 +143,7 @@ const Landing = (props: any) => {
           </div>
         </div>
       </footer>
-    </div>
+    </div >
   )
 }
 

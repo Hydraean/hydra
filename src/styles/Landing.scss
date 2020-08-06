@@ -1,7 +1,8 @@
 
-// body{
-// background: #162B4D;
-// }
+
+.landing-logo{
+  width: 120px;
+}
 
 .landing-page{
   background: #162B4D;
@@ -9,11 +10,19 @@
   width: 100%;
 
   .bg-gradient-primary {
-    $imageSRC:"https://i.pinimg.com/564x/a6/90/30/a69030263e95c43281d719936a36a61d.jpg";
+    // $imageSRC:"https://i.pinimg.com/564x/a6/90/30/a69030263e95c43281d719936a36a61d.jpg";
+    $imageSRC: "https://i.pinimg.com/originals/dd/c4/4b/ddc44bd1fc7221a181f9bf6c18ee43aa.gif";
+    // $imageSRC: "https://cdn.dribbble.com/users/630629/screenshots/4042507/topo.gif";
 
-    background: linear-gradient(87deg,#080f50be 0,#1b055880 100%), url($imageSRC) !important;
+    background: linear-gradient(87deg,#050b419c 0,#062270c5 100%), url($imageSRC) !important;
     background-size: cover !important;
     background-position-y: -100px !important;
     height: 70vh;
+    animation: bgpan 5s infinite !important;
 }
+}
+
+
+@keyframes bgpan {
+  50% {background-position-y: -300px !important;}
 }

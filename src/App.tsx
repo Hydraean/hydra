@@ -22,8 +22,12 @@ function App() {
               <h1>Map</h1>
             </Route>
 
-            <Route path="/search">
-              <h1>Search</h1>
+            <Route path="/explote">
+              <h1>Explore</h1>
+            </Route>
+
+            <Route path="/events">
+              <h1>events</h1>
             </Route>
 
           </Switch>
