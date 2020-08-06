@@ -1,7 +1,6 @@
-body{
-  background: #162B4D;
-  }
-
+body {
+  background: #162b4d;
+}
 
 .App {
   text-align: center;
@@ -42,71 +41,68 @@ body{
   }
 }
 
-
-
 .ghost-button {
-	border: 2px solid #c0bebe;
-	cursor: pointer;
-	letter-spacing: 0.2125rem;
-	overflow: hidden;
-	padding: 20px 30px;
-	position: relative;
-	text-align: center;
-	text-transform: uppercase;
-	transition:
-		background 5s cubic-bezier(0.19, 1, 0.22, 1),
-		border 1s cubic-bezier(0.19, 1, 0.22, 1),
-		color 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  border: 2px solid #c0bebe;
+  cursor: pointer;
+  letter-spacing: 0.2125rem;
+  overflow: hidden;
+  padding: 10px 30px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 5s cubic-bezier(0.19, 1, 0.22, 1),
+    border 1s cubic-bezier(0.19, 1, 0.22, 1),
+    color 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   user-select: none;
   width: fit-content;
 }
 
 .ghost-button a {
-	color: #969696;
-	font-family: "Varela Round";
-	text-decoration: none;
+  color: #969696;
+  font-family: "Varela Round";
+  text-decoration: none;
 }
 
 .ghost-button .mask {
-	background-color: #fff;
-	background-color: rgba(255, 255, 255, 0.5);
-	height: 100px;
-	position: absolute;
-	transform: translate3d(-120%, -50px, 0) rotate3d(0, 0, 1, 45deg);
-	transition: all 1.1s cubic-bezier(0.19, 1, 0.22, 1);
-	width: 300px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100px;
+  position: absolute;
+  transform: translate3d(-120%, -50px, 0) rotate3d(0, 0, 1, 45deg);
+  transition: all 1.1s cubic-bezier(0.19, 1, 0.22, 1);
+  width: 300px;
 }
 
 .ghost-button .shift {
-	display: inline-block;
+  display: inline-block;
   transition: all 1.1s cubic-bezier(0.19, 1, 0.22, 1);
   margin-left: 10px;
 }
 
 .ghost-button:hover {
-	background-color: rgba(255, 255, 255, 0.05);
-	border-color: rgb(24, 214, 228);
-	box-shadow: 0 0 5px rgba(255, 245, 245, 0.8);
-	transition: background 0s;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgb(24, 214, 228);
+  box-shadow: 0 0 5px rgba(255, 245, 245, 0.8);
+  transition: background 0s;
 }
 
 .ghost-button:hover a {
-	color: #fff;
+  color: #fff;
 }
 
 .ghost-button:hover .mask {
-	background-color: #fff;
-	transform: translate3d(120%, -100px, 0) rotate3d(0, 0, 1, 90deg);
+  background-color: #fff;
+  transform: translate3d(120%, -100px, 0) rotate3d(0, 0, 1, 90deg);
 }
 
 .ghost-button:hover .shift {
-	transform: translateX(5px);
+  transform: translateX(5px);
 }
 
 .ghost-button:active {
-	background-color: #fff;
+  background-color: #fff;
 }
 
 .ghost-button:active a {
-	color: #202020;
+  color: #202020;
 }

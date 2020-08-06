@@ -1,11 +1,9 @@
-
-
-.landing-logo{
+.landing-logo {
   width: 120px;
 }
 
-.landing-page{
-  background: #162B4D;
+.landing-page {
+  background: #162b4d;
   height: 100%;
   width: 100%;
 
@@ -14,15 +12,34 @@
     $imageSRC: "https://i.pinimg.com/originals/dd/c4/4b/ddc44bd1fc7221a181f9bf6c18ee43aa.gif";
     // $imageSRC: "https://cdn.dribbble.com/users/630629/screenshots/4042507/topo.gif";
 
-    background: linear-gradient(87deg,#050b419c 0,#062270c5 100%), url($imageSRC) !important;
+    background: linear-gradient(87deg, #050b419c 0, #062270c5 100%),
+      url($imageSRC) !important;
     background-size: cover !important;
     background-position-y: -100px !important;
     height: 70vh;
     animation: bgpan 5s infinite !important;
+  }
 }
-}
-
 
 @keyframes bgpan {
-  50% {background-position-y: -300px !important;}
+  50% {
+    background-position-y: -300px !important;
+  }
+}
+
+.page-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.about-img {
+  width: 600px;
+  height: 400px;
+  margin-left: 30px;
+  box-shadow: 0px 9px 13px 3px rgba(0, 0, 0, 0.144);
+}
+
+.text-active {
+  color: rgb(29, 209, 170);
 }

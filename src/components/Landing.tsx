@@ -73,64 +73,6 @@ const Landing = (props: any) => {
 
             <hr className="d-lg-none" />
             <ul className="navbar-nav align-items-lg-center ml-lg-auto">
-              <li className="nav-item">
-                <a
-                  className="nav-link nav-link-icon"
-                  href="https://www.facebook.com/creativetim"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-toggle="tooltip"
-                  data-original-title="Like us on Facebook"
-                >
-                  <i className="fab fa-facebook-square" />
-                  <span className="nav-link-inner--text d-lg-none">
-                    Facebook
-                  </span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link nav-link-icon"
-                  href="https://www.instagram.com/creativetimofficial"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-toggle="tooltip"
-                  data-original-title="Follow us on Instagram"
-                >
-                  <i className="fab fa-instagram" />
-                  <span className="nav-link-inner--text d-lg-none">
-                    Instagram
-                  </span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link nav-link-icon"
-                  href="https://twitter.com/creativetim"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-toggle="tooltip"
-                  data-original-title="Follow us on Twitter"
-                >
-                  <i className="fab fa-twitter-square" />
-                  <span className="nav-link-inner--text d-lg-none">
-                    Twitter
-                  </span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link nav-link-icon"
-                  href="https://github.com/creativetimofficial"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-toggle="tooltip"
-                  data-original-title="Star us on Github"
-                >
-                  <i className="fab fa-github" />
-                  <span className="nav-link-inner--text d-lg-none">Github</span>
-                </a>
-              </li>
               <li className="nav-item d-none d-lg-block ml-lg-4">
                 <a
                   href="https://github.com/Hydraean"
@@ -138,9 +80,7 @@ const Landing = (props: any) => {
                   rel="noopener noreferrer"
                   className="btn btn-neutral btn-icon"
                 >
-                  <span className="btn-inner--icon">
-                    <i className="fas fa-shopping-cart mr-2" />
-                  </span>
+                  <i className="la la-github mr-1" />
                   <span className="nav-link-inner--text">View on Github</span>
                 </a>
               </li>
@@ -185,10 +125,36 @@ const Landing = (props: any) => {
             </svg>
           </div>
         </div>
-        {/* Page content */}
-
-        <h1>Hello</h1>
       </div>
+
+      <div className="container">
+        <div className="mb-7">
+          <div className="page-content">
+            <div>
+              <h1 className="text-active">About the Project</h1>
+              <p className="text-lead text-white">
+                Seantinel is an IoT based platform that aims to provide means of
+                communication for Authorities, and local communities with little
+                to no available resources for communication.
+              </p>
+
+              <p className="text-lead text-white">
+                The device can operate with low power requirements and does not
+                rey primarily on internet connection in order to operate.
+              </p>
+            </div>
+
+            <div>
+              <img
+                src="https://philippineslifestyle.com/wp-content/uploads/dynamite-fishing.jpg"
+                className="about-img"
+                alt="Blast Fishing"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <Footer />
     </div>
   );
