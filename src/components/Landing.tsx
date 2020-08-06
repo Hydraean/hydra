@@ -1,5 +1,7 @@
 import React from 'react'
 import '../styles/Landing.scss'
+import Footer from './Footer';
+import Button from './Button';
 
 const Landing = (props: any) => {
   return (
@@ -28,6 +30,17 @@ const Landing = (props: any) => {
               </div>
             </div>
             <ul className="navbar-nav mr-auto">
+
+              <li className="nav-item">
+                <a href="#about" className="nav-link">
+                  <span className="nav-link-inner--text">About</span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="#features" className="nav-link">
+                  <span className="nav-link-inner--text">Features</span>
+                </a>
+              </li>
               <li className="nav-item">
                 <a href="/map" className="nav-link">
                   <span className="nav-link-inner--text">Dashboard</span>
@@ -38,12 +51,8 @@ const Landing = (props: any) => {
                   <span className="nav-link-inner--text">Events</span>
                 </a>
               </li>
-              <li className="nav-item">
-                <a href="register.html" className="nav-link">
-                  <span className="nav-link-inner--text">Register</span>
-                </a>
-              </li>
             </ul>
+
             <hr className="d-lg-none" />
             <ul className="navbar-nav align-items-lg-center ml-lg-auto">
               <li className="nav-item">
@@ -89,18 +98,19 @@ const Landing = (props: any) => {
           <div className="container">
             <div className="header-body text-center mb-7">
               <div className="row justify-content-center">
+
                 <div className="col-xl-5 col-lg-6 col-md-8 px-5">
                   <img src="hlogo.png" alt="h-logo" className="landing-logo" />
                   <h1 className="text-white">Seantinel</h1>
                   <p className="text-lead text-white">Connecting people who protect our oceans</p>
 
-                  <a href="https://github.com/Hydraean" target="_blank" rel="noopener noreferrer" className="btn btn-neutral btn-icon">
-                    <span className="btn-inner--icon">
-                      <i className="fas fa-shopping-cart mr-2" />
-                    </span>
-                    <span className="nav-link-inner--text">View on Github</span>
-                  </a>
+                  <div className="mt-5 d-flex justify-content-center container">
+                    <Button>
+                      Get Started
+                    </Button>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -115,34 +125,7 @@ const Landing = (props: any) => {
 
 
       </div>
-      {/* Footer */}
-      <footer className="py-5" id="footer-main">
-        <div className="container">
-          <div className="row align-items-center justify-content-xl-between">
-            <div className="col-xl-6">
-              <div className="copyright text-center text-xl-left text-muted">
-                © 2020 <a href="https://www.creative-tim.com" className="font-weight-bold ml-1" target="_blank" rel="noopener noreferrer">Creative Tim</a>
-              </div>
-            </div>
-            <div className="col-xl-6">
-              <ul className="nav nav-footer justify-content-center justify-content-xl-end">
-                <li className="nav-item">
-                  <a href="https://www.creative-tim.com" className="nav-link" target="_blank" rel="noopener noreferrer">Creative Tim</a>
-                </li>
-                <li className="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" className="nav-link" target="_blank" rel="noopener noreferrer">About Us</a>
-                </li>
-                <li className="nav-item">
-                  <a href="http://blog.creative-tim.com" className="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
-                </li>
-                <li className="nav-item">
-                  <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" className="nav-link" target="_blank" rel="noopener noreferrer">MIT License</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div >
   )
 }
