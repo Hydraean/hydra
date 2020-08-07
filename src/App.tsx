@@ -1,12 +1,8 @@
-import React from 'react';
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import Landing from './components/Landing';
-
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Landing from "./components/Landing";
+import Map from "./components/Map";
 
 function App() {
   return (
@@ -19,17 +15,12 @@ function App() {
             </Route>
 
             <Route path="/map">
-              <h1>Map</h1>
-            </Route>
-
-            <Route path="/explote">
-              <h1>Explore</h1>
+              <Map />
             </Route>
 
             <Route path="/events">
               <h1>events</h1>
             </Route>
-
           </Switch>
         </div>
       </Router>

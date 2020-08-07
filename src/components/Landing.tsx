@@ -131,7 +131,7 @@ const Landing = (props: any) => {
         <div className="mb-7">
           <div className="page-content">
             <div>
-              <h1 className="text-active">About the Project</h1>
+              <h1 className="text-active pb-3">About the Project</h1>
               <p className="text-lead text-white">
                 Seantinel is an IoT based platform that aims to provide means of
                 communication for Authorities, and local communities with little

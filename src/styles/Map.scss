@@ -1,0 +1,48 @@
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  width: 70px;
+  background: rgb(9, 5, 44);
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .landing-logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .nav-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      color: rgb(50, 71, 189);
+      margin-bottom: 20px;
+      padding: 5px;
+
+      &.active {
+        color: #fff;
+        background: rgb(36, 126, 230);
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      $size: 30px;
+      height: $size;
+      width: $size;
+      border-radius: $size;
+      object-fit: cover;
+    }
+  }
+}
