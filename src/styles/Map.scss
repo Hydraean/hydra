@@ -2,7 +2,7 @@
   position: fixed;
   height: 100vh;
   width: 70px;
-  background: rgb(9, 5, 44);
+  background: rgb(8, 8, 49);
   padding: 20px 10px;
   display: flex;
   flex-direction: column;
@@ -20,9 +20,15 @@
     align-items: center;
 
     i {
-      color: rgb(50, 71, 189);
+      color: rgb(96, 116, 228);
       margin-bottom: 20px;
       padding: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        color: #fff;
+      }
 
       &.active {
         color: #fff;
@@ -38,11 +44,12 @@
     justify-content: center;
 
     img {
-      $size: 30px;
+      $size: 40px;
       height: $size;
       width: $size;
       border-radius: $size;
       object-fit: cover;
+      border: 3px solid rgb(57, 209, 163);
     }
   }
 }

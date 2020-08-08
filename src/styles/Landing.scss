@@ -9,10 +9,10 @@
 
   .bg-gradient-primary {
     // $imageSRC:"https://i.pinimg.com/564x/a6/90/30/a69030263e95c43281d719936a36a61d.jpg";
-    $imageSRC: "https://i.pinimg.com/originals/dd/c4/4b/ddc44bd1fc7221a181f9bf6c18ee43aa.gif";
-    // $imageSRC: "https://cdn.dribbble.com/users/630629/screenshots/4042507/topo.gif";
+    // $imageSRC: "https://i.pinimg.com/originals/dd/c4/4b/ddc44bd1fc7221a181f9bf6c18ee43aa.gif";
+    $imageSRC: "/bg-swirl.gif";
 
-    background: linear-gradient(87deg, #050b419c 0, #062270c5 100%),
+    background: linear-gradient(87deg, #060a33c0 0, #06206dc5 100%),
       url($imageSRC) !important;
     background-size: cover !important;
     background-position-y: -100px !important;
