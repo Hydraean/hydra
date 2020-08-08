@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Map.scss";
 import Sidebar from "./Sidebar";
 import EventThread from "./EventThread";
+import Mapbox from "./Mapbox";
 
 const Map = (props: any) => {
   return (
@@ -10,7 +11,7 @@ const Map = (props: any) => {
       <EventThread />
 
       <div className="map-content">
-        <h1>Map</h1>
+        <Mapbox />
       </div>
     </>
   );
