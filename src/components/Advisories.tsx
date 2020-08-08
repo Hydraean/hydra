@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 const Advisories = (props: any) => {
   return (
     <>
-      <Sidebar active="Announcements" />
+      <Sidebar active="Advisories" />
       <div className="dashboard-content">
         <h1>Advisories</h1>
       </div>

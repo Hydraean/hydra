@@ -12,7 +12,7 @@
     // $imageSRC: "https://i.pinimg.com/originals/dd/c4/4b/ddc44bd1fc7221a181f9bf6c18ee43aa.gif";
     $imageSRC: "/bg-swirl.gif";
 
-    background: linear-gradient(87deg, #060a33c0 0, #06206dc5 100%),
+    background: linear-gradient(87deg, #060a33c0 0, #05125cc5 100%),
       url($imageSRC) !important;
     background-size: cover !important;
     background-position-y: -100px !important;
@@ -41,7 +41,7 @@
 }
 
 .text-active {
-  color: rgb(29, 209, 170);
+  color: rgb(64, 238, 200);
 }
 
 .text-lead {
