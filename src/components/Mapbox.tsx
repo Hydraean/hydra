@@ -4,21 +4,16 @@ import { mapbox_key } from "./utils";
 
 mapboxgl.accessToken = mapbox_key;
 
-if (localStorage.orginLocation) {
-  localStorage.originLocation = JSON.stringify({
-    long: 121.001433,
-    lat: 14.507936
-  });
-  localStorage.currentLocation = JSON.stringify({
-    long: 121.001433,
-    lat: 14.507936
-  });
-  localStorage.currentIncident = JSON.stringify({ uid: 0 });
-}
+const defaultCoordinates = {
+  long: 121.001433,
+  lat: 14.507936
+};
 
 const Mapbox = props => {
   useEffect(() => {
-    let currentLocation = JSON.parse(localStorage.currentLocation);
+    let currentLocation = localStorage.currentLocation
+      ? JSON.parse(localStorage.currentLocation)
+      : defaultCoordinates;
 
     const map = new mapboxgl.Map({
       container: document.getElementById("map"),
@@ -28,7 +23,9 @@ const Mapbox = props => {
       zoom: 13
     });
 
-    let originLocation = JSON.parse(localStorage.originLocation);
+    let originLocation = localStorage.originLocation
+      ? JSON.parse(localStorage.originLocation)
+      : defaultCoordinates;
 
     map.on("load", () => {
       map.addSource("points", {
@@ -291,17 +288,12 @@ const Mapbox = props => {
         speed: 1.25,
         essential: true
       });
-
-      // mapDir.setOrigin(`${originLocation.long}, ${originLocation.lat}`);
-      // mapDir.setDestination(`${currentLocation.long}, ${currentLocation.lat}`);
     }
 
     document.getElementById("mapJump").onclick = () => {
       mapTo();
     };
-    // document.getElementById("removeRoutes").onclick = () => {
-    //   resetRoutes();
-    // };
+
     document.getElementById("showCovid").onclick = () => {
       toggleCovidLayer();
     };
