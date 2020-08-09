@@ -5,6 +5,7 @@ import Landing from "./components/Landing";
 import Map from "./components/Map";
 
 import "./styles/Main.scss";
+import "./styles/Animations.scss";
 import Incidents from "./components/Incidents";
 import Advisories from "./components/Advisories";
 import Devices from "./components/Devices";

@@ -269,7 +269,7 @@ const Mapbox = props => {
 
       map.flyTo({
         center: [currentLocation.long, currentLocation.lat],
-        zoom: map.getZoom() - 1,
+        zoom: map.getZoom(),
         speed: 1.25,
         essential: true
       });

@@ -113,7 +113,7 @@ const events = [
 
 const EventThread = (props: any) => {
   const [details, setDetails] = useState(false);
-  const [report, setReport] = useState({});
+  const [report, setReport] = useState(null);
 
   const toggleDetails = () => {
     setDetails(!details);
@@ -125,6 +125,8 @@ const EventThread = (props: any) => {
     setReport(data);
     toggleDetails();
     mapBtn.click();
+    // setTimeout(() => {
+    // }, 300);
   };
 
   return (
@@ -175,7 +177,7 @@ const EventThread = (props: any) => {
                     {moment(event.date).format("MMM D, YYYY - h:mm:ss A")}
                   </span>
                   <span>
-                    <strong>DURATION</strong> 1 min
+                    <strong>Duration</strong> {moment(event.date).fromNow()}
                   </span>
                 </div>
               );
