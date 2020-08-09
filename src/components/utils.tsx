@@ -27,3 +27,7 @@ export const getCurrentLocation = () => {
     ? JSON.parse(localStorage.currentLocation)
     : defaultCoordinates;
 };
+
+export const seCurrentLocation = (data: object) => {
+  localStorage.currentLocation = JSON.stringify(data);
+};
