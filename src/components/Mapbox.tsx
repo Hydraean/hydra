@@ -1,31 +1,18 @@
 import React, { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-import { mapbox_key } from "./utils";
+import { mapbox_key, getCurrentLocation } from "./utils";
 
 mapboxgl.accessToken = mapbox_key;
 
-const defaultCoordinates = {
-  long: 121.001433,
-  lat: 14.507936
-};
-
 const Mapbox = props => {
   useEffect(() => {
-    let currentLocation = localStorage.currentLocation
-      ? JSON.parse(localStorage.currentLocation)
-      : defaultCoordinates;
-
     const map = new mapboxgl.Map({
       container: document.getElementById("map"),
       style: "mapbox://styles/bryce06/ckaupxv3j2chg1ip6lnzupz8b",
       // style: 'mapbox://styles/bryce06/ck5w2nl700lyp1ip79hnktdrr',
-      center: [currentLocation.long, currentLocation.lat],
+      center: [getCurrentLocation().long, getCurrentLocation().lat],
       zoom: 13
     });
-
-    let originLocation = localStorage.originLocation
-      ? JSON.parse(localStorage.originLocation)
-      : defaultCoordinates;
 
     map.on("load", () => {
       map.addSource("points", {

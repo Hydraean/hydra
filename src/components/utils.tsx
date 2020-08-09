@@ -16,3 +16,14 @@ export const googleMapsAPIKEY = "AIzaSyD5kFZMwUIUDZ25nTtLx0_0G3x1d2GMiCY";
 export const normalizeText = text => {
   return text.split("_").join(" ");
 };
+
+const defaultCoordinates = {
+  long: 121.001433,
+  lat: 14.507936
+};
+
+export const getCurrentLocation = () => {
+  return localStorage.currentLocation
+    ? JSON.parse(localStorage.currentLocation)
+    : defaultCoordinates;
+};

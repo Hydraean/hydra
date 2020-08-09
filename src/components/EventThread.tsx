@@ -1,9 +1,10 @@
 import React from "react";
+import EventDetails from "./EventDetails";
 
 const EventThread = (props: any) => {
   return (
     <div className="event-thread">
-      <div className="events-header">
+      {/* <div className="events-header">
         <span className="text-active">
           <i className="la la-bars mr-2" />
           Recent Events
@@ -68,7 +69,9 @@ const EventThread = (props: any) => {
         <span>
           <strong>DURATION</strong> 1 min
         </span>
-      </div>
+      </div> */}
+
+      <EventDetails />
     </div>
   );
 };
