@@ -2,15 +2,13 @@ import React, { useEffect } from "react";
 
 const RTchart = () => {
   useEffect(() => {
-    let initChart = document.getElementById("rtchart") as HTMLElement;
-    initChart.click();
+    // let initChart = document.getElementById("rtchart") as HTMLElement;
+    // initChart.click();
+    let rtChart = document.querySelector(".rt-chart") as HTMLElement;
+    rtChart.style.display = "block";
   }, []);
 
-  return (
-    <div className="rt-chart">
-      <canvas id="chart" width="400" height="70"></canvas>
-    </div>
-  );
+  return <></>;
 };
 
 export default RTchart;

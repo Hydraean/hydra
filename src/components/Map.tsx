@@ -12,7 +12,7 @@ const Map = (props: any) => {
       <EventThread />
 
       <div className="map-content">
-        <Mapbox />
+        {/* <Mapbox /> */}
         <RTchart />
       </div>
     </>

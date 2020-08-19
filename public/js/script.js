@@ -1,7 +1,8 @@
 var xt = 0;
 
 var random = new TimeSeries();
-setInterval(function () {
+
+var tdelta = setInterval(function () {
   random.append(new Date().getTime(), xt);
 }, 500);
 
@@ -13,12 +14,16 @@ function createTimeline() {
 
   chart.addTimeSeries(random, {
     lineWidth: 1,
-    strokeStyle: "#9792e3",
-    fillStyle: "rgba(175,133,204,0.43)",
+    strokeStyle: "#e66561",
+    fillStyle: "rgba(241, 137, 154, 0.479)",
   });
   chart.streamTo(canvas, 500);
 }
 
 document.body.onkeyup = () => {
   xt++;
+};
+
+window.onload = () => {
+  createTimeline();
 };
