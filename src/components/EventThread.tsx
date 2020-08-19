@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EventDetails from "./EventDetails";
 import moment from "moment";
 import { seCurrentLocation } from "./utils";
+import EventSkeleton from "./EventSkeleton";
 
-const events = [
+const eventsData = [
   {
     details: "Blast fishing in, Coron Palawan",
     type: "illegal_fishing",
@@ -114,6 +115,13 @@ const events = [
 const EventThread = (props: any) => {
   const [details, setDetails] = useState(false);
   const [report, setReport] = useState(null);
+  const [events, setEvents] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setEvents(eventsData);
+    }, 2000);
+  }, []);
 
   const toggleDetails = () => {
     setDetails(!details);
@@ -143,7 +151,7 @@ const EventThread = (props: any) => {
             </a>
           </div>
 
-          {events &&
+          {events ? (
             events.map((event: any) => {
               return (
                 <div
@@ -186,10 +194,12 @@ const EventThread = (props: any) => {
                   </span>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <EventSkeleton />
+          )}
         </>
       )}
-
       {details && <EventDetails goBack={toggleDetails} data={report} />}
     </div>
   );
