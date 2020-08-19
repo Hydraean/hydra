@@ -157,7 +157,13 @@ const EventThread = (props: any) => {
                       event.type === "emergency" ? "distress" : ""
                     }`}
                   >
-                    <i className="la la-exclamation-circle mr-1 text-red" />{" "}
+                    <i
+                      className={`la ${
+                        event.type === "emergency"
+                          ? "la-bolt"
+                          : "la-exclamation-circle"
+                      } mr-1 text-red`}
+                    />{" "}
                     {event.title}
                   </strong>
                   {event.details.trim() !== "" ? (

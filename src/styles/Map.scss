@@ -159,6 +159,21 @@
   }
 }
 
+.distress-alert {
+  height: 250px;
+  width: 100%;
+  border-radius: 5px;
+  background: linear-gradient(rgba(156, 24, 24, 0.5), rgba(56, 8, 100, 0.822)),
+    url("../assets/mapbg.png");
+  background-size: cover;
+  margin-bottom: 10px;
+  display: grid;
+
+  i {
+    color: #fff;
+  }
+}
+
 // pulse dot
 
 @keyframes pulse-alert {

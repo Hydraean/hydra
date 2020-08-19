@@ -15,11 +15,22 @@ const EventDetails = (props: any) => {
         </button>
       </div>
 
-      <div className="event-alert">
-        <div className="pulse-alert">
-          <i className="la la-exclamation-circle la-5x" />
+      {event.type === "illegal_fishing" && (
+        <div className="event-alert">
+          <div className="pulse-alert">
+            <i className="la la-exclamation-circle la-5x" />
+          </div>
         </div>
-      </div>
+      )}
+
+      {event.type === "emergency" && (
+        <div className="distress-alert">
+          <div className="pulse-alert">
+            <i className="la la-bolt la-5x" />
+          </div>
+        </div>
+      )}
+
       <strong className="text-warning">{event.name}</strong>
       <h2 className="pb-2 text-white">{event.title}</h2>
 
