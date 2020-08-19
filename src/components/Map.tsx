@@ -3,6 +3,7 @@ import "../styles/Map.scss";
 import Sidebar from "./Sidebar";
 import EventThread from "./EventThread";
 import Mapbox from "./Mapbox";
+import RTchart from "./RTChart";
 
 const Map = (props: any) => {
   return (
@@ -10,7 +11,10 @@ const Map = (props: any) => {
       <Sidebar active="Map" />
       <EventThread />
 
-      <div className="map-content">{/* <Mapbox /> */}</div>
+      <div className="map-content">
+        <Mapbox />
+        <RTchart />
+      </div>
     </>
   );
 };
