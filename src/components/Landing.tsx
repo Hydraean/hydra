@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Landing.scss";
 import Footer from "./Footer";
 import Button from "./Button";
+import { loadChart } from "./utils";
 
 const Landing = (props: any) => {
+  useEffect(() => {
+    loadChart();
+  }, []);
+
   return (
     <div className="landing-page">
       <nav

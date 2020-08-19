@@ -31,3 +31,13 @@ export const getCurrentLocation = () => {
 export const seCurrentLocation = (data: object) => {
   localStorage.currentLocation = JSON.stringify(data);
 };
+
+export const loadChart = () => {
+  let rtChart = document.querySelector(".rt-chart") as HTMLElement;
+
+  if (window.location.pathname === "/map") {
+    rtChart.style.display = "flex";
+  } else {
+    rtChart.style.display = "none";
+  }
+};

@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Map.scss";
 import Sidebar from "./Sidebar";
 import EventThread from "./EventThread";
 import Mapbox from "./Mapbox";
-import RTchart from "./RTChart";
+import { loadChart } from "./utils";
 
 const Map = (props: any) => {
+  useEffect(() => {
+    loadChart();
+  }, []);
+
   return (
     <>
       <Sidebar active="Map" />
       <EventThread />
-
-      <div className="map-content">
-        {/* <Mapbox /> */}
-        <RTchart />
-      </div>
+      <div className="map-content">{/* <Mapbox /> */}</div>
     </>
   );
 };

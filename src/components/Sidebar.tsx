@@ -39,14 +39,14 @@ const Sidebar = (props: any) => {
       <div className="nav-items">
         {Links.map((item: any) => {
           return (
-            <a href={item.link}>
+            <Link to={item.link}>
               <i
                 className={`la la-2x ${item.icon} ${
                   item.name === props.active ? "active" : ""
                 }`}
                 title={item.name}
               />
-            </a>
+            </Link>
           );
         })}
       </div>

@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Map.scss";
 import Sidebar from "./Sidebar";
+import { loadChart } from "./utils";
 
 const Incidents = (props: any) => {
+  useEffect(() => {
+    loadChart();
+  }, []);
+
   return (
     <>
       <Sidebar active="Emergencies" />
