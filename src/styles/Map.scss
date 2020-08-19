@@ -178,6 +178,27 @@
 }
 
 // realtime chart
+.rt-chart {
+  position: fixed;
+  flex-direction: column;
+  bottom: 10px;
+  right: 370px;
+  display: none;
+
+  span {
+    background: rgba(19, 17, 17, 0.849);
+    padding: 2px 10px;
+    border-radius: 3px 3px 0px 0px;
+    font-size: 11px;
+    color: #fff;
+    text-transform: uppercase;
+    width: fit-content;
+
+    i {
+      color: rgb(226, 99, 99);
+    }
+  }
+}
 
 .color {
   color: #e66561;

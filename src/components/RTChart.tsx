@@ -5,7 +5,7 @@ const RTchart = () => {
     // let initChart = document.getElementById("rtchart") as HTMLElement;
     // initChart.click();
     let rtChart = document.querySelector(".rt-chart") as HTMLElement;
-    rtChart.style.display = "block";
+    rtChart.style.display = "flex";
   }, []);
 
   return <></>;
