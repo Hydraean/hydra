@@ -96,6 +96,12 @@
   transition: 0.3s;
   color: #fff;
 
+  span {
+    strong {
+      color: rgba(204, 145, 78, 0.973);
+    }
+  }
+
   .event-card-header {
     border-bottom: 1px solid rgb(43, 40, 40);
     padding-bottom: 5px;
@@ -135,4 +141,20 @@
 #map {
   height: 100%;
   margin-left: 65px;
+}
+
+.event-alert {
+  height: 250px;
+  width: 100%;
+  border-radius: 5px;
+  background: linear-gradient(rgba(216, 53, 47, 0.5), rgba(39, 8, 4, 0.692)),
+    url("../assets/mapbg.png");
+  background-size: cover;
+  margin-bottom: 10px;
+  display: grid;
+
+  i {
+    color: #fff;
+    margin: auto;
+  }
 }

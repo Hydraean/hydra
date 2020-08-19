@@ -5,28 +5,28 @@ const Links = [
   {
     name: "Home",
     link: "/",
-    icon: "la-home"
+    icon: "la-home",
   },
   {
     name: "Map",
     link: "/map",
-    icon: "la-map"
+    icon: "la-map",
   },
   {
     name: "Emergencies",
     link: "/incidents",
-    icon: "la-exclamation-circle"
+    icon: "la-exclamation-circle",
   },
-  {
-    name: "Advisories",
-    link: "/advisories",
-    icon: "la-broadcast-tower"
-  },
+  // {
+  //   name: "Advisories",
+  //   link: "/advisories",
+  //   icon: "la-broadcast-tower"
+  // },
   {
     name: "Devices",
     link: "/device-list",
-    icon: "la-list"
-  }
+    icon: "la-list",
+  },
 ];
 
 const Sidebar = (props: any) => {

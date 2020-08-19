@@ -15,13 +15,11 @@ const EventDetails = (props: any) => {
         </button>
       </div>
 
-      <img
-        src="https://pbs.twimg.com/media/D8j6VKcXoAAEfXK.jpg"
-        className="img-fluid event-img"
-        alt="Sample event"
-      />
+      <div className="event-alert">
+        <i className="la la-exclamation-circle la-5x" />
+      </div>
       <strong className="text-warning">{event.name}</strong>
-      <h2 className="pb-2 text-white">Coron, Palawan</h2>
+      <h2 className="pb-2 text-white">{event.title}</h2>
 
       {event && (
         <div className="event-card">
