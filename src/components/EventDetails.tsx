@@ -16,7 +16,9 @@ const EventDetails = (props: any) => {
       </div>
 
       <div className="event-alert">
-        <i className="la la-exclamation-circle la-5x" />
+        <div className="pulse-alert">
+          <i className="la la-exclamation-circle la-5x" />
+        </div>
       </div>
       <strong className="text-warning">{event.name}</strong>
       <h2 className="pb-2 text-white">{event.title}</h2>
