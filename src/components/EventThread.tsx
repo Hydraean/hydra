@@ -14,8 +14,8 @@ const events = [
     date: 1596952876467,
     coordinates: {
       long: 121.001433,
-      lat: 14.507936
-    }
+      lat: 14.507936,
+    },
   },
   {
     details: "Blast fishing in, Coron Palawan",
@@ -27,8 +27,8 @@ const events = [
     date: 1596952876467,
     coordinates: {
       long: 121.001433,
-      lat: 14.507936
-    }
+      lat: 14.507936,
+    },
   },
   {
     details: "Blast fishing in, Coron Palawan",
@@ -40,8 +40,8 @@ const events = [
     date: 1596952876467,
     coordinates: {
       long: 121.001433,
-      lat: 14.507936
-    }
+      lat: 14.507936,
+    },
   },
   {
     details: "Blast fishing in, Coron Palawan",
@@ -53,8 +53,8 @@ const events = [
     date: 1596952876467,
     coordinates: {
       long: 121.001433,
-      lat: 14.507936
-    }
+      lat: 14.507936,
+    },
   },
   {
     details: "Blast fishing in, Coron Palawan",
@@ -66,8 +66,8 @@ const events = [
     date: 1596952876467,
     coordinates: {
       long: 121.001433,
-      lat: 14.507936
-    }
+      lat: 14.507936,
+    },
   },
   {
     details: "Blast fishing in, Coron Palawan",
@@ -79,8 +79,8 @@ const events = [
     date: 1596952876467,
     coordinates: {
       long: 121.001433,
-      lat: 14.507936
-    }
+      lat: 14.507936,
+    },
   },
   {
     details: "Blast fishing in, Coron Palawan",
@@ -92,8 +92,8 @@ const events = [
     date: 1596952876467,
     coordinates: {
       long: 121.001433,
-      lat: 14.507936
-    }
+      lat: 14.507936,
+    },
   },
 
   {
@@ -106,9 +106,9 @@ const events = [
     date: 1596952876467,
     coordinates: {
       long: 121.001433,
-      lat: 14.507936
-    }
-  }
+      lat: 14.507936,
+    },
+  },
 ];
 
 const EventThread = (props: any) => {
@@ -124,9 +124,8 @@ const EventThread = (props: any) => {
     seCurrentLocation(data.coordinates);
     setReport(data);
     toggleDetails();
-    mapBtn.click();
-    // setTimeout(() => {
-    // }, 300);
+
+    // mapBtn.click();
   };
 
   return (
