@@ -30,7 +30,9 @@ const Devices = (props: any) => {
                   {" "}
                   <i className="la la-project-diagram text-active" /> Nodes
                 </h3>
-                <small>List of Node Devices in the Network.</small>
+                <small className="text-muted">
+                  List of Node Devices in the Network.
+                </small>
               </div>
               <div className="table-responsive">
                 <table className="table align-items-center table-dark table-flush">
@@ -164,7 +166,9 @@ const Devices = (props: any) => {
                   {" "}
                   <i className="la la-broadcast-tower text-active" /> GateWays
                 </h3>
-                <small>List of Gateway Devices in the Network.</small>
+                <small className="text-muted">
+                  List of Gateway Devices in the Network.
+                </small>
               </div>
               <div className="table-responsive">
                 <table className="table align-items-center table-dark table-flush">
