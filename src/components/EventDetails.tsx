@@ -18,7 +18,7 @@ const EventDetails = (props: any) => {
       {event.type === "illegal_fishing" && (
         <div className="event-alert">
           <div className="pulse-alert">
-            <i className="la la-exclamation-circle la-5x" />
+            <i className="la la-fish la-5x" />
           </div>
         </div>
       )}

@@ -167,9 +167,7 @@ const EventThread = (props: any) => {
                   >
                     <i
                       className={`la ${
-                        event.type === "emergency"
-                          ? "la-bolt"
-                          : "la-exclamation-circle"
+                        event.type === "emergency" ? "la-bolt" : "la-fish"
                       } mr-1 text-red`}
                     />{" "}
                     {event.title}
