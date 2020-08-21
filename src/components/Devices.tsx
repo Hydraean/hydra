@@ -160,7 +160,7 @@ const Devices = (props: any) => {
               <div className="card-header bg-transparent border-0">
                 <h3 className="text-white mb-0">
                   {" "}
-                  <i className="la la-broadcast-tower text-active" /> GateWays
+                  <i className="la la-broadcast-tower text-active" /> Gateways
                 </h3>
                 <small className="text-muted">
                   List of Gateway Devices in the Network.
