@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "../styles/Map.scss";
 import Sidebar from "./Sidebar";
 import EventThread from "./EventThread";
 import Mapbox from "./Mapbox";
@@ -14,7 +13,9 @@ const Map = (props: any) => {
     <>
       <Sidebar active="Map" />
       <EventThread />
-      <div className="map-content">{/* <Mapbox /> */}</div>
+      <div className="map-content">
+        <Mapbox />
+      </div>
     </>
   );
 };

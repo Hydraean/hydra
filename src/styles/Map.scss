@@ -73,7 +73,7 @@
   right: 0px;
   overflow: hidden;
   overflow-y: auto;
-  z-index: 50;
+  z-index: 200 !important;
 
   .events-header {
     display: flex;
@@ -195,4 +195,10 @@
 .color {
   color: #e66561;
   background: rgba(241, 137, 154, 0.479);
+}
+
+// event thread
+
+.details-thread {
+  z-index: 999 !important;
 }

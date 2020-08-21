@@ -312,3 +312,21 @@ Usage
     }
   }
 }
+
+// status banner
+
+.status-banner {
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 5px;
+
+  &.CONFIRMED {
+    border: 2px solid #40f5e6;
+    color: #40f5e6;
+  }
+
+  &.PENDING {
+    border: 2px solid #f5bc40;
+    color: #f5b640;
+  }
+}

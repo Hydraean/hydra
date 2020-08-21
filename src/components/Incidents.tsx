@@ -3,11 +3,12 @@ import "../styles/Map.scss";
 import Sidebar from "./Sidebar";
 import { loadChart, API_URL } from "./utils";
 import axios from "axios";
-import moment from "moment";
 import nprogress from "nprogress";
+import IncidentDetails from "./IncidentDetails";
 
 const Incidents = (props: any) => {
   const [events, setEvents] = useState(null);
+  const [currentEvent, setcurrentEvent] = useState(null);
 
   const fetchIncidents = () => {
     nprogress.set(0.4);
@@ -39,6 +40,9 @@ const Incidents = (props: any) => {
 
   return (
     <>
+      {currentEvent && (
+        <IncidentDetails data={currentEvent} setData={setcurrentEvent} />
+      )}
       <Sidebar active="Emergencies" />
       <div className="dashboard-content">
         <div className="content-header">
@@ -62,7 +66,7 @@ const Incidents = (props: any) => {
 
         <div className="row table-content">
           <div className="stats-row col-md-11">
-            <div className="stats-card fade-in-bottom dl-2">
+            <div className="stats-card fade-in-bottom dl-1">
               <i className="la la-fish la-5x text-warning" />
               <h1>
                 <small>ILLEGAL FISHING</small>
@@ -74,7 +78,7 @@ const Incidents = (props: any) => {
               </h1>
             </div>
 
-            <div className="stats-card fade-in-bottom dl-4">
+            <div className="stats-card fade-in-bottom dl-2">
               <i className="la la-bolt text-danger la-5x" />
               <h1>
                 <small>EMERGENCY</small>
@@ -87,7 +91,7 @@ const Incidents = (props: any) => {
               </h1>
             </div>
 
-            <div className="stats-card fade-in-bottom dl-6">
+            <div className="stats-card fade-in-bottom dl-3">
               <i className="la la-check-circle text-success la-5x" />
               <h1>
                 <small>CONFIRMED</small>
@@ -97,7 +101,7 @@ const Incidents = (props: any) => {
               </h1>
             </div>
 
-            <div className="stats-card fade-in-bottom dl-8">
+            <div className="stats-card fade-in-bottom dl-4">
               <i className="la la-exclamation-circle text-yellow la-5x" />
               <h1>
                 <small>PENDING</small>
@@ -152,7 +156,13 @@ const Incidents = (props: any) => {
                         .filter((x) => x.type === "illegal_fishing")
                         .map((event: any, index: number) => {
                           return (
-                            <tr key={index} className="fade-in record-row">
+                            <tr
+                              key={index}
+                              className="fade-in record-row"
+                              onClick={() => {
+                                setcurrentEvent(event);
+                              }}
+                            >
                               <th>
                                 <strong>{index + 1}</strong>
                               </th>
