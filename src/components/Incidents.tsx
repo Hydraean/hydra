@@ -61,6 +61,54 @@ const Incidents = (props: any) => {
         </div>
 
         <div className="row table-content">
+          <div className="stats-row col-md-11">
+            <div className="stats-card">
+              <i className="la la-fish la-5x text-warning" />
+              <h1>
+                <small>ILLEGAL FISHING</small>
+                <br />
+                <span>
+                  {events &&
+                    events.filter((x) => x.type === "illegal_fishing").length}
+                </span>
+              </h1>
+            </div>
+
+            <div className="stats-card">
+              <i className="la la-bolt text-danger la-5x" />
+              <h1>
+                <small>EMERGENCY</small>
+                <br />
+                <span>
+                  {" "}
+                  {events &&
+                    events.filter((x) => x.type === "emergency").length}
+                </span>
+              </h1>
+            </div>
+
+            <div className="stats-card">
+              <i className="la la-check-circle text-success la-5x" />
+              <h1>
+                <small>CONFIRMED</small>
+                <br />
+                {events &&
+                  events.filter((x) => x.status === "CONFIRMED").length}
+              </h1>
+            </div>
+
+            <div className="stats-card">
+              <i className="la la-exclamation-circle text-yellow la-5x" />
+              <h1>
+                <small>PENDING</small>
+                <br />
+                <span>
+                  {events &&
+                    events.filter((x) => x.status === "PENDING").length}
+                </span>
+              </h1>
+            </div>
+          </div>
           <div className="col-md-11">
             <div className="card bg-default shadow">
               <div className="card-header bg-transparent border-0">
@@ -83,17 +131,18 @@ const Incidents = (props: any) => {
                         Device ID
                       </th>
                       <th scope="col" className="sort" data-sort="budget">
-                        Recorded Location
+                        Location
                       </th>
                       <th scope="col" className="sort" data-sort="status">
                         title
                       </th>
                       <th scope="col" className="sort" data-sort="status">
-                        Details
+                        reportee
                       </th>
                       <th scope="col" className="sort" data-sort="budget">
-                        Reportee
+                        date
                       </th>
+                      <th scope="col">Mode</th>
                       <th scope="col">Status</th>
                     </tr>
                   </thead>
@@ -103,7 +152,7 @@ const Incidents = (props: any) => {
                         .filter((x) => x.type === "illegal_fishing")
                         .map((event: any, index: number) => {
                           return (
-                            <tr key={index} className="fade-in">
+                            <tr key={index} className="fade-in record-row">
                               <th>
                                 <strong>{index + 1}</strong>
                               </th>
@@ -112,21 +161,27 @@ const Incidents = (props: any) => {
                               </th>
                               <td>{event.address}</td>
                               <td>{event.title}</td>
-                              <td>{event.details}</td>
                               <td>{event.reportee}</td>
+                              <td>{event.date}</td>
+                              <td>
+                                <span
+                                  className={`text-mode ${event.report_type}`}
+                                >
+                                  {event.report_type}
+                                </span>
+                              </td>
                               <td>
                                 <span className="badge badge-dot mr-4">
-                                  {true ? (
-                                    <>
-                                      <i className="bg-success" />
-                                      <span className="status">Active</span>
-                                    </>
-                                  ) : (
-                                    <>
-                                      <i className="bg-danger" />
-                                      <span className="status">Inactive</span>
-                                    </>
-                                  )}
+                                  <i
+                                    className={
+                                      event.status === "PENDING"
+                                        ? "bg-warning"
+                                        : "bg-sucess"
+                                    }
+                                  />
+                                  <span className="status text-capitalize">
+                                    {event.status}
+                                  </span>
                                 </span>
                               </td>
                             </tr>
@@ -164,34 +219,59 @@ const Incidents = (props: any) => {
                         Recorded Location
                       </th>
                       <th scope="col" className="sort" data-sort="status">
-                        Deployment Date
+                        title
+                      </th>
+                      <th scope="col" className="sort" data-sort="status">
+                        Details
                       </th>
                       <th scope="col" className="sort" data-sort="budget">
-                        Last Interaction
+                        Reportee
                       </th>
                       <th scope="col">Status</th>
+                      <th scope="col">Mode</th>
                     </tr>
                   </thead>
                   <tbody className="list">
-                    <tr>
-                      <th>
-                        <strong>1</strong>
-                      </th>
-                      <th>
-                        <strong>HG-0001</strong>
-                      </th>
-                      <td>
-                        <strong>Pasay City</strong>
-                      </td>
-                      <td>June 28, 2020</td>
-                      <td>June 28, 2020 (20 days ago)</td>
-                      <td>
-                        <span className="badge badge-dot mr-4">
-                          <i className="bg-success" />
-                          <span className="status">Active</span>
-                        </span>
-                      </td>
-                    </tr>
+                    {events &&
+                      events
+                        .filter((x) => x.type === "emergency")
+                        .map((event: any, index: number) => {
+                          return (
+                            <tr key={index} className="fade-in record-row">
+                              <th>
+                                <strong>{index + 1}</strong>
+                              </th>
+                              <th>
+                                <strong>{event.device_id}</strong>
+                              </th>
+                              <td>{event.address}</td>
+                              <td>{event.title}</td>
+                              <td>{event.reportee}</td>
+                              <td>{event.date}</td>
+                              <td>
+                                <span
+                                  className={`text-mode ${event.report_type}`}
+                                >
+                                  {event.report_type}
+                                </span>
+                              </td>
+                              <td>
+                                <span className="badge badge-dot mr-4">
+                                  <i
+                                    className={
+                                      event.status === "PENDING"
+                                        ? "bg-warning"
+                                        : "bg-sucess"
+                                    }
+                                  />
+                                  <span className="status text-capitalize">
+                                    {event.status}
+                                  </span>
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })}
                   </tbody>
                 </table>
               </div>

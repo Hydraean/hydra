@@ -15,6 +15,7 @@
     height: 240px;
     background: #193d76;
     padding: 30px 40px;
+    box-shadow: 7px 0px 15px -2px rgba(0, 0, 0, 0.253);
 
     .content-nav {
       display: flex;
@@ -252,5 +253,62 @@ Usage
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
+  font-size: 12px !important;
+}
+
+.text-mode {
+  padding: 2px 5px;
+  border: 0.1px solid rgb(14, 196, 202);
+  color: rgb(14, 196, 202) !important;
+  font-size: 12px !important;
+  border-radius: 2px;
+}
+
+.record-row {
+  transition: 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    background: rgb(14, 17, 59);
+    transition: 0.3s;
+  }
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  .stats-card {
+    background: #051c3f;
+    border-radius: 5px;
+    height: 120px;
+    width: 280px;
+    box-sizing: border-box;
+    padding: 20px 30px 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 7px 0px 15px -2px rgba(0, 0, 0, 0.253);
+
+    h1 {
+      font-size: 30px;
+      text-align: right;
+      small {
+        font-size: 13px;
+        position: relative;
+        color: rgb(15, 197, 188);
+        top: -10px;
+      }
+
+      span {
+        position: relative;
+        top: -13px;
+      }
+    }
   }
 }
