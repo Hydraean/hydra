@@ -13,9 +13,7 @@ const Map = (props: any) => {
     <>
       <Sidebar active="Map" />
       <EventThread />
-      <div className="map-content">
-        <Mapbox />
-      </div>
+      <div className="map-content">{/* <Mapbox /> */}</div>
     </>
   );
 };

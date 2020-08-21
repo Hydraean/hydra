@@ -108,28 +108,13 @@ const Devices = (props: any) => {
                               <td>{device.first_interaction}</td>
                               <td>
                                 {device.last_interaction} (
-                                {moment(
-                                  `${device.last_interaction.split(" - ")[0]},${
-                                    device.last_interaction.split(" - ")[1]
-                                  }`
-                                ).fromNow()}
-                                )
+                                {moment(device.last_interaction).fromNow()})
                               </td>
                               <td>
                                 <span className="badge badge-dot mr-4">
                                   {Math.abs(
                                     moment().diff(
-                                      moment(
-                                        `${
-                                          device.last_interaction.split(
-                                            " - "
-                                          )[0]
-                                        },${
-                                          device.last_interaction.split(
-                                            " - "
-                                          )[1]
-                                        }`
-                                      ),
+                                      moment(device.last_interaction),
                                       "days"
                                     )
                                   ) < 7 ? (
@@ -201,28 +186,13 @@ const Devices = (props: any) => {
                               <td>{device.first_interaction}</td>
                               <td>
                                 {device.last_interaction} (
-                                {moment(
-                                  `${device.last_interaction.split(" - ")[0]},${
-                                    device.last_interaction.split(" - ")[1]
-                                  }`
-                                ).fromNow()}
-                                )
+                                {moment(device.last_interaction).fromNow()})
                               </td>
                               <td>
                                 <span className="badge badge-dot mr-4">
                                   {Math.abs(
                                     moment().diff(
-                                      moment(
-                                        `${
-                                          device.last_interaction.split(
-                                            " - "
-                                          )[0]
-                                        },${
-                                          device.last_interaction.split(
-                                            " - "
-                                          )[1]
-                                        }`
-                                      ),
+                                      moment(device.last_interaction),
                                       "days"
                                     )
                                   ) < 7 ? (

@@ -3,124 +3,32 @@ import EventDetails from "./EventDetails";
 import moment from "moment";
 import { seCurrentLocation } from "./utils";
 import EventSkeleton from "./EventSkeleton";
+import { API_URL } from "./utils";
+import axios from "axios";
+import nprogress from "nprogress";
+import io from "socket.io-client";
 
-const eventsData = [
-  {
-    details: "Blast fishing in, Coron Palawan",
-    type: "illegal_fishing",
-    title: "Illegal fishing activity",
-    name: "Blast Fishing",
-    reportee: "Bryce Mercines",
-    source_platform: "node",
-    date: 1596952876467,
-    coordinates: {
-      long: 121.001433,
-      lat: 14.507936,
-    },
-  },
-  {
-    details: "Blast fishing in, Coron Palawan",
-    type: "illegal_fishing",
-    title: "Illegal fishing activity",
-    name: "Blast Fishing",
-    reportee: "Bantay Dagat",
-    source_platform: "node",
-    date: 1596952876467,
-    coordinates: {
-      long: 121.001433,
-      lat: 14.507936,
-    },
-  },
-  {
-    details: "Blast fishing in, Coron Palawan",
-    type: "illegal_fishing",
-    title: "Illegal fishing activity",
-    name: "Blast Fishing",
-    reportee: "Bantay Dagat",
-    source_platform: "node",
-    date: 1596952876467,
-    coordinates: {
-      long: 121.001433,
-      lat: 14.507936,
-    },
-  },
-  {
-    details: "Blast fishing in, Coron Palawan",
-    type: "illegal_fishing",
-    title: "Illegal fishing activity",
-    name: "Blast Fishing",
-    reportee: "Bantay Dagat",
-    source_platform: "node",
-    date: 1596952876467,
-    coordinates: {
-      long: 121.001433,
-      lat: 14.507936,
-    },
-  },
-  {
-    details: "Blast fishing in, Coron Palawan",
-    type: "illegal_fishing",
-    title: "Illegal fishing activity",
-    name: "Blast Fishing",
-    reportee: "Bantay Dagat",
-    source_platform: "node",
-    date: 1596952876467,
-    coordinates: {
-      long: 121.001433,
-      lat: 14.507936,
-    },
-  },
-  {
-    details: "Blast fishing in, Coron Palawan",
-    type: "emergency",
-    name: "EMERGENCY ALERT",
-    title: "distress signal",
-    reportee: "Bantay Dagat",
-    source_platform: "node",
-    date: 1596952876467,
-    coordinates: {
-      long: 121.001433,
-      lat: 14.507936,
-    },
-  },
-  {
-    details: "Blast fishing in, Coron Palawan",
-    type: "emergency",
-    name: "EMERGENCY ALERT",
-    title: "distress signal",
-    reportee: "Bantay Dagat",
-    source_platform: "node",
-    date: 1596952876467,
-    coordinates: {
-      long: 121.001433,
-      lat: 14.507936,
-    },
-  },
-
-  {
-    details: "Blast fishing in, Coron Palawan",
-    type: "emergency",
-    name: "EMERGENCY ALERT",
-    title: "distress signal",
-    reportee: "Bantay Dagat",
-    source_platform: "node",
-    date: 1596952876467,
-    coordinates: {
-      long: 121.001433,
-      lat: 14.507936,
-    },
-  },
-];
+const socket = io(API_URL);
 
 const EventThread = (props: any) => {
   const [details, setDetails] = useState(false);
   const [report, setReport] = useState(null);
   const [events, setEvents] = useState(null);
 
+  socket.on("feedUpdate", (data) => {
+    setEvents(data.data);
+  });
+
+  const fetchIncidents = () => {
+    nprogress.set(0.4);
+    axios.get(`${API_URL}/incidents`).then((res) => {
+      setEvents(res.data);
+      nprogress.done();
+    });
+  };
+
   useEffect(() => {
-    setTimeout(() => {
-      setEvents(eventsData);
-    }, 2000);
+    fetchIncidents();
   }, []);
 
   const toggleDetails = () => {
@@ -133,7 +41,7 @@ const EventThread = (props: any) => {
     setReport(data);
     toggleDetails();
 
-    mapBtn.click();
+    // mapBtn.click();
   };
 
   return (
