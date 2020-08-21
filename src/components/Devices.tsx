@@ -1,11 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Map.scss";
 import Sidebar from "./Sidebar";
-import { loadChart } from "./utils";
+import { loadChart, API_URL } from "./utils";
+import axios from "axios";
+import moment from "moment";
 
 const Devices = (props: any) => {
+  const [devices, setDevices] = useState(null);
+
+  const fetchData = () => {
+    axios.get(`${API_URL}/devices`).then((res) => {
+      setDevices(res.data);
+    });
+  };
+
   useEffect(() => {
     loadChart();
+
+    fetchData();
   }, []);
 
   return (
@@ -44,11 +56,8 @@ const Devices = (props: any) => {
                       <th scope="col" className="sort" data-sort="name">
                         Device ID
                       </th>
-                      <th scope="col" className="sort" data-sort="budget">
-                        Recorded Location
-                      </th>
                       <th scope="col" className="sort" data-sort="status">
-                        Deployment Date
+                        First Interaction
                       </th>
                       <th scope="col" className="sort" data-sort="budget">
                         Last Interaction
@@ -57,101 +66,61 @@ const Devices = (props: any) => {
                     </tr>
                   </thead>
                   <tbody className="list">
-                    <tr>
-                      <th>
-                        <strong>1</strong>
-                      </th>
-                      <th>
-                        <strong>HN-0001</strong>
-                      </th>
-                      <td>
-                        <strong>Pasay City</strong>
-                      </td>
-                      <td>June 28, 2020</td>
-                      <td>June 28, 2020 (20 days ago)</td>
-                      <td>
-                        <span className="badge badge-dot mr-4">
-                          <i className="bg-success" />
-                          <span className="status">Active</span>
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>
-                        <strong>1</strong>
-                      </th>
-                      <th>
-                        <strong>HN-0001</strong>
-                      </th>
-                      <td>
-                        <strong>Pasay City</strong>
-                      </td>
-                      <td>June 28, 2020</td>
-                      <td>June 28, 2020 (20 days ago)</td>
-                      <td>
-                        <span className="badge badge-dot mr-4">
-                          <i className="bg-success" />
-                          <span className="status">Active</span>
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>
-                        <strong>1</strong>
-                      </th>
-                      <th>
-                        <strong>HN-0001</strong>
-                      </th>
-                      <td>
-                        <strong>Pasay City</strong>
-                      </td>
-                      <td>June 28, 2020</td>
-                      <td>June 28, 2020 (20 days ago)</td>
-                      <td>
-                        <span className="badge badge-dot mr-4">
-                          <i className="bg-success" />
-                          <span className="status">Active</span>
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>
-                        <strong>1</strong>
-                      </th>
-                      <th>
-                        <strong>HN-0001</strong>
-                      </th>
-                      <td>
-                        <strong>Pasay City</strong>
-                      </td>
-                      <td>June 28, 2020</td>
-                      <td>June 28, 2020 (20 days ago)</td>
-                      <td>
-                        <span className="badge badge-dot mr-4">
-                          <i className="bg-success" />
-                          <span className="status">Active</span>
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>
-                        <strong>1</strong>
-                      </th>
-                      <th>
-                        <strong>HN-0001</strong>
-                      </th>
-                      <td>
-                        <strong>Pasay City</strong>
-                      </td>
-                      <td>June 28, 2020</td>
-                      <td>June 28, 2020 (20 days ago)</td>
-                      <td>
-                        <span className="badge badge-dot mr-4">
-                          <i className="bg-success" />
-                          <span className="status">Active</span>
-                        </span>
-                      </td>
-                    </tr>
+                    {devices &&
+                      devices
+                        .filter((x) => x.type === "node")
+                        .map((device: any, index: number) => {
+                          return (
+                            <tr key={index}>
+                              <th>
+                                <strong>{index + 1}</strong>
+                              </th>
+                              <th>
+                                <strong>{device.device_id}</strong>
+                              </th>
+                              <td>{device.first_interaction}</td>
+                              <td>
+                                {device.last_interaction} (
+                                {moment(
+                                  `${device.last_interaction.split(" - ")[0]},${
+                                    device.last_interaction.split(" - ")[1]
+                                  }`
+                                ).fromNow()}
+                                )
+                              </td>
+                              <td>
+                                <span className="badge badge-dot mr-4">
+                                  {Math.abs(
+                                    moment("Aug 1, 2020").diff(
+                                      moment(
+                                        `${
+                                          device.last_interaction.split(
+                                            " - "
+                                          )[0]
+                                        },${
+                                          device.last_interaction.split(
+                                            " - "
+                                          )[1]
+                                        }`
+                                      ),
+                                      "days"
+                                    )
+                                  ) > 7 ? (
+                                    <>
+                                      <i className="bg-success" />
+                                      <span className="status">Active</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <i className="bg-danger" />
+                                      <span className="status">Inactive</span>
+                                    </>
+                                  )}
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })}
                   </tbody>
                 </table>
               </div>

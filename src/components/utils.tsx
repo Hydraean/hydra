@@ -1,7 +1,7 @@
 export const mapbox_key =
   "pk.eyJ1IjoiYnJ5Y2UwNiIsImEiOiJjazNmbndybm4wMDk3M29wZ2dicjlmb29iIn0.NVknKG525ZpQVmIAbFiqfw";
 
-export const API_URL = "http://192.168.1.4:7000";
+export const API_URL = "https://kraken-demo.herokuapp.com";
 
 export const guid = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
