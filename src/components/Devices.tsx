@@ -118,7 +118,7 @@ const Devices = (props: any) => {
                               <td>
                                 <span className="badge badge-dot mr-4">
                                   {Math.abs(
-                                    moment("Aug 1, 2020").diff(
+                                    moment().diff(
                                       moment(
                                         `${
                                           device.last_interaction.split(
@@ -132,7 +132,7 @@ const Devices = (props: any) => {
                                       ),
                                       "days"
                                     )
-                                  ) > 7 ? (
+                                  ) < 7 ? (
                                     <>
                                       <i className="bg-success" />
                                       <span className="status">Active</span>
@@ -211,7 +211,7 @@ const Devices = (props: any) => {
                               <td>
                                 <span className="badge badge-dot mr-4">
                                   {Math.abs(
-                                    moment("Aug 1, 2020").diff(
+                                    moment().diff(
                                       moment(
                                         `${
                                           device.last_interaction.split(
@@ -225,7 +225,7 @@ const Devices = (props: any) => {
                                       ),
                                       "days"
                                     )
-                                  ) > 7 ? (
+                                  ) < 7 ? (
                                     <>
                                       <i className="bg-success" />
                                       <span className="status">Active</span>
