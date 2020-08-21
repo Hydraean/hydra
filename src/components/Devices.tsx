@@ -4,13 +4,16 @@ import Sidebar from "./Sidebar";
 import { loadChart, API_URL } from "./utils";
 import axios from "axios";
 import moment from "moment";
+import nprogress from "nprogress";
 
 const Devices = (props: any) => {
   const [devices, setDevices] = useState(null);
 
   const fetchData = () => {
+    nprogress.set(0.4);
     axios.get(`${API_URL}/devices`).then((res) => {
       setDevices(res.data);
+      nprogress.done();
     });
   };
 
@@ -71,7 +74,7 @@ const Devices = (props: any) => {
                         .filter((x) => x.type === "node")
                         .map((device: any, index: number) => {
                           return (
-                            <tr key={index}>
+                            <tr key={index} className="fade-in">
                               <th>
                                 <strong>{index + 1}</strong>
                               </th>
@@ -149,11 +152,8 @@ const Devices = (props: any) => {
                       <th scope="col" className="sort" data-sort="name">
                         Device ID
                       </th>
-                      <th scope="col" className="sort" data-sort="budget">
-                        Recorded Location
-                      </th>
                       <th scope="col" className="sort" data-sort="status">
-                        Deployment Date
+                        First Interaction
                       </th>
                       <th scope="col" className="sort" data-sort="budget">
                         Last Interaction
@@ -162,25 +162,61 @@ const Devices = (props: any) => {
                     </tr>
                   </thead>
                   <tbody className="list">
-                    <tr>
-                      <th>
-                        <strong>1</strong>
-                      </th>
-                      <th>
-                        <strong>HG-0001</strong>
-                      </th>
-                      <td>
-                        <strong>Pasay City</strong>
-                      </td>
-                      <td>June 28, 2020</td>
-                      <td>June 28, 2020 (20 days ago)</td>
-                      <td>
-                        <span className="badge badge-dot mr-4">
-                          <i className="bg-success" />
-                          <span className="status">Active</span>
-                        </span>
-                      </td>
-                    </tr>
+                    {devices &&
+                      devices
+                        .filter((x) => x.type === "gateway")
+                        .map((device: any, index: number) => {
+                          return (
+                            <tr key={index} className="fade-in">
+                              <th>
+                                <strong>{index + 1}</strong>
+                              </th>
+                              <th>
+                                <strong>{device.device_id}</strong>
+                              </th>
+                              <td>{device.first_interaction}</td>
+                              <td>
+                                {device.last_interaction} (
+                                {moment(
+                                  `${device.last_interaction.split(" - ")[0]},${
+                                    device.last_interaction.split(" - ")[1]
+                                  }`
+                                ).fromNow()}
+                                )
+                              </td>
+                              <td>
+                                <span className="badge badge-dot mr-4">
+                                  {Math.abs(
+                                    moment("Aug 1, 2020").diff(
+                                      moment(
+                                        `${
+                                          device.last_interaction.split(
+                                            " - "
+                                          )[0]
+                                        },${
+                                          device.last_interaction.split(
+                                            " - "
+                                          )[1]
+                                        }`
+                                      ),
+                                      "days"
+                                    )
+                                  ) > 7 ? (
+                                    <>
+                                      <i className="bg-success" />
+                                      <span className="status">Active</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <i className="bg-danger" />
+                                      <span className="status">Inactive</span>
+                                    </>
+                                  )}
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })}
                   </tbody>
                 </table>
               </div>
