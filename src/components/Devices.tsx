@@ -9,7 +9,7 @@ import nprogress from "nprogress";
 const Devices = (props: any) => {
   const [devices, setDevices] = useState(null);
 
-  const fetchData = () => {
+  const fetchDevices = () => {
     nprogress.set(0.4);
     axios.get(`${API_URL}/devices`).then((res) => {
       setDevices(res.data);
@@ -17,10 +17,25 @@ const Devices = (props: any) => {
     });
   };
 
+  const searchDevices = () => {
+    let query = document.getElementById("search-devices") as HTMLInputElement;
+    if (query.value.trim() !== "") {
+      nprogress.set(0.4);
+      axios
+        .get(`${API_URL}/devices/search/?query=${query.value}`)
+        .then((res) => {
+          setDevices(res.data);
+          nprogress.done();
+        });
+    } else {
+      fetchDevices();
+    }
+  };
+
   useEffect(() => {
     loadChart();
 
-    fetchData();
+    fetchDevices();
   }, []);
 
   return (
@@ -33,7 +48,16 @@ const Devices = (props: any) => {
               <i className="la la-list text-active" /> Devices
             </h1>
 
-            <input placeholder="Search Devices" className="search-input" />
+            <input
+              id="search-devices"
+              placeholder="Search Devices"
+              className="search-input"
+              onKeyUp={(e) => {
+                if (e.keyCode === 13) {
+                  searchDevices();
+                }
+              }}
+            />
           </div>
         </div>
 

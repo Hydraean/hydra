@@ -29,6 +29,12 @@
         border: 2px solid #2868cf;
         color: #fff;
         background: rgba(0, 0, 0, 0.63);
+        transition: 0.3s;
+
+        &:focus {
+          transition: 0.3s;
+          border: 2px solid #40f5e6;
+        }
       }
     }
   }
