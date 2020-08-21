@@ -62,7 +62,7 @@ const Incidents = (props: any) => {
 
         <div className="row table-content">
           <div className="stats-row col-md-11">
-            <div className="stats-card">
+            <div className="stats-card fade-in-bottom dl-2">
               <i className="la la-fish la-5x text-warning" />
               <h1>
                 <small>ILLEGAL FISHING</small>
@@ -74,7 +74,7 @@ const Incidents = (props: any) => {
               </h1>
             </div>
 
-            <div className="stats-card">
+            <div className="stats-card fade-in-bottom dl-4">
               <i className="la la-bolt text-danger la-5x" />
               <h1>
                 <small>EMERGENCY</small>
@@ -87,7 +87,7 @@ const Incidents = (props: any) => {
               </h1>
             </div>
 
-            <div className="stats-card">
+            <div className="stats-card fade-in-bottom dl-6">
               <i className="la la-check-circle text-success la-5x" />
               <h1>
                 <small>CONFIRMED</small>
@@ -97,7 +97,7 @@ const Incidents = (props: any) => {
               </h1>
             </div>
 
-            <div className="stats-card">
+            <div className="stats-card fade-in-bottom dl-8">
               <i className="la la-exclamation-circle text-yellow la-5x" />
               <h1>
                 <small>PENDING</small>
