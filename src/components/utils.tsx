@@ -41,3 +41,8 @@ export const loadChart = () => {
     rtChart.style.display = "none";
   }
 };
+
+export const eventSpike = () => {
+  let sbtn = document.getElementById("activityBtn") as HTMLButtonElement;
+  sbtn.click();
+};

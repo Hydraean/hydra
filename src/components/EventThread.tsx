@@ -3,10 +3,11 @@ import EventDetails from "./EventDetails";
 import moment from "moment";
 import { seCurrentLocation } from "./utils";
 import EventSkeleton from "./EventSkeleton";
-import { API_URL } from "./utils";
+import { API_URL, eventSpike } from "./utils";
 import axios from "axios";
 import nprogress from "nprogress";
 import io from "socket.io-client";
+import { Link } from "react-router-dom";
 
 const socket = io(API_URL);
 
@@ -16,6 +17,7 @@ const EventThread = (props: any) => {
   const [events, setEvents] = useState(null);
 
   socket.on("feedUpdate", (data) => {
+    eventSpike();
     setEvents(data.data);
   });
 
@@ -53,10 +55,12 @@ const EventThread = (props: any) => {
               <i className="la la-bars mr-2" />
               Recent Events
             </span>
-            <a href="/incidents" className="btn btn-sm btn-dark">
-              <i className="mr-2 la la-ellipsis-h" />
-              View All
-            </a>
+            <Link to="/incidents">
+              <button className="btn btn-sm btn-dark">
+                <i className="mr-2 la la-ellipsis-h" />
+                View All
+              </button>
+            </Link>
           </div>
 
           {events ? (

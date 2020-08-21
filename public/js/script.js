@@ -27,7 +27,7 @@ function createTimeline() {
   chart.streamTo(canvas, 500);
 }
 
-document.body.onkeyup = () => {
+const createSpike = () => {
   xt++;
 };
 
