@@ -277,6 +277,12 @@ Usage
     background: rgb(14, 17, 59);
     transition: 0.3s;
   }
+
+  &.active {
+    cursor: default;
+    background: rgb(9, 14, 90);
+    transition: 0.3s;
+  }
 }
 
 .stats-row {

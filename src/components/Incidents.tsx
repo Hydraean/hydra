@@ -158,7 +158,11 @@ const Incidents = (props: any) => {
                           return (
                             <tr
                               key={index}
-                              className="fade-in record-row"
+                              className={`fade-in record-row ${
+                                currentEvent && currentEvent.id === event.id
+                                  ? "active"
+                                  : ""
+                              }`}
                               onClick={() => {
                                 setcurrentEvent(event);
                               }}
@@ -247,7 +251,17 @@ const Incidents = (props: any) => {
                         .filter((x) => x.type === "emergency")
                         .map((event: any, index: number) => {
                           return (
-                            <tr key={index} className="fade-in record-row">
+                            <tr
+                              key={index}
+                              className={`fade-in record-row ${
+                                currentEvent && currentEvent.id === event.id
+                                  ? "active"
+                                  : ""
+                              }`}
+                              onClick={() => {
+                                setcurrentEvent(event);
+                              }}
+                            >
                               <th>
                                 <strong>{index + 1}</strong>
                               </th>
