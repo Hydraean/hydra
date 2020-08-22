@@ -160,6 +160,32 @@ const Landing = (props: any) => {
         </div>
       </div>
 
+      <div className="container">
+        <div className="mb-7">
+          <div className="page-content">
+            <div className="col-md-6">
+              <h1 className="text-active pb-3">How it works</h1>
+              <p className="text-lead text-white">
+                The platform utilizes LoRa-based IoT Devices called "Nodes" and
+                "Gateways" to create a mesh network which allows messages to
+                travel long distances as it bounces from one device to another
+                along the network until it reaches a gateway capable of sending
+                the data to the Internet, or just nearby base station for local
+                telemetry.
+              </p>
+            </div>
+
+            <div>
+              <img
+                src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/117717069_765722497520671_1792195501348226062_n.png?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=Ur_PcQmpHkoAX-3CdNG&_nc_ht=scontent.fmnl4-1.fna&oh=82ae05ac4ad4c5e5f9735bb39019b210&oe=5F653A54"
+                className="about-img"
+                alt="Blast Fishing"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <Footer />
     </div>
   );
