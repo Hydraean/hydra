@@ -66,3 +66,31 @@ export const eventSpike = () => {
   let sbtn = document.getElementById("activityBtn") as HTMLButtonElement;
   sbtn.click();
 };
+
+export const fetchIncidentGeoJSON = () => {
+  let baseDataLayer = {
+    type: "FeatureCollection",
+    features: [],
+  };
+
+  let incidentData = JSON.parse(localStorage.incidents);
+  incidentData = incidentData.filter((x) => x.status === "PENDING");
+
+  incidentData.forEach((incident) => {
+    let pointData = {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [incident.coordinates.long, incident.coordinates.lat],
+      },
+      properties: {
+        title: incident.details,
+        icon: incident.type === "emergency" ? "emergency-dot" : "alert-dot",
+      },
+    };
+
+    baseDataLayer.features.push(pointData);
+  });
+
+  return baseDataLayer;
+};

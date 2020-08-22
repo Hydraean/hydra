@@ -16,16 +16,33 @@ const EventThread = (props: any) => {
   const [report, setReport] = useState(null);
   const [events, setEvents] = useState(null);
 
+  const updateMapPoints = () => {
+    let laterTrigger = document.getElementById(
+      "incidents-btn"
+    ) as HTMLButtonElement;
+
+    if (laterTrigger) {
+      laterTrigger.click();
+    }
+  };
+
   socket.on("feedUpdate", (data) => {
     eventSpike();
     setEvents(data.data);
+    localStorage.incidents = JSON.stringify(data.data);
+    updateMapPoints();
   });
 
   const fetchIncidents = () => {
     nprogress.set(0.4);
     axios.get(`${API_URL}/incidents`).then((res) => {
       setEvents(res.data);
+      localStorage.incidents = JSON.stringify(res.data);
       nprogress.done();
+
+      setTimeout(() => {
+        updateMapPoints();
+      }, 1000);
     });
   };
 
