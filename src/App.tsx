@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from "./components/Landing";
 import Map from "./components/Map";
+import "toastify-js/src/toastify.css";
 import "./styles/Map.scss";
 import "./styles/Main.scss";
 import "./styles/Animations.scss";

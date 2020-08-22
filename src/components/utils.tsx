@@ -1,3 +1,5 @@
+import Toastify from "toastify-js";
+
 export const mapbox_key =
   "pk.eyJ1IjoiYnJ5Y2UwNiIsImEiOiJjazNmbndybm4wMDk3M29wZ2dicjlmb29iIn0.NVknKG525ZpQVmIAbFiqfw";
 
@@ -40,6 +42,21 @@ export const loadChart = () => {
   } else {
     rtChart.style.display = "none";
   }
+};
+
+export const Toast = (message, url) => {
+  Toastify({
+    text: message,
+    duration: 2000,
+    destination: "/incidents",
+    newWindow: false,
+    close: true,
+    gravity: "bottom", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    onClick: function () {}, // Callback after click
+  }).showToast();
 };
 
 export const eventSpike = () => {

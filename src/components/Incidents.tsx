@@ -190,7 +190,7 @@ const Incidents = (props: any) => {
                                     className={
                                       event.status === "PENDING"
                                         ? "bg-warning"
-                                        : "bg-sucess"
+                                        : "bg-success"
                                     }
                                   />
                                   <span className="status text-capitalize">
@@ -285,7 +285,7 @@ const Incidents = (props: any) => {
                                     className={
                                       event.status === "PENDING"
                                         ? "bg-warning"
-                                        : "bg-sucess"
+                                        : "bg-success"
                                     }
                                   />
                                   <span className="status text-capitalize">

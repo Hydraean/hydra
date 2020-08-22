@@ -64,47 +64,49 @@ const EventThread = (props: any) => {
           </div>
 
           {events ? (
-            events.map((event: any) => {
-              return (
-                <div
-                  className="event-card"
-                  onClick={() => {
-                    viewIncident(event);
-                  }}
-                >
-                  <strong
-                    className={`event-card-header ${
-                      event.type === "emergency" ? "distress" : ""
-                    }`}
+            events
+              .filter((x) => x.status === "PENDING")
+              .map((event: any) => {
+                return (
+                  <div
+                    className="event-card"
+                    onClick={() => {
+                      viewIncident(event);
+                    }}
                   >
-                    <i
-                      className={`la ${
-                        event.type === "emergency" ? "la-bolt" : "la-fish"
-                      } mr-1 text-red`}
-                    />{" "}
-                    {event.title}
-                  </strong>
-                  {event.details.trim() !== "" ? (
+                    <strong
+                      className={`event-card-header ${
+                        event.type === "emergency" ? "distress" : ""
+                      }`}
+                    >
+                      <i
+                        className={`la ${
+                          event.type === "emergency" ? "la-bolt" : "la-fish"
+                        } mr-1 text-red`}
+                      />{" "}
+                      {event.title}
+                    </strong>
+                    {event.details.trim() !== "" ? (
+                      <span>
+                        <strong>Details:</strong>{" "}
+                        <span className="event-details">{event.details}</span>
+                      </span>
+                    ) : (
+                      ""
+                    )}
                     <span>
-                      <strong>Details:</strong>{" "}
-                      <span className="event-details">{event.details}</span>
+                      <strong>Reportee:</strong> {event.reportee}
                     </span>
-                  ) : (
-                    ""
-                  )}
-                  <span>
-                    <strong>Reportee:</strong> {event.reportee}
-                  </span>
-                  <span>
-                    <strong>Date & Time:</strong>{" "}
-                    {moment(event.date).format("MMM D, YYYY - h:mm:ss A")}
-                  </span>
-                  <span>
-                    <strong>Duration</strong> {moment(event.date).fromNow()}
-                  </span>
-                </div>
-              );
-            })
+                    <span>
+                      <strong>Date & Time:</strong>{" "}
+                      {moment(event.date).format("MMM D, YYYY - h:mm:ss A")}
+                    </span>
+                    <span>
+                      <strong>Duration</strong> {moment(event.date).fromNow()}
+                    </span>
+                  </div>
+                );
+              })
           ) : (
             <EventSkeleton />
           )}

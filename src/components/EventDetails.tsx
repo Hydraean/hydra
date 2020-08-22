@@ -1,8 +1,30 @@
 import React from "react";
 import moment from "moment";
+import axios from "axios";
+import { API_URL, Toast } from "./utils";
 
 const EventDetails = (props: any) => {
   const event = props.data;
+
+  const verifyReport = () => {
+    let reportID = event.id;
+
+    axios({
+      method: "post",
+      url: `${API_URL}/report/confirm`,
+      data: {
+        id: reportID,
+      },
+    })
+      .then((res) => {
+        if (res.data.message === "Successfully confirmed report") {
+          Toast("Report Confirmed!", "/incidents");
+          props.goBack();
+        }
+      })
+      .catch((error) => console.log(error.response.data));
+  };
+
   return (
     <div className="fade-in">
       <div className="events-header">
@@ -78,12 +100,12 @@ const EventDetails = (props: any) => {
       </div>
 
       <div className="d-flex justify-content-center mt-4">
-        <button className="btn btn-success mr-4" onClick={props.goBack}>
-          <i className="la la-check mr-1" /> Respond
+        <button className="btn btn-success mr-4" onClick={verifyReport}>
+          <i className="la la-check mr-1" /> Verify
         </button>
         <button className="btn btn-warning" onClick={props.goBack}>
           <i className="la la-close mr-1" />
-          Dismiss
+          Cancel
         </button>
       </div>
     </div>
