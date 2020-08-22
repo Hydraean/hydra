@@ -26,6 +26,9 @@ const EventDetails = (props: any) => {
           Toast("Report Confirmed!", "/incidents");
           props.goBack();
           nprogress.done();
+
+          // remove html icon marker
+          document.querySelector(`.inm-${event.id}`).remove();
         }
       })
       .catch((error) => {
@@ -49,7 +52,7 @@ const EventDetails = (props: any) => {
 
       {event.type === "illegal_fishing" && (
         <div className="event-alert">
-          <div className="pulse-alert">
+          <div className="pulse-alert mast">
             <i className="la la-fish la-5x" />
           </div>
         </div>
@@ -57,7 +60,7 @@ const EventDetails = (props: any) => {
 
       {event.type === "emergency" && (
         <div className="distress-alert">
-          <div className="pulse-alert">
+          <div className="pulse-alert mast">
             <i className="la la-bolt la-5x" />
           </div>
         </div>

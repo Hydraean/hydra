@@ -198,6 +198,14 @@
   &.fishing-bg {
     background: rgba(218, 178, 47, 0.925);
   }
+
+  &.marker-selected {
+    background: rgba(28, 149, 230, 0.925);
+  }
+
+  &.mast {
+    background: rgba(28, 149, 230, 0.925);
+  }
 }
 
 .color {

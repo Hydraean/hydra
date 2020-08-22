@@ -60,7 +60,19 @@ const EventThread = (props: any) => {
     setReport(data);
     toggleDetails();
 
-    mapBtn.click();
+    if (document.contains(mapBtn)) {
+      mapBtn.click();
+
+      let targetMarker = document.querySelector(`.inm-${data.id}`);
+      if (document.getElementsByClassName("marker-selected").length !== 0) {
+        document
+          .querySelector(".marker-selected")
+          .classList.remove("marker-selected");
+        targetMarker.classList.add("marker-selected");
+      } else {
+        targetMarker.classList.add("marker-selected");
+      }
+    }
   };
 
   return (
