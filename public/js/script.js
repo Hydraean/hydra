@@ -5,7 +5,7 @@ var random = new TimeSeries();
 var tdelta = setInterval(function () {
   random.append(new Date().getTime(), xt);
   if (xt > 0) {
-    xt -= 10;
+    xt -= 20;
   }
 
   if (xt < 0) {
