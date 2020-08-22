@@ -101,7 +101,7 @@ const EventDetails = (props: any) => {
 
       <div className="d-flex justify-content-center mt-4">
         <button className="btn btn-success mr-4" onClick={verifyReport}>
-          <i className="la la-check mr-1" /> Verify
+          <i className="la la-check mr-1" /> Confirmed
         </button>
         <button className="btn btn-warning" onClick={props.goBack}>
           <i className="la la-close mr-1" />

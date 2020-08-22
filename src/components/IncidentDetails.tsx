@@ -87,15 +87,38 @@ const IncidentDetails = (props: any) => {
             </span>
           </div>
 
-          <div className="d-flex justify-content-center mt-4">
-            <div className={`status-banner ${event.status}`}>
-              {event.status === "PENDING" ? (
-                <i className="la la-exclamation-circle" />
-              ) : (
-                <i className="la la-check-circle" />
-              )}{" "}
-              {event.status}
+          <div className="event-card">
+            <strong className="event-card-header">
+              <i
+                className={`la la-bullseye mr-1 ${
+                  event.status === "PENDING" ? "bg-warning" : "bg-success"
+                }`}
+              />{" "}
+              Report Status
+            </strong>
+
+            <div className="d-flex justify-content-center py-3">
+              <div className={`status-banner ${event.status}`}>
+                {event.status === "PENDING" ? (
+                  <i className="la la-exclamation-circle" />
+                ) : (
+                  <i className="la la-check-circle" />
+                )}{" "}
+                {event.status}
+              </div>
             </div>
+
+            {event.status === "PENDING" ? (
+              <span className="text-center mb-2">
+                This is pending for confirmation, and might require further
+                investigation.
+              </span>
+            ) : (
+              <span className="text-center mb-2">
+                This report has been confirmed by:{" "}
+                <b className="text-active">{event.verifier}</b>
+              </span>
+            )}
           </div>
         </div>
       </>
