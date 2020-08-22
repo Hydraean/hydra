@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import axios from "axios";
 import { API_URL, Toast } from "./utils";
+import nprogress from "nprogress";
 
 const EventDetails = (props: any) => {
   const event = props.data;
 
+  const [verfiying, setVerify] = useState(false);
+
   const verifyReport = () => {
     let reportID = event.id;
-
+    nprogress.start();
+    setVerify(true);
     axios({
       method: "post",
       url: `${API_URL}/report/confirm`,
@@ -18,11 +22,17 @@ const EventDetails = (props: any) => {
     })
       .then((res) => {
         if (res.data.message === "Successfully confirmed report") {
+          setVerify(false);
           Toast("Report Confirmed!", "/incidents");
           props.goBack();
+          nprogress.done();
         }
       })
-      .catch((error) => console.log(error.response.data));
+      .catch((error) => {
+        console.log(error.response.data);
+        nprogress.done();
+        setVerify(false);
+      });
   };
 
   return (
@@ -53,8 +63,8 @@ const EventDetails = (props: any) => {
         </div>
       )}
 
-      <strong className="text-warning">{event.name}</strong>
-      <h2 className="pb-2 text-white">{event.title}</h2>
+      <strong className="text-warning">{event.title}</strong>
+      <h2 className="pb-2 text-white">{event.address}</h2>
 
       {event && (
         <div className="event-card">
@@ -100,7 +110,11 @@ const EventDetails = (props: any) => {
       </div>
 
       <div className="d-flex justify-content-center mt-4">
-        <button className="btn btn-success mr-4" onClick={verifyReport}>
+        <button
+          className="btn btn-success mr-4"
+          onClick={verifyReport}
+          disabled={verfiying}
+        >
           <i className="la la-check mr-1" /> Confirm
         </button>
         <button className="btn btn-warning" onClick={props.goBack}>
