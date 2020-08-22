@@ -96,8 +96,10 @@ const Incidents = (props: any) => {
               <h1>
                 <small>CONFIRMED</small>
                 <br />
-                {events &&
-                  events.filter((x) => x.status === "CONFIRMED").length}
+                <span>
+                  {events &&
+                    events.filter((x) => x.status === "CONFIRMED").length}
+                </span>
               </h1>
             </div>
 

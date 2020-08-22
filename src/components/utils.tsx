@@ -25,9 +25,12 @@ const defaultCoordinates = {
 };
 
 export const getCurrentLocation = () => {
-  return localStorage.currentLocation
-    ? JSON.parse(localStorage.currentLocation)
-    : defaultCoordinates;
+  try {
+    let savedCoordinates = JSON.parse(localStorage.currentLocation);
+    return savedCoordinates;
+  } catch {
+    return defaultCoordinates;
+  }
 };
 
 export const seCurrentLocation = (data: object) => {

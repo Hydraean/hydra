@@ -43,7 +43,7 @@ const EventThread = (props: any) => {
     setReport(data);
     toggleDetails();
 
-    // mapBtn.click();
+    mapBtn.click();
   };
 
   return (
