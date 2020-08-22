@@ -90,6 +90,7 @@ const EventThread = (props: any) => {
                     onClick={() => {
                       viewIncident(event);
                     }}
+                    id={`ec-${event.id}`}
                   >
                     <strong
                       className={`event-card-header ${

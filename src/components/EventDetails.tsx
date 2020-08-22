@@ -117,7 +117,11 @@ const EventDetails = (props: any) => {
         >
           <i className="la la-check mr-1" /> Confirm
         </button>
-        <button className="btn btn-warning" onClick={props.goBack}>
+        <button
+          className="btn btn-warning"
+          id="r-cancel"
+          onClick={props.goBack}
+        >
           <i className="la la-close mr-1" />
           Cancel
         </button>

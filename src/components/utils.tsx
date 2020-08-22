@@ -85,7 +85,8 @@ export const fetchIncidentGeoJSON = () => {
       },
       properties: {
         title: incident.details,
-        icon: incident.type === "emergency" ? "emergency-dot" : "alert-dot",
+        uid: incident.id,
+        type: incident.type,
       },
     };
 

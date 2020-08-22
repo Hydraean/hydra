@@ -22,6 +22,48 @@ const Mapbox = (props) => {
       if (map.getSource("points")) {
         map.getSource("points").setData(newlayerData);
       }
+
+      newlayerData.features.forEach(function (marker) {
+        // create a DOM element for the marker
+
+        if (
+          !document.contains(
+            document.querySelector(`.inm-${marker.properties.uid}`)
+          )
+        ) {
+          var el = document.createElement("div");
+          el.className = `pulse-alert map-icon ${
+            marker.properties.type !== "emergency" ? "fishing-bg" : ""
+          }
+        %
+        inm-${marker.properties.uid}
+        `;
+          el.innerHTML = `<i class="la ${
+            marker.properties.type === "emergency" ? "la-bolt" : "la-fish"
+          } la-3x text-white"></i>`;
+
+          el.addEventListener("click", function () {
+            let xid = marker.properties.uid;
+
+            let cardInstance = document.getElementById(`ec-${xid}`);
+
+            if (document.contains(cardInstance)) {
+              cardInstance.click();
+            } else {
+              document.getElementById("r-cancel").click();
+              setTimeout(() => {
+                let cardInstance = document.getElementById(`ec-${xid}`);
+                cardInstance.click();
+              }, 200);
+            }
+          });
+
+          // add marker to map
+          new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+        }
+      });
     };
 
     // prepare reports layer
