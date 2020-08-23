@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
-import { API_URL, Toast } from "./utils";
+import { API_URL, Toast, googleMapsAPIKEY, getCurrentLocation } from "./utils";
 import nprogress from "nprogress";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const EventDetails = (props: any) => {
   const event = props.data;
 
   const [verfiying, setVerify] = useState(false);
+  const [locationData, setlocationData] = useState(null);
 
   const verifyReport = () => {
     let reportID = event.id;
@@ -38,6 +40,24 @@ const EventDetails = (props: any) => {
       });
   };
 
+  const fetchLocationDetails = () => {
+    let loc = getCurrentLocation();
+    axios
+      .get(`https://maps.googleapis.com/maps/api/geocode/json?`, {
+        params: {
+          latlng: `${loc.lat},${loc.long}`,
+          key: googleMapsAPIKEY,
+        },
+      })
+      .then((res) => {
+        setlocationData(res.data);
+      });
+  };
+
+  useEffect(() => {
+    fetchLocationDetails();
+  }, []);
+
   return (
     <div className="fade-in">
       <div className="events-header">
@@ -67,7 +87,17 @@ const EventDetails = (props: any) => {
       )}
 
       <strong className="text-warning">{event.title}</strong>
-      <h2 className="pb-2 text-white">{event.address}</h2>
+      <h2 className="pb-2 text-white">
+        {locationData ? (
+          locationData.plus_code.compound_code
+        ) : (
+          <SkeletonTheme color="#202020" highlightColor="#333">
+            <p>
+              <Skeleton count={3} />
+            </p>
+          </SkeletonTheme>
+        )}
+      </h2>
 
       {event && (
         <div className="event-card">

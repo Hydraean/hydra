@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
+import { googleMapsAPIKEY } from "./utils";
+import axios from "axios";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import nprogress from "nprogress";
 
 const IncidentDetails = (props: any) => {
   const event = props.data;
+  const [locationData, setlocationData] = useState(null);
+
+  const fetchLocationDetails = () => {
+    nprogress.start();
+    axios
+      .get(`https://maps.googleapis.com/maps/api/geocode/json?`, {
+        params: {
+          latlng: `${event.coordinates.lat},${event.coordinates.long}`,
+          key: googleMapsAPIKEY,
+        },
+      })
+      .then((res) => {
+        setlocationData(res.data);
+        nprogress.done();
+      });
+  };
+
+  useEffect(() => {
+    if (props.data) {
+      fetchLocationDetails();
+    }
+  }, []);
 
   return (
     <div className="event-thread slide-in-right">
@@ -41,7 +67,17 @@ const IncidentDetails = (props: any) => {
           )}
 
           <strong className="text-warning">{event.name}</strong>
-          <h2 className="pb-2 text-white">{event.title}</h2>
+          <h2 className="pb-2 text-white">
+            {locationData ? (
+              locationData.plus_code.compound_code
+            ) : (
+              <SkeletonTheme color="#202020" highlightColor="#333">
+                <p>
+                  <Skeleton count={3} />
+                </p>
+              </SkeletonTheme>
+            )}
+          </h2>
 
           {event && (
             <div className="event-card">

@@ -38,6 +38,13 @@ const Incidents = (props: any) => {
     fetchIncidents();
   }, []);
 
+  const viewEvent = (event) => {
+    setcurrentEvent(null);
+    setTimeout(() => {
+      setcurrentEvent(event);
+    }, 200);
+  };
+
   return (
     <>
       {currentEvent && (
@@ -166,7 +173,7 @@ const Incidents = (props: any) => {
                                   : ""
                               }`}
                               onClick={() => {
-                                setcurrentEvent(event);
+                                viewEvent(event);
                               }}
                             >
                               <th>
@@ -261,7 +268,7 @@ const Incidents = (props: any) => {
                                   : ""
                               }`}
                               onClick={() => {
-                                setcurrentEvent(event);
+                                viewEvent(event);
                               }}
                             >
                               <th>
