@@ -10,6 +10,7 @@ import "./styles/Animations.scss";
 import Incidents from "./components/Incidents";
 import Advisories from "./components/Advisories";
 import Devices from "./components/Devices";
+import DeviceDemo from "./components/DeviceDemo";
 
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
 
             <Route path="/device-list">
               <Devices />
+            </Route>
+
+            <Route path="/report/demo">
+              <DeviceDemo />
             </Route>
           </Switch>
         </div>
