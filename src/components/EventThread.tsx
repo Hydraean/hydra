@@ -8,6 +8,7 @@ import axios from "axios";
 import nprogress from "nprogress";
 import io from "socket.io-client";
 import { Link } from "react-router-dom";
+import Wave from "../assets/wave.png";
 
 const socket = io(API_URL);
 
@@ -92,7 +93,7 @@ const EventThread = (props: any) => {
             </Link>
           </div>
 
-          {events ? (
+          {events && events.length > 0 ? (
             events
               .filter((x) => x.status === "PENDING")
               .map((event: any) => {
@@ -142,6 +143,23 @@ const EventThread = (props: any) => {
           )}
         </>
       )}
+
+      {events && events.filter((x) => x.status === "PENDING").length === 0 && (
+        <div className="empty-thread">
+          <img src={Wave} alt="wave" className="fade-in-bottom dl-1" />
+          <h1 className="fade-in-bottom dl-2">The sea is calm.</h1>
+          <p className="fade-in-bottom dl-3">
+            No pending reports at the moment.
+          </p>
+
+          <Link to={"/incidents"}>
+            <button className="btn btn-primary fade-in-bottom dl-4">
+              View History
+            </button>
+          </Link>
+        </div>
+      )}
+
       {details && <EventDetails goBack={toggleDetails} data={report} />}
     </div>
   );

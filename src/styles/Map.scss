@@ -218,3 +218,26 @@
 .details-thread {
   z-index: 999 !important;
 }
+
+// empty-thread
+
+.empty-thread {
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 60%;
+  padding: 0px 20px;
+
+  h1 {
+    color: rgb(0, 174, 255);
+    font-weight: 300;
+  }
+
+  img {
+    width: 110px;
+    margin-bottom: 20px;
+  }
+}
