@@ -1,16 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Landing.scss";
 import Footer from "./Footer";
 import Button from "./Button";
 import { loadChart } from "./utils";
+import MobileNav from "./MobileNav";
 
 const Landing = (props: any) => {
   useEffect(() => {
     loadChart();
   }, []);
 
+  const [mobile, setMobile] = useState(false);
+
   return (
     <div className="landing-page">
+      {mobile && <MobileNav />}
+
       <nav
         id="navbar-main"
         className="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light"
@@ -27,6 +32,9 @@ const Landing = (props: any) => {
             aria-controls="navbar-collapse"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            onClick={() => {
+              setMobile(!mobile);
+            }}
           >
             <span className="navbar-toggler-icon" />
           </button>
@@ -54,16 +62,6 @@ const Landing = (props: any) => {
               </div>
             </div>
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <a href="#about" className="nav-link">
-                  <span className="nav-link-inner--text">About</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="#features" className="nav-link">
-                  <span className="nav-link-inner--text">Features</span>
-                </a>
-              </li>
               <li className="nav-item">
                 <a href="/map" className="nav-link">
                   <span className="nav-link-inner--text">Dashboard</span>
@@ -156,7 +154,7 @@ const Landing = (props: any) => {
 
             <div>
               <img
-                src="https://philippineslifestyle.com/wp-content/uploads/dynamite-fishing.jpg"
+                src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.15752-9/s2048x2048/118068330_295540275063927_7328546783717533712_n.png?_nc_cat=102&_nc_sid=b96e70&_nc_ohc=_6TfUHspQ3AAX8Umou4&_nc_ht=scontent.fmnl4-4.fna&oh=2bf36770bd0ccff4dfc95c75830c7e5f&oe=5F6A2D3B"
                 className="about-img"
                 alt="Blast Fishing"
               />
