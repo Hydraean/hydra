@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../styles/Landing.scss";
 import Footer from "./Footer";
 import { loadChart } from "./utils";
+import swal from "sweetalert2";
+import axios from "axios";
 
 const reportTypes = [
   {
@@ -31,9 +33,63 @@ const reportTypes = [
 ];
 
 const DeviceDemo = (props: any) => {
+  const [loc, setLoc] = useState(null);
+
   useEffect(() => {
     loadChart();
   }, []);
+
+  const setPosition = (position) => {
+    let newLocation = {
+      lat: position.coords.latitude,
+      long: position.coords.longitude,
+    };
+
+    setLoc(newLocation);
+
+    swal.fire({
+      title: "Success",
+      text: "location set successfully!",
+      icon: "success",
+      showCancelButton: false,
+      showConfirmButton: false,
+      timer: 1200,
+    });
+  };
+
+  const displayError = (error) => {
+    var errors = {
+      1: "Permission denied",
+      2: "Position unavailable",
+      3: "Request timeout",
+    };
+    swal.fire("Error!", `Geo Location API : ${errors[error.code]}`, "error");
+  };
+
+  const requestlocation = () => {
+    swal.fire({
+      title: "Requesting",
+      text:
+        "kindly accept to location prompt to pin down your current location.",
+      icon: "info",
+      showConfirmButton: false,
+      showCancelButton: true,
+      allowOutsideClick: false,
+    });
+
+    swal.showLoading();
+
+    if (navigator.geolocation) {
+      var timeoutVal = 10 * 1000 * 1000;
+      navigator.geolocation.getCurrentPosition(setPosition, displayError, {
+        enableHighAccuracy: true,
+        timeout: timeoutVal,
+        maximumAge: 0,
+      });
+    } else {
+      swal.fire("Error", "GPS is not supported for your device", "error");
+    }
+  };
 
   const [reportType, setreportType] = useState({ name: "", type: "" });
 
@@ -86,10 +142,19 @@ const DeviceDemo = (props: any) => {
                   </small>
                 </div>
                 <div className="text-center">
-                  <button className="btn btn-dark btn-icon">
-                    <i className="la la-map-marker mr-2" />
-                    Set Location
-                  </button>
+                  {loc ? (
+                    <p>
+                      Latitude: {loc.lat}, Longitude: {loc.long}
+                    </p>
+                  ) : (
+                    <button
+                      className="btn btn-dark btn-icon"
+                      onClick={requestlocation}
+                    >
+                      <i className="la la-map-marker mr-2" />
+                      Set Location
+                    </button>
+                  )}
                 </div>
               </div>
               <div className="card-body px-lg-5 py-lg-3">
