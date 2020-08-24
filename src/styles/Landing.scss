@@ -13,9 +13,9 @@
     $imageSRC: "/bg-swirl.gif";
 
     background: linear-gradient(87deg, #060a33c0 0, #05125cc5 100%),
-      url($imageSRC) !important;
+      url($imageSRC) center no-repeat !important;
     background-size: cover !important;
-    background-position-y: -100px !important;
+    // background-position-y: -100px !important;
     height: 70vh;
     animation: bgpan 5s infinite !important;
   }

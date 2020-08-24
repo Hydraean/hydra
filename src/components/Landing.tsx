@@ -17,7 +17,7 @@ const Landing = (props: any) => {
       >
         <div className="container">
           <a className="navbar-brand" href="/map">
-            <img src="hlogo.png" alt="Hydra Logo" />
+            <img src="/hlogo.png" alt="Hydra Logo" />
           </a>
           <button
             className="navbar-toggler"
@@ -101,7 +101,7 @@ const Landing = (props: any) => {
             <div className="header-body text-center mb-7">
               <div className="row justify-content-center">
                 <div className="col-xl-5 col-lg-6 col-md-8 px-5">
-                  <img src="hlogo.png" alt="h-logo" className="landing-logo" />
+                  <img src="/hlogo.png" alt="h-logo" className="landing-logo" />
                   <h1 className="text-white">Seantinel</h1>
                   <p className="text-lead text-white">
                     Connecting people who protect our oceans
