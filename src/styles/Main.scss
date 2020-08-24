@@ -336,3 +336,15 @@ Usage
     color: #f5b640;
   }
 }
+
+.form-group {
+  .input-group-prepend {
+    border: 1px solid #29d !important;
+  }
+
+  input,
+  textarea {
+    border: 1px solid #29d !important;
+    padding-left: 10px !important;
+  }
+}
