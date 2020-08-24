@@ -362,8 +362,9 @@ Usage
     }
 
     &.selected {
-      background: rgb(240, 180, 180);
-      color: rgb(179, 62, 62);
+      background: rgb(245, 204, 204);
+      color: rgb(163, 45, 41);
+      border-bottom: 2px solid #9b1431;
     }
   }
 }
