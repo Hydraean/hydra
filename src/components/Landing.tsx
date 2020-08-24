@@ -74,6 +74,11 @@ const Landing = (props: any) => {
                   <span className="nav-link-inner--text">Incidents</span>
                 </a>
               </li>
+              <li className="nav-item">
+                <a href="/report/demo" className="nav-link">
+                  <span className="nav-link-inner--text">Report</span>
+                </a>
+              </li>
             </ul>
 
             <hr className="d-lg-none" />

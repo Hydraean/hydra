@@ -17,15 +17,15 @@ const Links = [
     link: "/incidents",
     icon: "la-exclamation-circle",
   },
-  // {
-  //   name: "Advisories",
-  //   link: "/advisories",
-  //   icon: "la-broadcast-tower"
-  // },
   {
     name: "Devices",
     link: "/device-list",
     icon: "la-list",
+  },
+  {
+    name: "Report Demo",
+    link: "/report/demo",
+    icon: "la-broadcast-tower",
   },
 ];
 
