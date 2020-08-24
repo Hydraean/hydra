@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Landing.scss";
 import Footer from "./Footer";
-import { loadChart } from "./utils";
+import { loadChart, guid, API_URL } from "./utils";
 import swal from "sweetalert2";
 import axios from "axios";
 
@@ -37,6 +37,10 @@ const DeviceDemo = (props: any) => {
 
   useEffect(() => {
     loadChart();
+
+    if (!localStorage.hnid) {
+      localStorage.hnid = `HN-${guid()}`;
+    }
   }, []);
 
   const setPosition = (position) => {
@@ -93,6 +97,57 @@ const DeviceDemo = (props: any) => {
 
   const [reportType, setreportType] = useState({ name: "", type: "" });
 
+  const submitReport = () => {
+    if (!loc) {
+      swal.fire("Error", "You need to set your location!", "error");
+    } else {
+      if (reportType.name === "") {
+        swal.fire("Error", "You need select a report type!", "error");
+      } else {
+        let username = document.getElementById("rname") as HTMLInputElement;
+        let address = document.getElementById("raddr") as HTMLInputElement;
+        let details = document.getElementById("rdetails") as HTMLInputElement;
+
+        if (
+          username.value.trim() === "" ||
+          address.value.trim() === "" ||
+          details.value.trim() === ""
+        ) {
+          swal.fire("Error", "Complete report details to continue", "error");
+        } else {
+          let payload = {
+            details: details.value,
+            device_id: localStorage.hnid,
+            type: reportType.type,
+            name: reportType.name,
+            title: reportType.name,
+            address: address.value,
+            reportee: username.value,
+            coordinates: {
+              long: loc.long,
+              lat: loc.lat,
+            },
+          };
+
+          axios({
+            method: "post",
+            url: `${API_URL}/add/report`,
+            data: payload,
+          }).then((res) => {
+            if (res.data.status === "ok") {
+              swal.showLoading();
+              swal.fire(
+                "Report Sent!",
+                "your report has been sent.",
+                "success"
+              );
+            }
+          });
+        }
+      }
+    }
+  };
+
   return (
     <div className="landing-page">
       {/* Main content */}
@@ -144,7 +199,9 @@ const DeviceDemo = (props: any) => {
                 <div className="text-center">
                   {loc ? (
                     <p>
-                      Latitude: {loc.lat}, Longitude: {loc.long}
+                      <strong>Latitude: {loc.lat}</strong>,
+                      <br />
+                      <strong>Longitude: {loc.long}</strong>
                     </p>
                   ) : (
                     <button
@@ -197,6 +254,7 @@ const DeviceDemo = (props: any) => {
                         </span>
                       </div>
                       <input
+                        id="rname"
                         className="form-control"
                         placeholder="Name"
                         type="text"
@@ -211,6 +269,7 @@ const DeviceDemo = (props: any) => {
                         </span>
                       </div>
                       <input
+                        id="raddr"
                         className="form-control"
                         placeholder="FMA Area / Location"
                         type="text"
@@ -225,6 +284,7 @@ const DeviceDemo = (props: any) => {
                         </span>
                       </div>
                       <textarea
+                        id="rdetails"
                         className="form-control"
                         placeholder="Report Details"
                       />
@@ -246,7 +306,11 @@ const DeviceDemo = (props: any) => {
                     </div>
                   </div>
                   <div className="text-center mb-4">
-                    <button type="button" className="btn btn-primary mt-4">
+                    <button
+                      type="button"
+                      className="btn btn-primary mt-4"
+                      onClick={submitReport}
+                    >
                       <i className="la la-send mr-2" /> Submit Report
                     </button>
                   </div>
