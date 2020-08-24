@@ -1,12 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Landing.scss";
 import Footer from "./Footer";
 import { loadChart } from "./utils";
+
+const reportTypes = [
+  {
+    name: "Blast Fishing",
+    type: "illegal_fishing",
+  },
+  {
+    name: "Bottom Trawling",
+    type: "illegal_fishing",
+  },
+  {
+    name: "Cyanide Fishing",
+    type: "illegal_fishing",
+  },
+  {
+    name: "Oil Spill",
+    type: "emergency",
+  },
+  {
+    name: "Maritime Incident",
+    type: "emergency",
+  },
+  {
+    name: "Other",
+    type: "emergency",
+  },
+];
 
 const DeviceDemo = (props: any) => {
   useEffect(() => {
     loadChart();
   }, []);
+
+  const [reportType, setreportType] = useState({ name: "", type: "" });
 
   return (
     <div className="landing-page">
@@ -63,7 +92,34 @@ const DeviceDemo = (props: any) => {
                   </button>
                 </div>
               </div>
-              <div className="card-body px-lg-5 py-lg-5">
+              <div className="card-body px-lg-5 py-lg-3">
+                <div className="text-center mb-4">
+                  <strong>Specify Report Types</strong>
+                </div>
+                <ul className="incident-list">
+                  {reportTypes.map((item: any, index: number) => {
+                    return (
+                      <li
+                        key={index}
+                        className={`${
+                          reportType.name === item.name ? "selected" : ""
+                        }`}
+                        onClick={() => {
+                          setreportType(item);
+                        }}
+                      >
+                        <strong>
+                          <i
+                            className={`la la-${
+                              item.type === "emergency" ? "bolt" : "fish"
+                            } mr-2`}
+                          />{" "}
+                          {item.name}
+                        </strong>
+                      </li>
+                    );
+                  })}
+                </ul>
                 <div className="text-center mb-4">
                   <strong>Report Details:</strong>
                 </div>
@@ -124,7 +180,7 @@ const DeviceDemo = (props: any) => {
                       </div>
                     </div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center mb-4">
                     <button type="button" className="btn btn-primary mt-4">
                       <i className="la la-send mr-2" /> Submit Report
                     </button>

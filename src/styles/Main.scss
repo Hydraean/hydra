@@ -348,3 +348,22 @@ Usage
     padding-left: 10px !important;
   }
 }
+
+.incident-list {
+  li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #88a0c7;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(238, 238, 238, 0.678);
+      transition: 0.3s;
+    }
+
+    &.selected {
+      background: rgb(240, 180, 180);
+      color: rgb(179, 62, 62);
+    }
+  }
+}
