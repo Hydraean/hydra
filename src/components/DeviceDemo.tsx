@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "../styles/Landing.scss";
 import Footer from "./Footer";
-import Button from "./Button";
 import { loadChart } from "./utils";
 
 const DeviceDemo = (props: any) => {
