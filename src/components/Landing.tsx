@@ -107,7 +107,7 @@ const Landing = (props: any) => {
                   <img src="/hlogo.png" alt="h-logo" className="landing-logo" />
                   <h1 className="text-white">Seantinel</h1>
                   <p className="text-lead text-white">
-                    Connecting people who protect our oceans
+                    Connecting the people who protect our oceans
                   </p>
 
                   <div className="mt-5 d-flex justify-content-center container">
