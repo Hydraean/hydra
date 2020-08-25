@@ -9,7 +9,6 @@ const Mapbox = (props) => {
     const map = new mapboxgl.Map({
       container: document.getElementById("map"),
       style: "mapbox://styles/bryce06/ckaupxv3j2chg1ip6lnzupz8b",
-      // style: 'mapbox://styles/bryce06/ck5w2nl700lyp1ip79hnktdrr',
       center: [getCurrentLocation().long, getCurrentLocation().lat],
       zoom: 13,
     });
@@ -22,6 +21,21 @@ const Mapbox = (props) => {
       if (map.getSource("points")) {
         map.getSource("points").setData(newlayerData);
       }
+
+      // remove inactive markers
+
+      let markers = document.querySelectorAll(`.map-icon`);
+      let pendingIncidents = JSON.parse(localStorage.incidents)
+        .filter((x) => x.status === "PENDING")
+        .map((x) => x.id);
+
+      markers.forEach((mark) => {
+        let markid = mark.id;
+
+        if (!pendingIncidents.includes(markid)) {
+          document.querySelector(`.inm-${markid}`).remove();
+        }
+      });
 
       newlayerData.features.forEach(function (marker) {
         // create a DOM element for the marker
@@ -38,6 +52,10 @@ const Mapbox = (props) => {
         %
         inm-${marker.properties.uid}
         `;
+
+          // set marker id
+          el.id = marker.properties.uid;
+
           el.innerHTML = `<i class="la ${
             marker.properties.type === "emergency" ? "la-bolt" : "la-fish"
           } la-3x text-white"></i>`;

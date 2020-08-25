@@ -6,7 +6,9 @@ const Button = (props: any) => {
       <div className="ghost-button">
         <a href="/map">
           {props.children}
-          <span className="shift">›</span>
+          <span className="shift">
+            <i className="la la-angle-right" />
+          </span>
         </a>
         <div className="mask"></div>
       </div>

@@ -34,7 +34,6 @@ const EventDetails = (props: any) => {
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
         nprogress.done();
         setVerify(false);
       });

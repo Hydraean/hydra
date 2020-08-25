@@ -32,6 +32,12 @@ const EventThread = (props: any) => {
     setEvents(data.data);
     localStorage.incidents = JSON.stringify(data.data);
     updateMapPoints();
+
+    let pending = data.data.filter((x) => x.status === "PENDING");
+
+    if (pending.length === 0) {
+      setDetails(null);
+    }
   });
 
   const fetchIncidents = () => {
