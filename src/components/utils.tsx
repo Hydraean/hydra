@@ -97,3 +97,16 @@ export const fetchIncidentGeoJSON = () => {
 
   return baseDataLayer;
 };
+
+export const soundNotif = () => {
+  let audio = document.getElementById("sound-notif") as HTMLAudioElement;
+
+  audio.play();
+};
+export const ellipsis = (text, limit) => {
+  if (text.length > limit) {
+    return text.substring(0, limit) + "...";
+  } else {
+    return text;
+  }
+};

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Map.scss";
 import Sidebar from "./Sidebar";
-import { loadChart, API_URL } from "./utils";
+import { loadChart, API_URL, ellipsis } from "./utils";
 import axios from "axios";
 import nprogress from "nprogress";
 import IncidentDetails from "./IncidentDetails";
@@ -180,7 +180,7 @@ const Incidents = (props: any) => {
                                 <strong>{index + 1}</strong>
                               </th>
                               <th>
-                                <strong>{event.device_id}</strong>
+                                <strong>{ellipsis(event.device_id, 10)}</strong>
                               </th>
                               <td>{event.address}</td>
                               <td>{event.title}</td>
@@ -275,7 +275,7 @@ const Incidents = (props: any) => {
                                 <strong>{index + 1}</strong>
                               </th>
                               <th>
-                                <strong>{event.device_id}</strong>
+                                <strong>{ellipsis(event.device_id, 10)}</strong>
                               </th>
                               <td>{event.address}</td>
                               <td>{event.title}</td>

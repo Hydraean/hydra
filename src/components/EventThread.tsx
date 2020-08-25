@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EventDetails from "./EventDetails";
 import moment from "moment";
-import { seCurrentLocation } from "./utils";
+import { seCurrentLocation, soundNotif } from "./utils";
 import EventSkeleton from "./EventSkeleton";
 import { API_URL, eventSpike } from "./utils";
 import axios from "axios";
@@ -32,6 +32,7 @@ const EventThread = (props: any) => {
     setEvents(data.data);
     localStorage.incidents = JSON.stringify(data.data);
     updateMapPoints();
+    soundNotif();
 
     let pending = data.data.filter((x) => x.status === "PENDING");
 
