@@ -69,6 +69,14 @@ export const eventSpike = () => {
   sbtn.click();
 };
 
+export const ellipsis = (text, limit) => {
+  if (text.length > limit) {
+    return text.substring(0, limit) + "...";
+  } else {
+    return text;
+  }
+};
+
 export const fetchIncidentGeoJSON = () => {
   let baseDataLayer = {
     type: "FeatureCollection",
@@ -86,7 +94,7 @@ export const fetchIncidentGeoJSON = () => {
         coordinates: [incident.coordinates.long, incident.coordinates.lat],
       },
       properties: {
-        title: incident.details,
+        title: incident.title,
         uid: incident.id,
         type: incident.type,
       },
@@ -102,11 +110,4 @@ export const soundNotif = () => {
   let audio = document.getElementById("sound-notif") as HTMLAudioElement;
 
   audio.play();
-};
-export const ellipsis = (text, limit) => {
-  if (text.length > limit) {
-    return text.substring(0, limit) + "...";
-  } else {
-    return text;
-  }
 };
