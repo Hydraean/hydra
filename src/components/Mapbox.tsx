@@ -301,7 +301,6 @@ const Mapbox = (props) => {
     });
 
     const toggleCovidLayer = () => {
-      console.log(props.covidMap);
       let visibility = map.getLayoutProperty("covid-cases", "visibility");
       if (visibility === "none") {
         map.setLayoutProperty("covid-cases", "visibility", "visible");
