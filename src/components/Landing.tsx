@@ -154,7 +154,7 @@ const Landing = (props: any) => {
 
             <div>
               <img
-                src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.15752-9/s2048x2048/118068330_295540275063927_7328546783717533712_n.png?_nc_cat=102&_nc_sid=b96e70&_nc_ohc=_6TfUHspQ3AAX8Umou4&_nc_ht=scontent.fmnl4-4.fna&oh=2bf36770bd0ccff4dfc95c75830c7e5f&oe=5F6A2D3B"
+                src="/dashboard.png"
                 className="about-img"
                 alt="Blast Fishing"
               />
@@ -177,18 +177,12 @@ const Landing = (props: any) => {
                 telemetry.
               </p>
             </div>
-
             <div>
-              <img
-                src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/117717069_765722497520671_1792195501348226062_n.png?_nc_cat=103&_nc_sid=b96e70&_nc_ohc=Ur_PcQmpHkoAX-3CdNG&_nc_ht=scontent.fmnl4-1.fna&oh=82ae05ac4ad4c5e5f9735bb39019b210&oe=5F653A54"
-                className="about-img"
-                alt="Blast Fishing"
-              />
+              <img src="/plane.png" className="about-img" alt="Blast Fishing" />
             </div>
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );
