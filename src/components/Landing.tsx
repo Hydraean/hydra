@@ -178,7 +178,11 @@ const Landing = (props: any) => {
               </p>
             </div>
             <div>
-              <img src="/plane.png" className="about-img" alt="Blast Fishing" />
+              <img
+                src="/visual.png"
+                className="about-img"
+                alt="Dashboard Image"
+              />
             </div>
           </div>
         </div>
