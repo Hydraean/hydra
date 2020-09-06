@@ -320,7 +320,6 @@ const DeviceDemo = (props: any) => {
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );
