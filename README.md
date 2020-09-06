@@ -8,6 +8,10 @@
 
 https://docs.google.com/document/d/1WA-s12B3Y8vTE4WQVeguRMCxdUF_XfPRMaNKsNOTw0c/edit#heading=h.z6ne0og04bp5
 
+> This repository has a dedicated mirror for deployment:
+
+https://github.com/quadroloop/hydra
+
 Install Dependencies:
 
 **with yarn:**
