@@ -370,3 +370,71 @@ Usage
     }
   }
 }
+
+// responsiveness
+
+@media (max-width: 1200px) {
+  .table-content {
+    .stats-row {
+      flex-direction: column !important;
+      padding: 0px 30px;
+
+      .stats-card {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .content-nav {
+    flex-direction: column !important;
+    padding: 0px;
+
+    input {
+      width: 100% !important;
+    }
+  }
+}
+
+.sidebar-mobile-toggle {
+  background-color: rgba(7, 27, 83, 0.521);
+  position: fixed;
+  z-index: 2;
+  color: #fff;
+  top: 15px;
+  right: 15px;
+  padding: 2px 3px 0px;
+  border-radius: 2px;
+  display: none;
+}
+
+.mobile-thread-close {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  // map page responsiveness
+
+  #event-thread {
+    display: none;
+    width: 100% !important;
+  }
+
+  .sidebar-mobile-toggle {
+    display: block;
+  }
+
+  .mobile-thread-close {
+    display: inline;
+  }
+
+  .rt-chart {
+    right: -50px !important;
+    bottom: 0px !important;
+    z-index: 100;
+
+    #chart {
+      width: 340px !important;
+    }
+  }
+}

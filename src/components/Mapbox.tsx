@@ -63,6 +63,13 @@ const Mapbox = (props) => {
           el.addEventListener("click", function () {
             let xid = marker.properties.uid;
 
+            // open sidebar (for mobile view)
+
+            let sidebar = document.getElementById(
+              "event-thread"
+            ) as HTMLElement;
+            sidebar.style.display = "block";
+
             let cardInstance = document.getElementById(`ec-${xid}`);
 
             if (document.contains(cardInstance)) {

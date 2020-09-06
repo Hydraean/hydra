@@ -2,6 +2,14 @@ body {
   background: #162b4d;
 }
 
+div {
+  outline: none;
+}
+
+canvas {
+  outline: none;
+}
+
 .App {
   text-align: center;
 }

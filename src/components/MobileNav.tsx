@@ -10,7 +10,7 @@ const mobileNav = () => {
         <div className="row">
           <div className="col-6 collapse-brand">
             <a href="dashboard.html">
-              <img src="../assets/img/brand/blue.png" />
+              <img src="../assets/img/brand/blue.png" alt=" blue logo" />
             </a>
           </div>
           <div className="col-6 collapse-close">

@@ -72,7 +72,7 @@ const Incidents = (props: any) => {
         </div>
 
         <div className="row table-content">
-          <div className="stats-row col-md-11">
+          <div className="stats-row col-md-11" id="stat-cards">
             <div className="stats-card fade-in-bottom dl-1">
               <i className="la la-fish la-5x text-warning" />
               <h1>
