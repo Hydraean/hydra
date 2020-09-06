@@ -9,26 +9,37 @@ const IncidentDetails = (props: any) => {
   const event = props.data;
   const [locationData, setlocationData] = useState(null);
 
-  const fetchLocationDetails = () => {
-    nprogress.start();
-    axios
-      .get(`https://maps.googleapis.com/maps/api/geocode/json?`, {
-        params: {
-          latlng: `${event.coordinates.lat},${event.coordinates.long}`,
-          key: googleMapsAPIKEY,
-        },
-      })
-      .then((res) => {
-        setlocationData(res.data);
-        nprogress.done();
-      });
-  };
+  // const fetchLocationDetails = () => {
+  //   nprogress.start();
+  //   axios
+  //     .get(`https://maps.googleapis.com/maps/api/geocode/json?`, {
+  //       params: {
+  //         latlng: `${event.coordinates.lat},${event.coordinates.long}`,
+  //         key: googleMapsAPIKEY,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       setlocationData(res.data);
+  //       nprogress.done();
+  //     });
+  // };
 
   useEffect(() => {
     if (props.data) {
-      fetchLocationDetails();
+      nprogress.start();
+      axios
+        .get(`https://maps.googleapis.com/maps/api/geocode/json?`, {
+          params: {
+            latlng: `${props.data.coordinates.lat},${props.data.coordinates.long}`,
+            key: googleMapsAPIKEY,
+          },
+        })
+        .then((res) => {
+          setlocationData(res.data);
+          nprogress.done();
+        });
     }
-  }, []);
+  }, [props]);
 
   return (
     <div className="event-thread slide-in-right">

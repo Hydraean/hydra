@@ -10,7 +10,7 @@ const Mapbox = (props) => {
       container: document.getElementById("map"),
       style: "mapbox://styles/bryce06/ckaupxv3j2chg1ip6lnzupz8b",
       center: [getCurrentLocation().long, getCurrentLocation().lat],
-      zoom: 13,
+      zoom: 9.5,
     });
 
     // update incident layer data by localStorage

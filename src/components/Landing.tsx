@@ -181,7 +181,7 @@ const Landing = (props: any) => {
               <img
                 src="/visual.png"
                 className="about-img"
-                alt="Dashboard Image"
+                alt="Dashboard visual"
               />
             </div>
           </div>

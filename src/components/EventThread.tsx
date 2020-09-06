@@ -41,7 +41,20 @@ const EventThread = (props: any) => {
     }
   });
 
-  const fetchIncidents = () => {
+  // const fetchIncidents = () => {
+  //   nprogress.set(0.4);
+  //   axios.get(`${API_URL}/incidents`).then((res) => {
+  //     setEvents(res.data);
+  //     localStorage.incidents = JSON.stringify(res.data);
+  //     nprogress.done();
+
+  //     setTimeout(() => {
+  //       updateMapPoints();
+  //     }, 1000);
+  //   });
+  // };
+
+  useEffect(() => {
     nprogress.set(0.4);
     axios.get(`${API_URL}/incidents`).then((res) => {
       setEvents(res.data);
@@ -52,10 +65,6 @@ const EventThread = (props: any) => {
         updateMapPoints();
       }, 1000);
     });
-  };
-
-  useEffect(() => {
-    fetchIncidents();
   }, []);
 
   const toggleDetails = () => {
