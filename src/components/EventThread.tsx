@@ -27,10 +27,12 @@ const EventThread = (props: any) => {
     }
   };
 
+  const global: any = window;
+
   socket.on("feedUpdate", (data) => {
     eventSpike();
     setEvents(data.data);
-    localStorage.incidents = JSON.stringify(data.data);
+    global.incidents = data.data;
     updateMapPoints();
     soundNotif();
 
@@ -45,7 +47,6 @@ const EventThread = (props: any) => {
   //   nprogress.set(0.4);
   //   axios.get(`${API_URL}/incidents`).then((res) => {
   //     setEvents(res.data);
-  //     localStorage.incidents = JSON.stringify(res.data);
   //     nprogress.done();
 
   //     setTimeout(() => {
@@ -58,14 +59,13 @@ const EventThread = (props: any) => {
     nprogress.set(0.4);
     axios.get(`${API_URL}/incidents`).then((res) => {
       setEvents(res.data);
-      localStorage.incidents = JSON.stringify(res.data);
       nprogress.done();
-
+      global.incidents = res.data;
       setTimeout(() => {
         updateMapPoints();
       }, 1000);
     });
-  }, []);
+  }, [global]);
 
   const toggleDetails = () => {
     setDetails(!details);

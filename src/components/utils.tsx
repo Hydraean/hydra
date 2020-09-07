@@ -77,13 +77,15 @@ export const ellipsis = (text, limit) => {
   }
 };
 
+const global: any = window;
+
 export const fetchIncidentGeoJSON = () => {
   let baseDataLayer = {
     type: "FeatureCollection",
     features: [],
   };
 
-  let incidentData = JSON.parse(localStorage.incidents);
+  let incidentData = global.incidents ? global.incidents : [];
   incidentData = incidentData.filter((x) => x.status === "PENDING");
 
   incidentData.forEach((incident) => {

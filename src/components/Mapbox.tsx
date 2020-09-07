@@ -13,8 +13,6 @@ const Mapbox = (props) => {
       zoom: 9.5,
     });
 
-    // update incident layer data by localStorage
-
     const updateIncidentLayer = () => {
       let newlayerData = fetchIncidentGeoJSON();
 
@@ -24,8 +22,9 @@ const Mapbox = (props) => {
 
       // remove inactive markers
 
+      const global: any = window;
       let markers = document.querySelectorAll(`.map-icon`);
-      let pendingIncidents = JSON.parse(localStorage.incidents)
+      let pendingIncidents = global.incidents
         .filter((x) => x.status === "PENDING")
         .map((x) => x.id);
 
