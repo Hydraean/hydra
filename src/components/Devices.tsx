@@ -5,11 +5,13 @@ import { loadChart, API_URL } from "./utils";
 import axios from "axios";
 import moment from "moment";
 import nprogress from "nprogress";
+import TableSkeleton from "./TableSkeleton";
 
 const Devices = (props: any) => {
   const [devices, setDevices] = useState(null);
 
   const fetchDevices = () => {
+    setDevices(null);
     nprogress.set(0.4);
     axios.get(`${API_URL}/devices`).then((res) => {
       setDevices(res.data);
@@ -18,6 +20,7 @@ const Devices = (props: any) => {
   };
 
   const searchDevices = () => {
+    setDevices(null);
     let query = document.getElementById("search-devices") as HTMLInputElement;
     if (query.value.trim() !== "") {
       nprogress.set(0.4);
@@ -133,6 +136,8 @@ const Devices = (props: any) => {
                             </tr>
                           );
                         })}
+
+                    {!devices && <TableSkeleton row={5} col={5} />}
                   </tbody>
                 </table>
               </div>
@@ -211,6 +216,8 @@ const Devices = (props: any) => {
                             </tr>
                           );
                         })}
+
+                    {!devices && <TableSkeleton row={5} col={5} />}
                   </tbody>
                 </table>
               </div>

@@ -5,12 +5,14 @@ import { loadChart, API_URL, ellipsis } from "./utils";
 import axios from "axios";
 import nprogress from "nprogress";
 import IncidentDetails from "./IncidentDetails";
+import TableSkeleton from "./TableSkeleton";
 
 const Incidents = (props: any) => {
   const [events, setEvents] = useState(null);
   const [currentEvent, setcurrentEvent] = useState(null);
 
   const fetchIncidents = () => {
+    setEvents(null);
     nprogress.set(0.4);
     axios.get(`${API_URL}/incidents`).then((res) => {
       setEvents(res.data);
@@ -19,6 +21,7 @@ const Incidents = (props: any) => {
   };
 
   const searchEvents = () => {
+    setEvents(null);
     let query = document.getElementById("search-events") as HTMLInputElement;
     if (query.value.trim() !== "") {
       nprogress.set(0.4);
@@ -210,6 +213,8 @@ const Incidents = (props: any) => {
                             </tr>
                           );
                         })}
+
+                    {!events && <TableSkeleton row={3} col={8} />}
                   </tbody>
                 </table>
               </div>
@@ -305,6 +310,8 @@ const Incidents = (props: any) => {
                             </tr>
                           );
                         })}
+
+                    {!events && <TableSkeleton row={3} col={8} />}
                   </tbody>
                 </table>
               </div>
