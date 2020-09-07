@@ -6,6 +6,7 @@ import axios from "axios";
 import nprogress from "nprogress";
 import IncidentDetails from "./IncidentDetails";
 import TableSkeleton from "./TableSkeleton";
+import StatCards from "./StatCards";
 
 const Incidents = (props: any) => {
   const [events, setEvents] = useState(null);
@@ -75,56 +76,8 @@ const Incidents = (props: any) => {
         </div>
 
         <div className="row table-content">
-          <div className="stats-row col-md-11" id="stat-cards">
-            <div className="stats-card fade-in-bottom dl-1">
-              <i className="la la-fish la-5x text-warning" />
-              <h1>
-                <small>ILLEGAL FISHING</small>
-                <br />
-                <span>
-                  {events &&
-                    events.filter((x) => x.type === "illegal_fishing").length}
-                </span>
-              </h1>
-            </div>
+          <StatCards data={events} />
 
-            <div className="stats-card fade-in-bottom dl-2">
-              <i className="la la-bolt text-danger la-5x" />
-              <h1>
-                <small>EMERGENCY</small>
-                <br />
-                <span>
-                  {" "}
-                  {events &&
-                    events.filter((x) => x.type === "emergency").length}
-                </span>
-              </h1>
-            </div>
-
-            <div className="stats-card fade-in-bottom dl-3">
-              <i className="la la-check-circle text-success la-5x" />
-              <h1>
-                <small>CONFIRMED</small>
-                <br />
-                <span>
-                  {events &&
-                    events.filter((x) => x.status === "CONFIRMED").length}
-                </span>
-              </h1>
-            </div>
-
-            <div className="stats-card fade-in-bottom dl-4">
-              <i className="la la-exclamation-circle text-yellow la-5x" />
-              <h1>
-                <small>PENDING</small>
-                <br />
-                <span>
-                  {events &&
-                    events.filter((x) => x.status === "PENDING").length}
-                </span>
-              </h1>
-            </div>
-          </div>
           <div className="col-md-11">
             <div className="card bg-default shadow">
               <div className="card-header bg-transparent border-0">
