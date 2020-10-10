@@ -189,10 +189,21 @@
   border-radius: 100px;
   animation: pulse-alert 1.5s infinite ease-out;
   background: rgba(192, 46, 46, 0.925);
+  display: grid;
   margin: auto;
 
   &.map-icon {
     top: -10px;
+    cursor: pointer;
+
+    $size: 25px;
+    width: $size;
+    height: $size;
+
+    i {
+      margin: auto;
+      font-size: 20px;
+    }
   }
 
   &.fishing-bg {

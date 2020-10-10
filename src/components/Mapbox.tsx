@@ -57,7 +57,7 @@ const Mapbox = (props) => {
 
           el.innerHTML = `<i class="la ${
             marker.properties.type === "emergency" ? "la-bolt" : "la-fish"
-          } la-3x text-white"></i>`;
+          } text-white"></i>`;
 
           el.addEventListener("click", function () {
             let xid = marker.properties.uid;
