@@ -23,6 +23,11 @@ const Links = [
     icon: "la-list",
   },
   {
+    name: "Device Registry",
+    link: "/device-registry",
+    icon: "la-layer-group",
+  },
+  {
     name: "Report Demo",
     link: "/report/demo",
     icon: "la-broadcast-tower",

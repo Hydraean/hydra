@@ -11,6 +11,7 @@ import Incidents from "./components/Incidents";
 import Advisories from "./components/Advisories";
 import Devices from "./components/Devices";
 import DeviceDemo from "./components/DeviceDemo";
+import DeviceRegistry from "./components/DeviceRegistry";
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
 
             <Route path="/device-list">
               <Devices />
+            </Route>
+
+            <Route path="/device-registry">
+              <DeviceRegistry />
             </Route>
 
             <Route path="/report/demo">
