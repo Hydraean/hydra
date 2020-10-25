@@ -116,7 +116,7 @@ const EventThread = (props: any) => {
                 Recent Events
               </span>
               <div>
-                <Link to="/incidents">
+                <Link to="">
                   <button className="btn btn-sm btn-dark">
                     <i className="mr-2 la la-ellipsis-h" />
                     View All
@@ -191,7 +191,7 @@ const EventThread = (props: any) => {
               No pending reports at the moment.
             </p>
 
-            <Link to={"/incidents"}>
+            <Link to={"/analytics"}>
               <button className="btn btn-primary fade-in-bottom dl-4">
                 View History
               </button>

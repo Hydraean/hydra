@@ -53,7 +53,7 @@ export const Toast = (message, url) => {
   Toastify({
     text: message,
     duration: 2000,
-    destination: "/incidents",
+    destination: "/analytics",
     newWindow: false,
     close: true,
     gravity: "bottom", // `top` or `bottom`
