@@ -28,15 +28,16 @@
       padding: 5px;
       cursor: pointer;
       transition: 0.3s;
+      font-size: 25px;
 
       &:hover {
         color: #fff;
       }
 
       &.active {
-        color: #fff;
-        background: rgb(36, 126, 230);
-        border-radius: 3px;
+        color: rgb(33, 243, 198);
+        background: rgb(9, 74, 148);
+        border-radius: 2px;
       }
     }
   }

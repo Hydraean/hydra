@@ -32,6 +32,10 @@
   justify-content: space-between;
   margin-top: 50px;
 
+  h1 {
+    font-weight: 100;
+  }
+
   @media (max-width: 700px) {
     flex-direction: column;
   }

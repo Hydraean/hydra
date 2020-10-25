@@ -47,7 +47,7 @@ const Sidebar = (props: any) => {
           return (
             <Link to={item.link}>
               <i
-                className={`la la-2x ${item.icon} ${
+                className={`la la-1x nav-icon ${item.icon} ${
                   item.name === props.active ? "active" : ""
                 }`}
                 title={item.name}
