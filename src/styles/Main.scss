@@ -394,7 +394,7 @@ Usage
   border: 0.3px solid rgb(9, 52, 102);
   position: absolute;
   left: 12px;
-  top: 22 px;
+  top: 22px;
   transform: rotate(45deg);
   transition: 0.3s;
 
@@ -402,6 +402,37 @@ Usage
     border: 0.3px solid rgb(13, 70, 134);
     box-shadow: 0px 0px 5px 0px rgba(28, 218, 177, 0.37);
     transition: 0.3s;
+  }
+}
+
+.device-type-nav {
+  background: #051c3f;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  overflow-x: auto;
+  display: flex;
+  box-shadow: 0px 9px 13px 3px rgba(11, 41, 68, 0.466);
+
+  .device-type {
+    padding: 5px 20px;
+    border-radius: 3px;
+    margin-right: 15px;
+    color: grey;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background: #052555;
+      color: lightgrey;
+    }
+
+    &.active {
+      background: linear-gradient(to right, #6fb1fc, #4364f7, #07409c);
+      color: #fff;
+      box-shadow: 0px 0px 5px 0px rgba(82, 24, 241, 0.849);
+    }
   }
 }
 

@@ -10,6 +10,7 @@ import TableSkeleton from "./TableSkeleton";
 const DeviceRegistry = (props: any) => {
   const [events, setEvents] = useState(null);
   const [currentEvent, setcurrentEvent] = useState(null);
+  const [activeDevice, setActiveDevice] = useState(false);
 
   const fetchIncidents = () => {
     setEvents(null);
@@ -18,6 +19,42 @@ const DeviceRegistry = (props: any) => {
       setEvents(res.data);
       nprogress.done();
     });
+  };
+
+  const types: any = [
+    {
+      name: "Node",
+      id: 1,
+    },
+    {
+      name: "Gateway",
+      id: 2,
+    },
+    {
+      name: "Patrol",
+      id: 3,
+    },
+  ];
+
+  const DeviceTypes = () => {
+    return (
+      <div className="device-type-nav">
+        {types.map((item: any) => {
+          return (
+            <div
+              className={`device-type ${
+                activeDevice === item.id ? "active" : ""
+              }`}
+              onClick={() => {
+                setActiveDevice(item.id);
+              }}
+            >
+              {item.name}
+            </div>
+          );
+        })}
+      </div>
+    );
   };
 
   const searchEvents = () => {
@@ -76,6 +113,8 @@ const DeviceRegistry = (props: any) => {
 
         <div className="row table-content">
           <div className="col-md-11">
+            <DeviceTypes />
+
             <div className="card bg-default shadow">
               <div className="card-header bg-transparent border-0">
                 <h3 className="text-white mb-0">
