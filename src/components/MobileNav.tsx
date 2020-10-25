@@ -36,8 +36,8 @@ const mobileNav = () => {
           </a>
         </li>
         <li className="nav-item text-white">
-          <a href="/incidents" className="nav-link">
-            <span className="nav-link-inner--text text-white">Incidents</span>
+          <a href="/analytics" className="nav-link">
+            <span className="nav-link-inner--text text-white">Analytics</span>
           </a>
         </li>
         <li className="nav-item">

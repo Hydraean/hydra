@@ -1,7 +1,7 @@
 .dashboard-content {
   min-height: 100vh;
-  width: 95%;
-  margin-left: 70px;
+  width: 96%;
+  margin-left: 60px;
   background: #253a5a;
 
   h1,
@@ -22,10 +22,15 @@
       justify-content: space-between;
       width: 100%;
 
+      h1 {
+        font-weight: 100;
+        font-size: 23px;
+      }
+
       .search-input {
         padding: 10px 20px;
         border-radius: 25px;
-        width: 300px;
+        width: 290px;
         outline: none;
         border: 2px solid #2868cf;
         color: #fff;
@@ -301,6 +306,10 @@ Usage
     justify-content: space-between;
     box-shadow: 7px 0px 15px -2px rgba(0, 0, 0, 0.253);
 
+    i {
+      margin: auto 0px;
+    }
+
     h1 {
       font-size: 30px;
       text-align: right;
@@ -373,6 +382,26 @@ Usage
       color: rgb(163, 45, 41);
       border-bottom: 2px solid #9b1431;
     }
+  }
+}
+
+// logo polygon
+
+.logo-polygon {
+  $size: 35px;
+  height: $size;
+  width: $size;
+  border: 0.3px solid rgb(9, 52, 102);
+  position: absolute;
+  left: 13px;
+  top: 22px;
+  transform: rotate(45deg);
+  transition: 0.3s;
+
+  &:hover {
+    border: 0.3px solid rgb(13, 70, 134);
+    box-shadow: 0px 0px 5px 0px rgba(28, 218, 177, 0.37);
+    transition: 0.3s;
   }
 }
 

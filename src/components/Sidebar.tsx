@@ -13,9 +13,9 @@ const Links = [
     icon: "la-map",
   },
   {
-    name: "Emergencies",
-    link: "/incidents",
-    icon: "la-exclamation-circle",
+    name: "Analytics",
+    link: "/analytics",
+    icon: "la-line-chart",
   },
   {
     name: "Devices",
@@ -37,6 +37,7 @@ const Links = [
 const Sidebar = (props: any) => {
   return (
     <div className="sidebar">
+      <div className="logo-polygon" />
       <Link to="/">
         <img src="hlogo.png" alt="h-logo" className="landing-logo" />
       </Link>

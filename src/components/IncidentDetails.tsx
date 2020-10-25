@@ -63,16 +63,16 @@ const IncidentDetails = (props: any) => {
         <div className="fade-in">
           {event.type === "illegal_fishing" && (
             <div className="event-alert">
-              <div className="pulse-alert">
-                <i className="la la-fish la-5x" />
+              <div className="pulse-alert p-2">
+                <i className="la la-fish la-4x" />
               </div>
             </div>
           )}
 
           {event.type === "emergency" && (
             <div className="distress-alert">
-              <div className="pulse-alert">
-                <i className="la la-bolt la-5x" />
+              <div className="pulse-alert p-2">
+                <i className="la la-bolt la-4x" />
               </div>
             </div>
           )}

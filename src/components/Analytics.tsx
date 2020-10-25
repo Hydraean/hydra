@@ -8,7 +8,7 @@ import IncidentDetails from "./IncidentDetails";
 import TableSkeleton from "./TableSkeleton";
 import StatCards from "./StatCards";
 
-const Incidents = (props: any) => {
+const Analytics = (props: any) => {
   const [events, setEvents] = useState(null);
   const [currentEvent, setcurrentEvent] = useState(null);
 
@@ -54,12 +54,12 @@ const Incidents = (props: any) => {
       {currentEvent && (
         <IncidentDetails data={currentEvent} setData={setcurrentEvent} />
       )}
-      <Sidebar active="Emergencies" />
+      <Sidebar active="Analytics" />
       <div className="dashboard-content">
         <div className="content-header">
           <div className="content-nav">
             <h1>
-              <i className="la la-exclamation-circle text-danger" /> Incidents
+              <i className="la la-line-chart text-danger" /> Analytics
             </h1>
 
             <input
@@ -276,4 +276,4 @@ const Incidents = (props: any) => {
   );
 };
 
-export default Incidents;
+export default Analytics;

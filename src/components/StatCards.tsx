@@ -6,7 +6,7 @@ const StatCards = (props: any) => {
   return (
     <div className="stats-row col-md-11" id="stat-cards">
       <div className="stats-card fade-in-bottom dl-1">
-        <i className="la la-fish la-5x text-warning" />
+        <i className="la la-fish la-4x text-warning" />
         <h1>
           <small>ILLEGAL FISHING</small>
           <br />
@@ -28,7 +28,7 @@ const StatCards = (props: any) => {
       </div>
 
       <div className="stats-card fade-in-bottom dl-2">
-        <i className="la la-bolt text-danger la-5x" />
+        <i className="la la-bolt text-danger la-4x" />
         <h1>
           <small>EMERGENCY</small>
           <br />
@@ -50,7 +50,7 @@ const StatCards = (props: any) => {
       </div>
 
       <div className="stats-card fade-in-bottom dl-3">
-        <i className="la la-check-circle text-success la-5x" />
+        <i className="la la-check-circle text-success la-4x" />
         <h1>
           <small>CONFIRMED</small>
           <br />
@@ -71,7 +71,7 @@ const StatCards = (props: any) => {
       </div>
 
       <div className="stats-card fade-in-bottom dl-4">
-        <i className="la la-exclamation-circle text-yellow la-5x" />
+        <i className="la la-exclamation-circle text-yellow la-4x" />
         <h1>
           <small>PENDING</small>
           <br />

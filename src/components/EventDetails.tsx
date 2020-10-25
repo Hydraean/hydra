@@ -72,7 +72,7 @@ const EventDetails = (props: any) => {
       {event.type === "illegal_fishing" && (
         <div className="event-alert">
           <div className="pulse-alert mast">
-            <i className="la la-fish la-5x" />
+            <i className="la la-fish la-4x" />
           </div>
         </div>
       )}
@@ -80,7 +80,7 @@ const EventDetails = (props: any) => {
       {event.type === "emergency" && (
         <div className="distress-alert">
           <div className="pulse-alert mast">
-            <i className="la la-bolt la-5x" />
+            <i className="la la-bolt la-4x" />
           </div>
         </div>
       )}

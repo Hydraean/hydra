@@ -1,18 +1,19 @@
 .sidebar {
   position: fixed;
   height: 100vh;
-  width: 70px;
-  background: rgb(11, 11, 49);
+  width: 60px;
+  background: rgb(5, 22, 44);
   padding: 20px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   z-index: 50;
   box-shadow: 7px 0px 15px -2px rgba(0, 0, 0, 0.253);
+  overflow: hidden;
+  overflow-y: auto;
 
   .landing-logo {
-    height: 50px;
-    width: 50px;
+    width: 60px;
   }
 
   .nav-items {
@@ -51,7 +52,8 @@
       width: $size;
       border-radius: $size;
       object-fit: cover;
-      border: 3px solid rgb(57, 209, 163);
+      border: 2px solid rgb(57, 209, 163);
+      box-shadow: 0px 0px 5px 0px rgba(28, 218, 176, 0.658);
     }
   }
 }
@@ -143,7 +145,7 @@
 
 #map {
   height: 100%;
-  margin-left: 65px;
+  margin-left: 60px;
 }
 
 .event-alert {

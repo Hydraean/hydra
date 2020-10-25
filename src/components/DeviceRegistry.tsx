@@ -6,7 +6,6 @@ import axios from "axios";
 import nprogress from "nprogress";
 import IncidentDetails from "./IncidentDetails";
 import TableSkeleton from "./TableSkeleton";
-import StatCards from "./StatCards";
 
 const DeviceRegistry = (props: any) => {
   const [events, setEvents] = useState(null);
@@ -76,8 +75,6 @@ const DeviceRegistry = (props: any) => {
         </div>
 
         <div className="row table-content">
-          <StatCards data={events} />
-
           <div className="col-md-11">
             <div className="card bg-default shadow">
               <div className="card-header bg-transparent border-0">
