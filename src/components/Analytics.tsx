@@ -98,10 +98,10 @@ const Analytics = (props: any) => {
         <div className="row table-content">
           <StatCards data={events} />
 
-          <div className="d-flex mb-4">
+          <div className="d-flex mb-4" style={{ width: "89%" }}>
             <ShapeChart width={800} height={200} />
             <div className="area-card">
-              <h1>boi</h1>
+              <h1>Metrics</h1>
             </div>
           </div>
 

@@ -156,11 +156,13 @@ Usage
 // table content
 
 .table-content {
+  margin: auto;
   margin-top: -90px;
   // margin-left: -80px;
   display: flex;
   justify-content: center;
   width: 100%;
+  max-width: 1500px;
 
   .table {
     box-shadow: none !important;
@@ -462,6 +464,14 @@ Usage
       box-shadow: 0px 0px 5px 0px rgba(82, 24, 241, 0.849);
     }
   }
+}
+
+.area-card {
+  background: #4364f6;
+  width: 100%;
+  max-width: 400px;
+  margin-left: 20px;
+  border-radius: 5px;
 }
 
 // responsiveness
