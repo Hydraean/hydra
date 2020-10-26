@@ -1,7 +1,8 @@
 .dashboard-content {
+  $left-spacer: 60px;
   min-height: 100vh;
-  width: 96%;
-  margin-left: 60px;
+  width: calc(100%-$left-spacer);
+  margin-left: $left-spacer;
   background: #253a5a;
 
   h1,
@@ -21,6 +22,9 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
+      padding: 0px 30px;
+      max-width: 1400px;
+      margin: 0 auto;
 
       h1 {
         font-weight: 100;
@@ -467,11 +471,18 @@ Usage
 }
 
 .area-card {
-  background: #4364f6;
+  background: #051c3f;
   width: 100%;
-  max-width: 400px;
   margin-left: 20px;
   border-radius: 5px;
+  padding: 20px 30px;
+
+  h1 {
+    color: #40f5e6 !important;
+    font-weight: 100;
+    border-bottom: 3px solid #40f5e6;
+    width: fit-content;
+  }
 }
 
 // responsiveness

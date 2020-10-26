@@ -16,7 +16,7 @@ type TooltipData = AppleStock;
 const stock = appleStock.slice(800);
 export const background = "#051C3F";
 export const background2 = "#204051";
-export const accentColor = "#EC8282";
+export const accentColor = "#C65856";
 export const accentColorDark = "#DF8A2A";
 const tooltipStyles = {
   ...defaultStyles,
@@ -204,7 +204,7 @@ export default withTooltip<AreaProps, TooltipData>(
               left={tooltipLeft + 12}
               style={tooltipStyles}
             >
-              {`$${getStockValue(tooltipData)}`}
+              {`> ${getStockValue(tooltipData)}`}
             </Tooltip>
             <Tooltip
               top={yMax - 14}
