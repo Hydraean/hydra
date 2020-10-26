@@ -51,16 +51,21 @@ const Devices = (props: any) => {
               <i className="la la-list text-active" /> Devices
             </h1>
 
-            <input
-              id="search-devices"
-              placeholder="Search Devices"
-              className="search-input"
-              onKeyUp={(e) => {
-                if (e.keyCode === 13) {
-                  searchDevices();
-                }
-              }}
-            />
+            <div className="d-flex">
+              <input
+                id="search-devices"
+                placeholder="Search Devices"
+                className="search-input"
+                onKeyUp={(e) => {
+                  if (e.keyCode === 13) {
+                    searchDevices();
+                  }
+                }}
+              />
+              <div className="search-icon" onClick={searchDevices}>
+                <i className="la la-search" />
+              </div>
+            </div>
           </div>
         </div>
 

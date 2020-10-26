@@ -57,22 +57,6 @@ const DeviceRegistry = (props: any) => {
     );
   };
 
-  const searchEvents = () => {
-    setEvents(null);
-    let query = document.getElementById("search-events") as HTMLInputElement;
-    if (query.value.trim() !== "") {
-      nprogress.set(0.4);
-      axios
-        .get(`${API_URL}/incidents/search/?query=${query.value}`)
-        .then((res) => {
-          setEvents(res.data);
-          nprogress.done();
-        });
-    } else {
-      fetchIncidents();
-    }
-  };
-
   useEffect(() => {
     loadChart();
     fetchIncidents();
@@ -97,17 +81,6 @@ const DeviceRegistry = (props: any) => {
             <h1>
               <i className="la la-layer-group text-success" /> Device Registry
             </h1>
-
-            <input
-              placeholder="Search Devices"
-              className="search-input"
-              id="search-events"
-              onKeyUp={(e) => {
-                if (e.keyCode === 13) {
-                  searchEvents();
-                }
-              }}
-            />
           </div>
         </div>
 

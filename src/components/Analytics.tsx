@@ -11,6 +11,7 @@ import StatCards from "./StatCards";
 const Analytics = (props: any) => {
   const [events, setEvents] = useState(null);
   const [currentEvent, setcurrentEvent] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchIncidents = () => {
     setEvents(null);
@@ -23,6 +24,7 @@ const Analytics = (props: any) => {
 
   const searchEvents = () => {
     setEvents(null);
+    setLoading(true);
     let query = document.getElementById("search-events") as HTMLInputElement;
     if (query.value.trim() !== "") {
       nprogress.set(0.4);
@@ -31,9 +33,14 @@ const Analytics = (props: any) => {
         .then((res) => {
           setEvents(res.data);
           nprogress.done();
+        })
+        .catch((err) => {
+          console.log(err);
         });
+      setLoading(false);
     } else {
       fetchIncidents();
+      setLoading(false);
     }
   };
 
@@ -62,16 +69,28 @@ const Analytics = (props: any) => {
               <i className="la la-line-chart text-danger" /> Analytics
             </h1>
 
-            <input
-              placeholder="Search Incidents"
-              className="search-input"
-              id="search-events"
-              onKeyUp={(e) => {
-                if (e.keyCode === 13) {
-                  searchEvents();
-                }
-              }}
-            />
+            <div className="d-flex">
+              <input
+                placeholder="Search Incidents"
+                className="search-input"
+                id="search-events"
+                onKeyUp={(e) => {
+                  if (e.keyCode === 13) {
+                    searchEvents();
+                  }
+                }}
+              />
+              <div
+                className="search-icon"
+                onClick={() => {
+                  if (!loading) {
+                    searchEvents();
+                  }
+                }}
+              >
+                <i className="la la-search" />
+              </div>
+            </div>
           </div>
         </div>
 
