@@ -10,7 +10,7 @@ import TableSkeleton from "./TableSkeleton";
 const DeviceRegistry = (props: any) => {
   const [events, setEvents] = useState(null);
   const [currentEvent, setcurrentEvent] = useState(null);
-  const [activeDevice, setActiveDevice] = useState(false);
+  const [activeDevice, setActiveDevice] = useState(1);
 
   const fetchIncidents = () => {
     setEvents(null);
@@ -95,7 +95,7 @@ const DeviceRegistry = (props: any) => {
         <div className="content-header">
           <div className="content-nav">
             <h1>
-              <i className="la la-layer-group text-success" /> Device registry
+              <i className="la la-layer-group text-success" /> Device Registry
             </h1>
 
             <input
