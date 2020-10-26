@@ -7,6 +7,7 @@ import nprogress from "nprogress";
 import IncidentDetails from "./IncidentDetails";
 import TableSkeleton from "./TableSkeleton";
 import StatCards from "./StatCards";
+import ShapeChart from "./ShapeChart";
 
 const Analytics = (props: any) => {
   const [events, setEvents] = useState(null);
@@ -96,6 +97,13 @@ const Analytics = (props: any) => {
 
         <div className="row table-content">
           <StatCards data={events} />
+
+          <div className="d-flex mb-4">
+            <ShapeChart width={800} height={200} />
+            <div className="area-card">
+              <h1>boi</h1>
+            </div>
+          </div>
 
           <div className="col-md-11">
             <div className="card bg-default shadow">
