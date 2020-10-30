@@ -201,13 +201,13 @@
     top: -10px;
     cursor: pointer;
 
-    $size: 25px;
+    $size: 20px;
     width: $size;
     height: $size;
 
     i {
       margin: auto;
-      font-size: 20px;
+      font-size: 15px;
     }
   }
 
@@ -216,11 +216,12 @@
   }
 
   &.marker-selected {
-    background: rgba(28, 149, 230, 0.925);
+    // background: rgba(28, 149, 230, 0.925);
+    background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
   }
 
   &.mast {
-    background: rgba(28, 149, 230, 0.925);
+    background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
   }
 }
 
