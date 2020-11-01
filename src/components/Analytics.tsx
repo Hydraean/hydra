@@ -12,7 +12,7 @@ import ShapeChart from "./ShapeChart";
 const Analytics = (props: any) => {
   const [events, setEvents] = useState(null);
   const [currentEvent, setcurrentEvent] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState(null);
 
   const fetchIncidents = () => {
     setEvents(null);
@@ -25,10 +25,10 @@ const Analytics = (props: any) => {
 
   const searchEvents = () => {
     setEvents(null);
-    setLoading(true);
     let query = document.getElementById("search-events") as HTMLInputElement;
     if (query.value.trim() !== "") {
       nprogress.set(0.4);
+      setQuery(query.value.trim());
       axios
         .get(`${API_URL}/incidents/search/?query=${query.value}`)
         .then((res) => {
@@ -38,10 +38,21 @@ const Analytics = (props: any) => {
         .catch((err) => {
           console.log(err);
         });
-      setLoading(false);
     } else {
       fetchIncidents();
-      setLoading(false);
+    }
+  };
+
+  const searchAction = () => {
+    let searchBar = document.getElementById(
+      "search-events"
+    ) as HTMLInputElement;
+    if (query) {
+      fetchIncidents();
+      setQuery("");
+      searchBar.value = "";
+    } else {
+      searchEvents();
     }
   };
 
@@ -75,21 +86,14 @@ const Analytics = (props: any) => {
                 placeholder="Search Incidents"
                 className="search-input"
                 id="search-events"
-                onKeyUp={(e) => {
+                onKeyUp={(e: any) => {
                   if (e.keyCode === 13) {
                     searchEvents();
                   }
                 }}
               />
-              <div
-                className="search-icon"
-                onClick={() => {
-                  if (!loading) {
-                    searchEvents();
-                  }
-                }}
-              >
-                <i className="la la-search" />
+              <div className="search-icon" onClick={searchAction}>
+                <i className={`la ${!query ? "la-search" : "la-close"}`} />
               </div>
             </div>
           </div>

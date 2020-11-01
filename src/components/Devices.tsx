@@ -9,6 +9,7 @@ import TableSkeleton from "./TableSkeleton";
 
 const Devices = (props: any) => {
   const [devices, setDevices] = useState(null);
+  const [query, setQuery] = useState(null);
 
   const fetchDevices = () => {
     setDevices(null);
@@ -24,6 +25,7 @@ const Devices = (props: any) => {
     let query = document.getElementById("search-devices") as HTMLInputElement;
     if (query.value.trim() !== "") {
       nprogress.set(0.4);
+      setQuery(query.value.trim());
       axios
         .get(`${API_URL}/devices/search/?query=${query.value}`)
         .then((res) => {
@@ -32,6 +34,19 @@ const Devices = (props: any) => {
         });
     } else {
       fetchDevices();
+    }
+  };
+
+  const searchAction = () => {
+    let searchBar = document.getElementById(
+      "search-devices"
+    ) as HTMLInputElement;
+    if (query) {
+      fetchDevices();
+      setQuery("");
+      searchBar.value = "";
+    } else {
+      searchDevices();
     }
   };
 
@@ -62,8 +77,8 @@ const Devices = (props: any) => {
                   }
                 }}
               />
-              <div className="search-icon" onClick={searchDevices}>
-                <i className="la la-search" />
+              <div className="search-icon" onClick={searchAction}>
+                <i className={`la ${!query ? "la-search" : "la-close"}`} />
               </div>
             </div>
           </div>

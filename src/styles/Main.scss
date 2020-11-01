@@ -415,6 +415,10 @@ Usage
 
     i {
       color: #40f5e6;
+
+      &.la-close {
+        color: #e65d7b;
+      }
     }
   }
 }

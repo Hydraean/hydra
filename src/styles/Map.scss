@@ -183,7 +183,7 @@
 
 @keyframes pulse-alert {
   0% {
-    box-shadow: 0px 0px 0px 0px rgb(199, 133, 48);
+    box-shadow: 0px 0px 0px 0px rgba(245, 164, 59, 0.507);
   }
   100% {
     box-shadow: 0px 0px 0px 20px rgba(0, 0, 0, 0);
@@ -218,10 +218,12 @@
   &.marker-selected {
     // background: rgba(28, 149, 230, 0.925);
     background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+    animation: pulse-selected 1s infinite ease-out;
   }
 
   &.mast {
     background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+    animation: pulse-selected 1s infinite ease-out;
   }
 }
 
