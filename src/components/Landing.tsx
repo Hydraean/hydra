@@ -187,6 +187,14 @@ const Landing = (props: any) => {
           </div>
         </div>
       </div>
+
+      <div className="container">
+        <div className="mb-7">
+          <div className="container">
+            <hr />
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );
