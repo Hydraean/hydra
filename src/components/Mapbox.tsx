@@ -205,6 +205,7 @@ const Mapbox = (props) => {
           "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
           "text-offset": [0, 0.6],
           "text-anchor": "top",
+          "text-size": 12,
         },
         paint: {
           "text-color": "#ffffff",
