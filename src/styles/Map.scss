@@ -200,6 +200,7 @@
   &.map-icon {
     top: -10px;
     cursor: pointer;
+    opacity: 0.4;
 
     $size: 20px;
     width: $size;
@@ -208,6 +209,10 @@
     i {
       margin: auto;
       font-size: 15px;
+    }
+
+    &:hover {
+      opacity: 1;
     }
   }
 
@@ -219,6 +224,7 @@
     // background: rgba(28, 149, 230, 0.925);
     background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
     animation: pulse-selected 1s infinite ease-out;
+    opacity: 1;
   }
 
   &.mast {
