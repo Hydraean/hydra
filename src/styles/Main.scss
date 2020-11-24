@@ -1,8 +1,8 @@
-$left-spacer: 60px;
+$left-spacer: 45px;
 
 .dashboard-content {
   min-height: 100vh;
-  width: calc(100%-60px);
+  width: calc(100%-45px);
   margin-left: $left-spacer;
   background: #253a5a;
 
@@ -427,16 +427,17 @@ Usage
 // logo polygon
 
 .logo-polygon {
-  $size: 36px;
+  $size: 26px;
   height: $size;
   width: $size;
   border: 0.3px solid rgb(13, 70, 134);
   position: absolute;
-  left: 12px;
-  top: 22px;
+  left: 7px;
+  top: 30px;
   transform: rotate(45deg);
   transition: 0.3s;
   box-shadow: 0px 0px 5px 0px rgba(28, 212, 218, 0.363);
+  display: none;
 
   &:hover {
     border: 0.3px solid rgb(13, 70, 134);

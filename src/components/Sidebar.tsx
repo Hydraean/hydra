@@ -58,7 +58,10 @@ const Sidebar = (props: any) => {
       </div>
 
       <div className="user-profile">
-        <img src="hlogo.png" alt="Profile" />
+        <img
+          src="https://pbs.twimg.com/profile_images/1249007824002154498/ImpuC4Np.jpg"
+          alt="Profile"
+        />
       </div>
     </div>
   );
