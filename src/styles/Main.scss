@@ -1,7 +1,8 @@
+$left-spacer: 60px;
+
 .dashboard-content {
-  $left-spacer: 60px;
   min-height: 100vh;
-  width: calc(100%-$left-spacer);
+  width: calc(100%-60px);
   margin-left: $left-spacer;
   background: #253a5a;
 
