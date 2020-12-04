@@ -236,9 +236,9 @@ const Mapbox = (props) => {
           geometry: {
             type: "LineString",
             coordinates: [
-              [120.70893, 14.56745],
-              [120.72108, 14.58747],
-              [120.7273, 14.59647],
+              // [120.70893, 14.56745],
+              // [120.72108, 14.58747],
+              // [120.7273, 14.59647],
             ],
           },
         },
@@ -282,6 +282,13 @@ const Mapbox = (props) => {
         speed: 1.25,
         essential: true,
       });
+
+      // set line path data
+      const global: any = window;
+
+      if (map.getSource("route")) {
+        map.getSource("route").setData(global.eventPath);
+      }
     }
 
     document.getElementById("mapJump").onclick = () => {

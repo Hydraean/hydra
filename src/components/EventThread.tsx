@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EventDetails from "./EventDetails";
 import moment from "moment";
-import { seCurrentLocation, soundNotif } from "./utils";
+import { seCurrentLocation, soundNotif, setCurrentIncident } from "./utils";
 import EventSkeleton from "./EventSkeleton";
 import { API_URL, eventSpike } from "./utils";
 import axios from "axios";
@@ -75,6 +75,8 @@ const EventThread = (props: any) => {
     let mapBtn = document.getElementById("mapJump") as HTMLButtonElement;
     seCurrentLocation(data.coordinates);
     setReport(data);
+    setCurrentIncident(data);
+
     toggleDetails();
 
     if (document.contains(mapBtn)) {
