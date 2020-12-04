@@ -80,7 +80,12 @@ const IncidentDetails = (props: any) => {
           <strong className="text-warning">{event.name}</strong>
           <h2 className="pb-2 text-white">
             {locationData ? (
-              locationData.plus_code.compound_code
+              <>
+                {event.fma && (
+                  <span className="text-active">[{event.fma}]</span>
+                )}{" "}
+                {locationData.plus_code.compound_code}
+              </>
             ) : (
               <SkeletonTheme color="#202020" highlightColor="#333">
                 <p>
@@ -113,10 +118,11 @@ const IncidentDetails = (props: any) => {
               </span>
               <span>
                 <strong>Date & Time:</strong>{" "}
-                {moment(event.date).format("MMM D, YYYY - h:mm:ss A")}
+                {moment(event.date_reported).format("MMM D, YYYY - h:mm:ss A")}
               </span>
               <span>
-                <strong>Duration</strong> {moment(event.date).fromNow()}
+                <strong>Duration</strong>{" "}
+                {moment(event.date_reported).fromNow()}
               </span>
             </div>
           )}

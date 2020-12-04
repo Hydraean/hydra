@@ -177,10 +177,10 @@ const Analytics = (props: any) => {
                               <th>
                                 <strong>{ellipsis(event.device_id, 10)}</strong>
                               </th>
-                              <td>{event.address}</td>
+                              <td>{event.fma}</td>
                               <td>{event.title}</td>
                               <td>{event.reportee}</td>
-                              <td>{event.date}</td>
+                              <td>{event.date_reported}</td>
                               <td>
                                 <span
                                   className={`text-mode ${event.report_type}`}

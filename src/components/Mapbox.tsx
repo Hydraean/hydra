@@ -223,16 +223,55 @@ const Mapbox = (props) => {
       });
 
       InitReportLayer();
+      addTrack();
     });
 
-    const toggleCovidLayer = () => {
-      let visibility = map.getLayoutProperty("covid-cases", "visibility");
-      if (visibility === "none") {
-        map.setLayoutProperty("covid-cases", "visibility", "visible");
-      } else {
-        map.setLayoutProperty("covid-cases", "visibility", "none");
-      }
-    };
+    function addTrack() {
+      map.addSource("route", {
+        type: "geojson",
+        lineMetrics: true,
+        data: {
+          type: "Feature",
+          properties: {},
+          geometry: {
+            type: "LineString",
+            coordinates: [
+              [120.70893, 14.56745],
+              [120.72108, 14.58747],
+              [120.7273, 14.59647],
+            ],
+          },
+        },
+      });
+      map.addLayer({
+        id: "route",
+        type: "line",
+        source: "route",
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+        },
+        paint: {
+          "line-color": "#6ff",
+          "line-width": 4,
+          "line-gradient": [
+            "interpolate",
+            ["linear"],
+            ["line-progress"],
+            0,
+            "blue",
+            0.1,
+            "royalblue",
+            0.3,
+            "cyan",
+            0.5,
+            "cyan",
+            1,
+            "blue",
+          ],
+        },
+      });
+    }
 
     function mapTo() {
       let currentLocation = JSON.parse(localStorage.currentLocation);
@@ -249,12 +288,12 @@ const Mapbox = (props) => {
       mapTo();
     };
 
-    document.getElementById("showCovid").onclick = () => {
-      toggleCovidLayer();
-    };
-
     document.getElementById("incidents-btn").onclick = () => {
       updateIncidentLayer();
+    };
+
+    document.getElementById("incident-track").onclick = () => {
+      mapTo();
     };
   });
 
@@ -262,9 +301,9 @@ const Mapbox = (props) => {
     <>
       <button id="mapJump" className="d-none" />
       <button id="removeRoutes" className="d-none" />
-      <button id="showCovid" className="d-none" />
 
       <button id="incidents-btn" className="d-none" />
+      <button id="incident-track" className="d-none" />
 
       <div>
         <div id="map" className="absolute top right left" />

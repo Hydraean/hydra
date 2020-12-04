@@ -168,11 +168,14 @@ const EventThread = (props: any) => {
                         <strong>Reportee:</strong> {event.reportee}
                       </span>
                       <span>
-                        <strong>Date & Time:</strong>{" "}
-                        {moment(event.date).format("MMM D, YYYY - h:mm:ss A")}
+                        <strong>Date Reported:</strong>{" "}
+                        {moment(event.date_reported).format(
+                          "MMM D, YYYY - h:mm:ss A"
+                        )}
                       </span>
                       <span>
-                        <strong>Duration</strong> {moment(event.date).fromNow()}
+                        <strong>Duration</strong>{" "}
+                        {moment(event.date_reported).fromNow()}
                       </span>
                     </div>
                   );
