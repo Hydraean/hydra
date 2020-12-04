@@ -273,6 +273,14 @@ const Mapbox = (props) => {
       });
     }
 
+    function updateEventLinePath() {
+      const global: any = window;
+
+      if (map.getSource("route")) {
+        map.getSource("route").setData(global.eventPath);
+      }
+    }
+
     function mapTo() {
       let currentLocation = JSON.parse(localStorage.currentLocation);
 
@@ -283,12 +291,7 @@ const Mapbox = (props) => {
         essential: true,
       });
 
-      // set line path data
-      const global: any = window;
-
-      if (map.getSource("route")) {
-        map.getSource("route").setData(global.eventPath);
-      }
+      updateEventLinePath();
     }
 
     document.getElementById("mapJump").onclick = () => {
@@ -300,7 +303,7 @@ const Mapbox = (props) => {
     };
 
     document.getElementById("incident-track").onclick = () => {
-      mapTo();
+      updateEventLinePath();
     };
   });
 

@@ -137,4 +137,23 @@ export const setCurrentIncident = (data: any) => {
   global.eventPath = routeData;
 };
 
+export const clearEventLinePath = () => {
+  let incidentTrackBtn: any = document.getElementById("incident-track");
+
+  let routeData = {
+    type: "Feature",
+    properties: {},
+    geometry: {
+      type: "LineString",
+      coordinates: [],
+    },
+  };
+
+  global.eventPath = routeData;
+
+  if (incidentTrackBtn) {
+    incidentTrackBtn.click();
+  }
+};
+
 export const currentIncident = global.currentIncident;

@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
-import { API_URL, Toast, googleMapsAPIKEY, getCurrentLocation } from "./utils";
+import {
+  API_URL,
+  Toast,
+  googleMapsAPIKEY,
+  getCurrentLocation,
+  clearEventLinePath,
+} from "./utils";
 import nprogress from "nprogress";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
@@ -51,6 +57,11 @@ const EventDetails = (props: any) => {
       .then((res) => {
         setlocationData(res.data);
       });
+  };
+
+  const cancelEventReview = () => {
+    clearEventLinePath();
+    props.goBack();
   };
 
   useEffect(() => {
@@ -177,7 +188,7 @@ const EventDetails = (props: any) => {
         <button
           className="btn btn-warning"
           id="r-cancel"
-          onClick={props.goBack}
+          onClick={cancelEventReview}
         >
           <i className="la la-close mr-1" />
           Cancel
