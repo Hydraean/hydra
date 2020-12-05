@@ -31,6 +31,7 @@ const EventDetails = (props: any) => {
       .then((res) => {
         if (res.data.message === "Successfully confirmed report") {
           setVerify(false);
+          clearEventLinePath();
           Toast("Report Confirmed!", "/incidents");
           props.goBack();
           nprogress.done();
