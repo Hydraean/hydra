@@ -91,7 +91,21 @@ const EventThread = (props: any) => {
       } else {
         targetMarker.classList.add("marker-selected");
       }
+
+      // show location updates
+      let locupdateMarkers: any = document.querySelectorAll(`.lu-${data.id}`);
+      locupdateMarkers.forEach((lu: any) => {
+        lu.style.display = "flex";
+      });
     }
+  };
+
+  const backtoThread = () => {
+    let locupdateMarkers: any = document.querySelectorAll(`.lu-${report.id}`);
+    locupdateMarkers.forEach((lu: any) => {
+      lu.style.display = "none";
+    });
+    toggleDetails();
   };
 
   const showSidebar = () => {
@@ -204,7 +218,7 @@ const EventThread = (props: any) => {
           </div>
         )}
 
-        {details && <EventDetails goBack={toggleDetails} data={report} />}
+        {details && <EventDetails goBack={backtoThread} data={report} />}
       </div>
     </>
   );

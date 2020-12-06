@@ -76,7 +76,7 @@ const EventDetails = (props: any) => {
           <i className="la la-bars mr-2" />
           Event Details
         </span>
-        <button className="btn btn-sm btn-dark" onClick={props.goBack}>
+        <button className="btn btn-sm btn-dark" onClick={cancelEventReview}>
           Go Back <i className="ml-2 la la-arrow-right" />
         </button>
       </div>

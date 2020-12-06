@@ -100,6 +100,7 @@ export const fetchIncidentGeoJSON = () => {
         uid: incident.id,
         type: incident.type,
       },
+      locationUpdates: incident.updates ? incident.updates : [],
     };
 
     baseDataLayer.features.push(pointData);

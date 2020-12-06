@@ -532,6 +532,70 @@ Usage
   display: none;
 }
 
+// marker location update
+
+.marker-location-update {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+
+  small {
+    background: rgba(65, 65, 66, 0.596);
+    backdrop-filter: blur(2px);
+    color: #fff;
+    padding: 2px 15px;
+    width: 170px !important;
+    border-radius: 3px;
+    display: none;
+    position: absolute;
+    top: -75px;
+    width: auto;
+
+    strong {
+      color: #f5bc53;
+    }
+  }
+
+  .update-marker {
+    $size: 20px;
+    height: $size;
+    width: $size;
+    border-radius: $size;
+    border: 0.3px solid rgba(255, 255, 255, 0.247);
+    display: grid;
+    transition: 0.3s;
+
+    .marker-dot {
+      $size: 10px;
+      height: $size;
+      width: $size;
+      border-radius: $size;
+      background: #28cfc1;
+      margin: auto;
+      transition: 0.3s;
+    }
+
+    &:hover {
+      $size1: 25px;
+      height: $size1;
+      width: $size1;
+
+      border-color: #f5b640;
+
+      .marker-dot {
+        background: #e49245;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &:hover {
+    small {
+      display: block;
+    }
+  }
+}
+
 @media (max-width: 600px) {
   // map page responsiveness
 

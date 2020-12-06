@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import { mapbox_key, getCurrentLocation, fetchIncidentGeoJSON } from "./utils";
+import moment from "moment";
 
 mapboxgl.accessToken = mapbox_key;
 
@@ -15,6 +16,8 @@ const Mapbox = (props) => {
 
     const updateIncidentLayer = () => {
       let newlayerData = fetchIncidentGeoJSON();
+
+      console.log("Layer Data:", newlayerData);
 
       if (map.getSource("points")) {
         map.getSource("points").setData(newlayerData);
@@ -33,6 +36,13 @@ const Mapbox = (props) => {
 
         if (!pendingIncidents.includes(markid)) {
           document.querySelector(`.inm-${markid}`).remove();
+          // remove update markers as well
+          let locupdateMarkers: any = document.querySelectorAll(
+            `.lu-${mark.id}`
+          );
+          locupdateMarkers.forEach((lu: any) => {
+            lu.remove();
+          });
         }
       });
 
@@ -86,6 +96,32 @@ const Mapbox = (props) => {
           new mapboxgl.Marker(el)
             .setLngLat(marker.geometry.coordinates)
             .addTo(map);
+
+          // add map markers for earch report update point
+          marker.locationUpdates.forEach((update: any) => {
+            let xid = marker.properties.uid;
+
+            let formattedCoordinates = [
+              update.coordinates.long,
+              update.coordinates.lat,
+            ];
+            var elx = document.createElement("div");
+            elx.className = `marker-location-update lu-${xid}`;
+            elx.id = `mxu-${update.date}`;
+            elx.innerHTML = `
+            <small>
+              <span><strong>lat:</strong> ${update.coordinates.lat}</span><br>
+              <span><strong>long:</strong> ${update.coordinates.long}</span><br>
+              <span><strong>date:</strong> ${moment(update.date).format(
+                "MM-DD-YYYY | h:mm:ss A"
+              )}</span><br>
+            </small>
+            <div class="update-marker">
+            <div class="marker-dot"></div>
+            </div>
+            `;
+            new mapboxgl.Marker(elx).setLngLat(formattedCoordinates).addTo(map);
+          });
         }
       });
     };
@@ -225,6 +261,21 @@ const Mapbox = (props) => {
       InitReportLayer();
       addTrack();
     });
+
+    // test get coordinates of every click
+    // const globalItem: any = window;
+    // globalItem.testPath = [];
+
+    // map.on("click", (e: any) => {
+    //   let nx = {
+    //     coordinates: {
+    //       long: e.lngLat.lng,
+    //       lat: e.lngLat.lat,
+    //     },
+    //     date: Date.now(),
+    //   };
+    //   globalItem.testPath.push(nx);
+    // });
 
     function addTrack() {
       map.addSource("route", {
