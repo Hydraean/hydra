@@ -11,9 +11,21 @@ import { LinearGradient } from "@vx/gradient";
 import { max, extent, bisector } from "d3-array";
 import { timeFormat } from "d3-time-format";
 
+// type TooltipData = AppleStock;
+let testData: any = [
+  {
+    date: "August 12,2020",
+    close: 10,
+  },
+  {
+    date: Date.now(),
+    close: 200,
+  },
+];
 type TooltipData = AppleStock;
 
-const stock = appleStock.slice(800);
+// const stock = appleStock.slice(800);
+const stock = testData;
 export const background = "#051C3F";
 export const background2 = "#204051";
 export const accentColor = "#C65859";
