@@ -216,7 +216,7 @@ export default withTooltip<AreaProps, TooltipData>(
               left={tooltipLeft + 12}
               style={tooltipStyles}
             >
-              {`> ${getStockValue(tooltipData)}`}
+              {`Reported Incidents: ${getStockValue(tooltipData)}`}
             </Tooltip>
             <Tooltip
               top={yMax - 14}

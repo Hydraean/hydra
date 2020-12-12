@@ -307,6 +307,7 @@ Usage
     border-radius: 5px;
     height: 120px;
     width: 280px;
+    border-left: 3px solid #40daf5;
     box-sizing: border-box;
     padding: 20px 30px 20px 20px;
     display: flex;
@@ -509,7 +510,7 @@ Usage
       font-size: 13px;
       border-radius: 2px;
       padding: 5px 10px;
-      background: linear-gradient(to right, #2c0ba5, #1d4f9e);
+      background: linear-gradient(to right, #2e6aa1, #133a77);
       color: #fff;
     }
   }

@@ -132,7 +132,7 @@ const EventThread = (props: any) => {
                 Recent Events
               </span>
               <div>
-                <Link to="">
+                <Link to="/analytics">
                   <button className="btn btn-sm btn-dark">
                     <i className="mr-2 la la-ellipsis-h" />
                     View All
