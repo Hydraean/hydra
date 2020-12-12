@@ -249,6 +249,40 @@ const Mapbox = (props) => {
       });
     };
 
+
+    // ocean depth data
+    const AddOceanDepthData = () => {
+      map.addSource('10m-bathymetry-81bsvj', {
+        type: 'vector',
+        url: 'mapbox://mapbox.9tm8dx88'
+        });
+
+        map.addLayer(
+        {
+        'id': '10m-bathymetry-81bsvj',
+        'type': 'fill',
+        'source': '10m-bathymetry-81bsvj',
+        'source-layer': '10m-bathymetry-81bsvj',
+        'layout': {},
+        'paint': {
+        'fill-outline-color': 'hsla(337, 82%, 62%, 0)',
+        // cubic bezier is a four point curve for smooth and precise styling
+        // adjust the points to change the rate and intensity of interpolation
+        'fill-color': [
+        'interpolate',
+        ['cubic-bezier', 0, 0.5, 1, 0.5],
+        ['get', 'DEPTH'],
+        200,
+        '#0A1027',
+        9000,
+        '#261e5c'
+        ]
+        }
+        },
+        'land-structure-polygon'
+        );
+    }
+
     map.on("load", () => {
       map.addSource("points", {
         type: "geojson",
@@ -260,6 +294,7 @@ const Mapbox = (props) => {
 
       InitReportLayer();
       addTrack();
+      AddOceanDepthData()
     });
 
     // test get coordinates of every click

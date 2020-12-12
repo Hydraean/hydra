@@ -596,6 +596,21 @@ Usage
   }
 }
 
+// event action buttons
+
+.event-action-buttons {
+  position: sticky;
+  width: auto;
+  bottom: 0px;
+  margin-top: 50px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  background: #09152794;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  border: 0.2px solid rgb(46, 44, 56);
+}
+
 @media (max-width: 600px) {
   // map page responsiveness
 

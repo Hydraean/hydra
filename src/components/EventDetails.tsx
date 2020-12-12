@@ -17,7 +17,7 @@ const EventDetails = (props: any) => {
   const [verfiying, setVerify] = useState(false);
   const [locationData, setlocationData] = useState(null);
 
-  const verifyReport = () => {
+   const verifyReport = () => {
     let reportID = event.id;
     nprogress.start();
     setVerify(true);
@@ -70,6 +70,7 @@ const EventDetails = (props: any) => {
   }, []);
 
   return (
+    <>
     <div className="fade-in">
       <div className="events-header">
         <span className="text-active">
@@ -177,8 +178,10 @@ const EventDetails = (props: any) => {
             </div>
           );
         })}
+    </div>
 
-      <div className="d-flex justify-content-center mt-4">
+     <div className="event-action-buttons">
+     <div className="d-flex justify-content-center">
         <button
           className="btn btn-success mr-4"
           onClick={verifyReport}
@@ -195,7 +198,8 @@ const EventDetails = (props: any) => {
           Cancel
         </button>
       </div>
-    </div>
+     </div>
+    </>
   );
 };
 
