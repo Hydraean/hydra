@@ -180,7 +180,7 @@ const EventDetails = (props: any) => {
         })}
     </div>
 
-     <div className="event-action-buttons">
+     <div className="event-action-buttons fade-in-bottom dl-2">
      <div className="d-flex justify-content-center">
         <button
           className="btn btn-success mr-4"

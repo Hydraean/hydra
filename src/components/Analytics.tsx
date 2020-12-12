@@ -105,15 +105,26 @@ const Analytics = (props: any) => {
           <div className="d-flex mb-4" style={{ width: "89%" }}>
             <ShapeChart width={800} height={200} />
             <div className="area-card">
-              <small className="text-muted">
+
+            <div className="card-content">
+            <small className="text-muted">
                 <i className="la la-line-chart text-danger" /> Activiy Overview
               </small>
-              <h1 className="mt-2">FMA-07</h1>
+              <h1 className="mt-2">All Records</h1>
               <small>Fishery management area 7</small>
               <br />
-              <small className="text-muted">
+              <small className="text-muted mr-2">
                 Historical Data on: Apr 12 - Oct 2020
               </small>
+            </div>
+
+            <div className="fma-card-actions">
+            <button><i className="la la-calendar mr-2"/>All Records</button>
+              <button><i className="la la-user mr-2"/> Select FMA</button>
+              <button><i className="la la-calendar mr-2"/>Select Date</button>
+            </div>
+
+
             </div>
           </div>
 

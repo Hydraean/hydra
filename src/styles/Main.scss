@@ -482,12 +482,36 @@ Usage
   margin-left: 20px;
   border-radius: 5px;
   padding: 20px 30px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
 
   h1 {
     color: #40f5e6 !important;
     font-weight: 100;
     border-bottom: 3px solid #40f5e6;
     width: fit-content;
+  }
+
+  .fma-card-actions {
+    width: 150px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    // background: #020c1b6b;
+    border-radius: 5px;
+    padding: 0px 10px;
+
+    button {
+      background: #000;
+      margin-bottom: 10px;
+      font-size: 13px;
+      border-radius: 2px;
+      padding: 5px 10px;
+      background: linear-gradient(to right, #2c0ba5, #1d4f9e);
+      color: #fff;
+    }
   }
 }
 
