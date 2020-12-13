@@ -16,6 +16,10 @@ const selectFMA =(fma:any)=>{
   setTimeout(()=>{
      props.setShapeChartData(fmaIncidents.length > 0 ? [...fmaIncidents,...noDataEntry] : [...noDataEntry, ...noDataEntry])
   },200)
+  props.setFilterDates({
+    startDate: null,
+    endDate: null
+  })
 }
 
  return(

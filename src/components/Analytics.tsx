@@ -11,6 +11,7 @@ import ShapeChart from "./ShapeChart";
 import FMASelector from "./FmaSelector";
 import AreaChartSkeleton from "./AreaChartSkeleton";
 import DateFilters from "./DateFilters";
+import moment from 'moment'
 
 const Analytics = () => {
 
@@ -49,7 +50,44 @@ const Analytics = () => {
       setShapeChartData(res.data);
       nprogress.done();
     });
+    // reset date filter
+    setFilterDates({
+      startDate: null,
+      endDate: null
+    })
   };
+
+
+const filterByDate = (start:any,end:any) => {
+
+  let noDataEntry = [{date: Date.now(), activityCount: 0}]
+
+  nprogress.set(0.4);
+  axios.get(`${API_URL}/analytics/incidents/date-search/?fma=${fma.fma}&startDate=${start}&endDate=${end}`).then((res) => {
+    setShapeChartData([])
+
+   setTimeout(() => {
+    if(res.data.results.length > 0){
+    let results = [...res.data.results, ...noDataEntry]
+    setShapeChartData(results);
+    }else{
+    setShapeChartData([...noDataEntry, ...noDataEntry]);
+    }
+    nprogress.done();
+   }, 200);
+
+  })
+  .catch(err=>{
+    alert(err)
+  })
+
+}
+
+
+const formatDate = (date:any)=>{
+  return moment(date).format("MMM D, YYYY")
+}
+
 
   const setAllRecords = () =>{
     setShapeChartData([])
@@ -62,6 +100,10 @@ const Analytics = () => {
         description: "Displaying data from all FMAs"
       }
     )
+    setFilterDates({
+      startDate: null,
+      endDate: null
+    })
   }
 
   const searchEvents = () => {
@@ -163,7 +205,7 @@ const Analytics = () => {
                      <small className="text-muted mr-2">
                        Historical Data on:
                        <span className="text-active">
-                         {filterDates.startDate && filterDates.endDate ? ` Date1 - Date2` : " All Dates"}
+                         {filterDates.startDate && filterDates.endDate ? ` ${formatDate(filterDates.startDate)} - ${formatDate(filterDates.endDate)}` : " All Dates"}
                          </span>
                      </small>
                    </div>
@@ -389,6 +431,7 @@ const Analytics = () => {
       setFMA={setFMA}
       setShapeChartData={setShapeChartData}
       currentFMA={fma}
+      setFilterDates={setFilterDates}
      />
      )}
 
@@ -397,6 +440,9 @@ const Analytics = () => {
        onClose={()=>{
          showDateSelector(false)
        }}
+       setFilterDates={setFilterDates}
+       filterDates={filterDates}
+       applyFilters={filterByDate}
        />
      )}
     </>
