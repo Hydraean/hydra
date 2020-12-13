@@ -10,12 +10,14 @@ import StatCards from "./StatCards";
 import ShapeChart from "./ShapeChart";
 import FMASelector from "./FmaSelector";
 
-const Analytics = (props: any) => {
+const Analytics = () => {
+
   const [events, setEvents] = useState(null);
   const [currentEvent, setcurrentEvent] = useState(null);
   const [query, setQuery] = useState(null);
   const [showSelector, setShowSelector] = useState(false)
   const [analytics, setAnalytics] = useState({})
+  const [shapeChartData,setShapeChartData] = useState([])
   const [fma,setFMA] = useState({
     fma: "All Records",
     description: "Displaying data from all FMAs"
@@ -36,6 +38,12 @@ const Analytics = (props: any) => {
     nprogress.set(0.4);
     axios.get(`${API_URL}/analytics`).then((res) => {
       setAnalytics(res.data);
+      nprogress.done();
+    });
+
+    nprogress.set(0.4);
+    axios.get(`${API_URL}/analytics/incidents/all`).then((res) => {
+      setShapeChartData(res.data);
       nprogress.done();
     });
   };
@@ -129,36 +137,42 @@ const Analytics = (props: any) => {
           <StatCards data={events} />
 
           <div className="d-flex mb-4" style={{ width: "89%" }}>
-            <ShapeChart width={800} height={200} />
-            <div className="area-card">
 
-            <div className="card-content">
-            <small className="text-muted">
-                <i className="la la-line-chart text-danger" /> Activiy Overview
-              </small>
-              <h1 className="mt-2">{fma.fma}</h1>
-              <small>{fma.description}</small>
-              <br />
-              <small className="text-muted mr-2">
-                Historical Data on:
-                <span className="text-active">
-                  {filterDates.startDate && filterDates.endDate ? ` Date1 - Date2` : " All Dates"}
-                  </span>
-              </small>
-            </div>
+            {shapeChartData.length !== 0 && (
+             <ShapeChart width={800} height={200} chartData={shapeChartData} />
+            )}
 
-            <div className="fma-card-actions">
-            <button onClick={setAllRecords}><i className="la la-calendar mr-2"/>All Records</button>
-              <button
-              onClick={()=>{
-                setShowSelector(true)
-              }}
-              ><i className="la la-crosshairs mr-2"/> Select FMA</button>
-              <button><i className="la la-calendar mr-2"/>Select Date</button>
-            </div>
+            {shapeChartData.length > 0 && (
+                   <div className="area-card fade-in dl-3">
+
+                   <div className="card-content">
+                   <small className="text-muted">
+                       <i className="la la-line-chart text-danger" /> Activiy Overview
+                     </small>
+                     <h1 className="mt-2">{fma.fma}</h1>
+                     <small>{fma.description}</small>
+                     <br />
+                     <small className="text-muted mr-2">
+                       Historical Data on:
+                       <span className="text-active">
+                         {filterDates.startDate && filterDates.endDate ? ` Date1 - Date2` : " All Dates"}
+                         </span>
+                     </small>
+                   </div>
+
+                   <div className="fma-card-actions">
+                   <button onClick={setAllRecords}><i className="la la-calendar mr-2"/>All Records</button>
+                     <button
+                     onClick={()=>{
+                       setShowSelector(true)
+                     }}
+                     ><i className="la la-crosshairs mr-2"/> Select FMA</button>
+                     <button><i className="la la-calendar mr-2"/>Select Date</button>
+                   </div>
 
 
-            </div>
+                   </div>
+            )}
           </div>
 
           <div className="col-md-11">
@@ -363,6 +377,7 @@ const Analytics = (props: any) => {
         setShowSelector(false)
       }}
       setFMA={setFMA}
+      setShapeChartData={setShapeChartData}
       currentFMA={fma}
      />
      )}

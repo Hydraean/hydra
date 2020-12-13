@@ -8,11 +8,15 @@ const fma_list = props.data.fma_list
 const selectFMA =(fma:any)=>{
   props.setFMA(fma)
   props.onClose()
+
+  let fmaIncidents = props.data.incidents_overview.find((x:any)=> x.fma === fma.fma).records
+  props.setShapeChartData([])
+  props.setShapeChartData(fmaIncidents)
 }
 
  return(
   <>
-  <div className="modal-wrapper fade-in"/>
+  <div className="modal-wrapper fade-in" onClick={props.onClose}/>
   <div className="modal-drawer slide-in-right">
     <div className="modal-close" onClick={props.onClose}>
       <i className="la la-times"></i>

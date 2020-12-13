@@ -11,27 +11,6 @@ import { LinearGradient } from "@vx/gradient";
 import { max, extent, bisector } from "d3-array";
 import { timeFormat } from "d3-time-format";
 
-// type TooltipData = AppleStock;
-let testData: any =[
-    {
-      "date": "08-21-2020",
-      "activityCount": 4
-    },
-    {
-      "date": "11-01-2020",
-      "activityCount": 18
-    },
-    {
-      "date": "11-28-2020",
-      "activityCount": 1
-    }
-  ]
-
-
-type TooltipData = AppleStock;
-
-// const stock = appleStock.slice(800);
-const stock = testData;
 export const background = "#051C3F";
 export const background2 = "#204051";
 export const accentColor = "#C65859";
@@ -55,7 +34,12 @@ export type AreaProps = {
   width: number;
   height: number;
   margin?: { top: number; right: number; bottom: number; left: number };
+  chartData?:any;
 };
+
+type TooltipData = AppleStock;
+
+
 
 export default withTooltip<AreaProps, TooltipData>(
   ({
@@ -67,7 +51,14 @@ export default withTooltip<AreaProps, TooltipData>(
     tooltipData,
     tooltipTop = 0,
     tooltipLeft = 0,
+    chartData
   }: AreaProps & WithTooltipProvidedProps<TooltipData>) => {
+
+// type TooltipData = AppleStock;
+let testData: any = chartData
+const stock = testData;
+
+
     if (width < 10) return null;
 
     // bounds
@@ -123,7 +114,7 @@ export default withTooltip<AreaProps, TooltipData>(
     );
 
     return (
-      <div>
+      <div className="fade-in dl-2">
         <svg width={width} height={height}>
           <rect
             x={0}
