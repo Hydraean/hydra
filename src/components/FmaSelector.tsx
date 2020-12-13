@@ -9,9 +9,13 @@ const selectFMA =(fma:any)=>{
   props.setFMA(fma)
   props.onClose()
 
+  let noDataEntry = [{date: Date.now(), activityCount: 0}]
+
   let fmaIncidents = props.data.incidents_overview.find((x:any)=> x.fma === fma.fma).records
   props.setShapeChartData([])
-  props.setShapeChartData(fmaIncidents)
+  setTimeout(()=>{
+     props.setShapeChartData(fmaIncidents.length > 0 ? [...fmaIncidents,...noDataEntry] : [...noDataEntry, ...noDataEntry])
+  },200)
 }
 
  return(

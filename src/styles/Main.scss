@@ -636,6 +636,14 @@ Usage
   border: 0.2px solid rgb(46, 44, 56);
 }
 
+.area-skeleton-card {
+  width: 200%;
+  height: 200px;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, #051c3f, #3e4c525b);
+  padding: 20px 30px;
+}
+
 @media (max-width: 600px) {
   // map page responsiveness
 

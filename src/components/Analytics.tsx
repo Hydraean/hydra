@@ -9,6 +9,8 @@ import TableSkeleton from "./TableSkeleton";
 import StatCards from "./StatCards";
 import ShapeChart from "./ShapeChart";
 import FMASelector from "./FmaSelector";
+import AreaChartSkeleton from "./AreaChartSkeleton";
+import DateFilters from "./DateFilters";
 
 const Analytics = () => {
 
@@ -26,6 +28,7 @@ const Analytics = () => {
     startDate: null,
     endDate: null,
   })
+  const [dateSelector,showDateSelector] = useState(true)
 
   const fetchIncidents = () => {
     setEvents(null);
@@ -49,6 +52,10 @@ const Analytics = () => {
   };
 
   const setAllRecords = () =>{
+    setShapeChartData([])
+    setTimeout(()=>{
+      fetchIncidents()
+    },200)
     setFMA(
       {
         fma: "All Records",
@@ -138,12 +145,13 @@ const Analytics = () => {
 
           <div className="d-flex mb-4" style={{ width: "89%" }}>
 
-            {shapeChartData.length !== 0 && (
+            {shapeChartData.length > 0 ? (
              <ShapeChart width={800} height={200} chartData={shapeChartData} />
+            ):(
+             <AreaChartSkeleton/>
             )}
 
-            {shapeChartData.length > 0 && (
-                   <div className="area-card fade-in dl-3">
+                   <div className="area-card fade-in">
 
                    <div className="card-content">
                    <small className="text-muted">
@@ -167,12 +175,14 @@ const Analytics = () => {
                        setShowSelector(true)
                      }}
                      ><i className="la la-crosshairs mr-2"/> Select FMA</button>
-                     <button><i className="la la-calendar mr-2"/>Select Date</button>
+                     <button onClick={()=>{
+                       showDateSelector(true)
+                     }}><i className="la la-calendar mr-2"/>Select Date</button>
                    </div>
 
 
                    </div>
-            )}
+
           </div>
 
           <div className="col-md-11">
@@ -380,6 +390,14 @@ const Analytics = () => {
       setShapeChartData={setShapeChartData}
       currentFMA={fma}
      />
+     )}
+
+     {dateSelector && (
+       <DateFilters
+       onClose={()=>{
+         showDateSelector(false)
+       }}
+       />
      )}
     </>
   );
