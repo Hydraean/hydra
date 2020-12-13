@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from "react";
 import { AreaClosed, Line, Bar } from "@vx/shape";
-import appleStock, { AppleStock } from "@vx/mock-data/lib/mocks/appleStock";
+import { AppleStock } from "@vx/mock-data/lib/mocks/appleStock";
 import { curveMonotoneX } from "@vx/curve";
 import { GridRows, GridColumns } from "@vx/grid";
 import { scaleTime, scaleLinear } from "@vx/scale";
@@ -12,16 +12,22 @@ import { max, extent, bisector } from "d3-array";
 import { timeFormat } from "d3-time-format";
 
 // type TooltipData = AppleStock;
-let testData: any = [
-  {
-    date: "August 12,2020",
-    close: 10,
-  },
-  {
-    date: Date.now(),
-    close: 200,
-  },
-];
+let testData: any =[
+    {
+      "date": "08-21-2020",
+      "activityCount": 4
+    },
+    {
+      "date": "11-01-2020",
+      "activityCount": 18
+    },
+    {
+      "date": "11-28-2020",
+      "activityCount": 1
+    }
+  ]
+
+
 type TooltipData = AppleStock;
 
 // const stock = appleStock.slice(800);
@@ -42,7 +48,7 @@ const formatDate = timeFormat("%b %d, '%y");
 
 // accessors
 const getDate = (d: AppleStock) => new Date(d.date);
-const getStockValue = (d: AppleStock) => d.close;
+const getStockValue = (d: any) => d.activityCount;
 const bisectDate = bisector<AppleStock, Date>((d) => new Date(d.date)).left;
 
 export type AreaProps = {

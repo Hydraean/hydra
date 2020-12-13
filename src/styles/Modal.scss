@@ -1,0 +1,101 @@
+.modal-wrapper {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: 999;
+  top: 0px;
+  right: 0px;
+  background: rgba(20, 16, 77, 0.26);
+  backdrop-filter: blur(3px);
+}
+
+.modal-drawer {
+  position: fixed;
+  height: 100vh;
+  width: 400px;
+  right: 0px;
+  top: 0px;
+  z-index: 999;
+  background: #04112e;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 20px 30px;
+  padding-top: 40px;
+
+  .modal-close {
+    $size: 40px;
+    height: $size;
+    width: $size;
+    border-radius: 100%;
+    border: 0.3px solid #63c9c0;
+    display: grid;
+    position: absolute;
+    right: 25px;
+    top: 35px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    i {
+      margin: auto;
+      color: grey;
+    }
+
+    &:hover {
+      background: #fff;
+      border-color: #fff;
+      transition: 0.3s;
+
+      i {
+        color: rgb(14, 3, 3);
+      }
+    }
+  }
+
+  .selector-content {
+    h2 {
+      color: rgb(117, 201, 204) !important;
+      font-weight: 100;
+    }
+
+    hr {
+      border-color: rgb(59, 63, 85);
+    }
+
+    .selector-item {
+      width: 100%;
+      border-bottom: 0.2px solid rgb(59, 63, 85);
+      padding: 10px 20px;
+      transition: 0.3s;
+      cursor: pointer;
+
+      small {
+        position: relative;
+        top: -7px;
+        transition: 0.3s;
+      }
+
+      &:hover {
+        background: rgb(6, 36, 92);
+        border-left: 5px solid #63c9c0;
+        transition: 0.3s;
+
+        small {
+          color: #fff;
+          transition: 0.3s;
+        }
+      }
+
+      &.active {
+        background: rgb(6, 36, 92);
+        border-left: 5px solid #d49037;
+        transition: 0.3s;
+        cursor: default;
+
+        small {
+          color: #fff;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}

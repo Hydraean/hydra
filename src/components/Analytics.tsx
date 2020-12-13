@@ -8,11 +8,22 @@ import IncidentDetails from "./IncidentDetails";
 import TableSkeleton from "./TableSkeleton";
 import StatCards from "./StatCards";
 import ShapeChart from "./ShapeChart";
+import FMASelector from "./FmaSelector";
 
 const Analytics = (props: any) => {
   const [events, setEvents] = useState(null);
   const [currentEvent, setcurrentEvent] = useState(null);
   const [query, setQuery] = useState(null);
+  const [showSelector, setShowSelector] = useState(false)
+  const [analytics, setAnalytics] = useState({})
+  const [fma,setFMA] = useState({
+    fma: "All Records",
+    description: "Displaying data from all FMAs"
+  })
+  const [filterDates, setFilterDates] = useState({
+    startDate: null,
+    endDate: null,
+  })
 
   const fetchIncidents = () => {
     setEvents(null);
@@ -21,7 +32,22 @@ const Analytics = (props: any) => {
       setEvents(res.data);
       nprogress.done();
     });
+
+    nprogress.set(0.4);
+    axios.get(`${API_URL}/analytics`).then((res) => {
+      setAnalytics(res.data);
+      nprogress.done();
+    });
   };
+
+  const setAllRecords = () =>{
+    setFMA(
+      {
+        fma: "All Records",
+        description: "Displaying data from all FMAs"
+      }
+    )
+  }
 
   const searchEvents = () => {
     setEvents(null);
@@ -110,17 +136,24 @@ const Analytics = (props: any) => {
             <small className="text-muted">
                 <i className="la la-line-chart text-danger" /> Activiy Overview
               </small>
-              <h1 className="mt-2">All Records</h1>
-              <small>Fishery management area 7</small>
+              <h1 className="mt-2">{fma.fma}</h1>
+              <small>{fma.description}</small>
               <br />
               <small className="text-muted mr-2">
-                Historical Data on: Apr 12 - Oct 2020
+                Historical Data on:
+                <span className="text-active">
+                  {filterDates.startDate && filterDates.endDate ? ` Date1 - Date2` : " All Dates"}
+                  </span>
               </small>
             </div>
 
             <div className="fma-card-actions">
-            <button><i className="la la-calendar mr-2"/>All Records</button>
-              <button><i className="la la-user mr-2"/> Select FMA</button>
+            <button onClick={setAllRecords}><i className="la la-calendar mr-2"/>All Records</button>
+              <button
+              onClick={()=>{
+                setShowSelector(true)
+              }}
+              ><i className="la la-crosshairs mr-2"/> Select FMA</button>
               <button><i className="la la-calendar mr-2"/>Select Date</button>
             </div>
 
@@ -322,6 +355,17 @@ const Analytics = (props: any) => {
           </div>
         </div>
       </div>
+
+     {showSelector && (
+     <FMASelector
+      data={analytics}
+      onClose={()=>{
+        setShowSelector(false)
+      }}
+      setFMA={setFMA}
+      currentFMA={fma}
+     />
+     )}
     </>
   );
 };
