@@ -1,12 +1,15 @@
 # hydra
 
+[![hydra-app-banner](https://i.ibb.co/sstcB1q/hydra-app.png)]()
+
 > The Web Application for Project Seantinel Cloud-based Admin Dashboard
 
-## Documentation
+### Features
 
-> The complete project documentation can be found here:
-
-https://docs.google.com/document/d/1WA-s12B3Y8vTE4WQVeguRMCxdUF_XfPRMaNKsNOTw0c/edit#heading=h.z6ne0og04bp5
+- Draw line paths of reports with multiple geolocation details
+- Realtime updates
+- Advanced mapping UI
+- Robust analytics
 
 > This repository has a dedicated mirror for deployment:
 
@@ -20,7 +23,7 @@ Install Dependencies:
 yarn
 ```
 
-Development:
+### Development:
 
 ```sh
 yarn start

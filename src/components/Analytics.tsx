@@ -29,7 +29,7 @@ const Analytics = () => {
     startDate: null,
     endDate: null,
   })
-  const [dateSelector,showDateSelector] = useState(true)
+  const [dateSelector,showDateSelector] = useState(false)
 
   const fetchIncidents = () => {
     setEvents(null);
