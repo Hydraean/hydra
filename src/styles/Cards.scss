@@ -1,10 +1,11 @@
 $details-card-bg: #283042;
+$event-card-bg: rgb(29, 28, 28);
 
 .event-card {
   padding: 10px;
   font-size: 13px;
   border-radius: 3px;
-  background: rgb(29, 28, 28);
+  background: $event-card-bg;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -43,8 +44,10 @@ $details-card-bg: #283042;
 
   &:hover {
     transition: 0.3s;
+    border-left: 5px solid rgb(69, 207, 200);
+    background: rgb(46, 44, 44);
     color: #fff;
-    box-shadow: 0px 0px 12px 3px rgba(9, 114, 128, 0.37);
+    box-shadow: 0px 0px 12px 3px rgba(9, 114, 128, 0.233);
   }
 }
 
@@ -164,6 +167,8 @@ $details-card-bg: #283042;
   border-radius: 3px;
   border: 1px solid rgb(99, 153, 224);
   border-left: 5px solid rgb(69, 207, 200);
+  border-right: 5px solid rgb(69, 207, 200);
+  text-align: center;
 }
 
 .event-location-updates {
@@ -193,4 +198,42 @@ $details-card-bg: #283042;
   left: -9px;
   margin-top: 35px;
   color: rgb(102, 235, 217);
+}
+
+// snippet tag
+
+.distance-tag {
+  padding: 10px;
+  font-size: 13px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  color: rgba(255, 255, 255, 0.63);
+  border: 0.1px solid rgba(221, 221, 221, 0.123);
+  background: #121c3380;
+  border-radius: 3px;
+
+  strong {
+    color: rgb(100, 228, 237);
+  }
+
+  i {
+    color: rgb(236, 129, 42);
+  }
+
+  span {
+    &.fma-tag {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background: rgba(30, 30, 105, 0.534) !important;
+      color: #fff;
+      border-left: 5px solid rgb(97, 236, 241);
+
+      &.flagged {
+        background: rgba(141, 69, 67, 0.534) !important;
+        border-left: 5px solid rgb(240, 84, 79);
+        border-right: 5px solid rgb(240, 84, 79);
+      }
+    }
+  }
 }
