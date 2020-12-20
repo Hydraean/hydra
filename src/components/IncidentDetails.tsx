@@ -5,6 +5,7 @@ import axios from "axios";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import nprogress from "nprogress";
 import LocationUpdates from "./LocationUpdates";
+import EventMast from "./EventMast";
 
 const IncidentDetails = (props: any) => {
   const event = props.data;
@@ -47,21 +48,7 @@ const IncidentDetails = (props: any) => {
         </div>
 
         <div className="fade-in">
-          {event.type === "illegal_fishing" && (
-            <div className="event-alert">
-              <div className="pulse-alert p-2">
-                <i className="la la-fish la-4x" />
-              </div>
-            </div>
-          )}
-
-          {event.type === "emergency" && (
-            <div className="distress-alert">
-              <div className="pulse-alert p-2">
-                <i className="la la-bolt la-4x" />
-              </div>
-            </div>
-          )}
+          <EventMast eventType={event.type} />
 
           <strong className="text-warning">{event.name}</strong>
           <h2 className="pb-2 text-white">

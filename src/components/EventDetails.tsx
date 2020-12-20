@@ -11,6 +11,7 @@ import {
 import nprogress from "nprogress";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import LocationUpdates from "./LocationUpdates";
+import EventMast from "./EventMast";
 
 const EventDetails = (props: any) => {
   const event = props.data;
@@ -83,21 +84,7 @@ const EventDetails = (props: any) => {
           </button>
         </div>
 
-        {event.type === "illegal_fishing" && (
-          <div className="event-alert">
-            <div className="pulse-alert mast">
-              <i className="la la-fish la-4x" />
-            </div>
-          </div>
-        )}
-
-        {event.type === "emergency" && (
-          <div className="distress-alert">
-            <div className="pulse-alert mast">
-              <i className="la la-bolt la-4x" />
-            </div>
-          </div>
-        )}
+        <EventMast eventType={event.type} />
 
         <strong className="text-warning">{event.title}</strong>
         <h2 className="pb-2 text-white">
