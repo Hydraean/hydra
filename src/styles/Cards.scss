@@ -237,3 +237,22 @@ $event-card-bg: rgb(29, 28, 28);
     }
   }
 }
+
+// end of report card
+
+.end-report-card {
+  width: 100%;
+  padding: 20px 30px;
+  background: #28304277;
+  display: flex;
+  justify-content: center;
+  border: 0.5px solid #47557559;
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
+  margin-top: 20px;
+
+  span {
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.74);
+  }
+}

@@ -149,6 +149,12 @@ const IncidentDetails = (props: any) => {
         </div>
 
         {event.updates && <LocationUpdates data={event.updates} />}
+
+        <div className="end-report-card">
+          <span>
+            <i className="la la-list" /> End of report
+          </span>
+        </div>
       </>
     </div>
   );

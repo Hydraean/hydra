@@ -148,6 +148,12 @@ const EventDetails = (props: any) => {
         {event.updates && <LocationUpdates data={event.updates} />}
       </div>
 
+      <div className="end-report-card">
+        <span>
+          <i className="la la-list" /> End of report
+        </span>
+      </div>
+
       <div className="event-action-buttons fade-in-bottom dl-2">
         <div className="d-flex justify-content-center">
           <button
