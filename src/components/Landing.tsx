@@ -219,7 +219,7 @@ const Landing = (props: any) => {
         <div className="mb-2">
           <div className="container  d-flex justify-content-center">
             <div className="awards">
-              <h1 className="text-active fw-100">Awards</h1>
+              <h1 className="text-active fw-100">Award</h1>
               <br />
               <br />
               <div className="container d-flex">
@@ -246,7 +246,7 @@ const Landing = (props: any) => {
                         title="Oceana Philippines"
                       >
                         <img
-                          alt="Image placeholder"
+                          alt="org logo"
                           src="https://pbs.twimg.com/profile_images/1137173613205835776/RynExFu9_400x400.png"
                         />
                       </span>
@@ -255,7 +255,7 @@ const Landing = (props: any) => {
                         className="avatar avatar-sm rounded-circle mx-1"
                         title="Karagatan Patrol"
                       >
-                        <img alt="Image placeholder" src="/kp.png" />
+                        <img alt="org logo" src="/kp.png" />
                       </span>
 
                       <span
@@ -263,7 +263,7 @@ const Landing = (props: any) => {
                         title="BFAR"
                       >
                         <img
-                          alt="Image placeholder"
+                          alt="org logo"
                           src="https://dl.airtable.com/.attachments/510edead5b22b261e1b5ff6235ca42de/dd97bee0/49739143_1181398978677784_7454153271079337984_o.jpg"
                         />
                       </span>
@@ -311,7 +311,7 @@ const Landing = (props: any) => {
                           <td>{x.title}</td>
                           <td>
                             <span>
-                              Learn More <i className="la la-angle-right" />
+                              Visit <i className="la la-angle-right" />
                             </span>
                           </td>
                         </tr>
@@ -323,6 +323,31 @@ const Landing = (props: any) => {
             </div>
 
             <hr />
+          </div>
+
+          <div className="containter mt-5 note-banner row">
+            <div className="col-lg-8">
+              <h2>Seantinel is a work in progress</h2>
+              <small className="text-white">
+                This project is being actively improved and developed since
+                September 2020, problems posed from the COVID-19 pandemic
+                hinders oppurtunities to perform pilot testing. If you have
+                inquiries or want to support the project, feel free to reach out
+                throught email. Thank you.
+              </small>
+            </div>
+
+            <div className="col-md-4 d-grid">
+              <a
+                href="mailto:bryce.mercines@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="btn btn-default">
+                  bryce.mercines@gmail.com
+                </button>
+              </a>
+            </div>
           </div>
         </div>
       </div>

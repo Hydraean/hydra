@@ -174,6 +174,11 @@ export const publishedList = [
       "https://www.facebook.com/oceana.ph/photos/a.820968671282627/3201295939916543/",
   },
   {
+    title: "Seantinel December 2020, Progress udpdate ",
+    url:
+      "https://sagipinas.now.sh/docs/seantinel#project-update-december-14-2020",
+  },
+  {
     title: "Seantinel Project Documentation",
     url: "https://sagipinas.now.sh/docs/seantinel",
   },
