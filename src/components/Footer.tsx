@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
           <div className="col-xl-6">
             <ul className="nav nav-footer justify-content-center justify-content-xl-end">
-              <li className="nav-item" title="Design based on: Argon Dashboard">
+              {/* <li className="nav-item" title="Design based on: Argon Dashboard">
                 <a
                   href="https://www.creative-tim.com/product/argon-dashboard"
                   className="nav-link"
@@ -49,14 +49,15 @@ const Footer = () => {
                   www.flaticon.com
                 </a>
               </li>
+              */}
               <li className="nav-item">
                 <a
                   href="https://github.com/Hydraean"
-                  className="nav-link"
+                  className="nav-link text-primary"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Github
+                  <i className="la la-github" /> Github
                 </a>
               </li>
             </ul>

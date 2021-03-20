@@ -77,6 +77,15 @@ const Landing = (props: any) => {
                   <span className="nav-link-inner--text">Report</span>
                 </a>
               </li>
+
+              <li className="nav-item">
+                <a
+                  href="https://sagipinas.now.sh/docs/seantinel"
+                  className="nav-link"
+                >
+                  <span className="nav-link-inner--text">Blog</span>
+                </a>
+              </li>
             </ul>
 
             <hr className="d-lg-none" />
@@ -103,7 +112,7 @@ const Landing = (props: any) => {
           <div className="container">
             <div className="header-body text-center mb-7">
               <div className="row justify-content-center">
-                <div className="col-xl-5 col-lg-6 col-md-8 px-5">
+                <div className="col-xl-8 col-lg-6 col-md-8 px-5">
                   <img src="/hlogo.png" alt="h-logo" className="landing-logo" />
                   <h1 className="text-white">Seantinel</h1>
                   <p className="text-lead text-white">
@@ -137,8 +146,10 @@ const Landing = (props: any) => {
 
       <div className="container">
         <div className="mb-7">
+          <br />
+          <br />
           <div className="page-content">
-            <div className="col-md-6">
+            <div className="col-md-5">
               <h1 className="text-active pb-3">About the Project</h1>
               <p className="text-lead text-white">
                 Seantinel is an IoT based platform that aims to provide means of
@@ -154,8 +165,8 @@ const Landing = (props: any) => {
 
             <div>
               <img
-                src="/dashboard.png"
-                className="about-img"
+                src="https://mist.now.sh/mist/sx1.gif"
+                className="about-img rounded"
                 alt="Blast Fishing"
               />
             </div>
@@ -176,6 +187,22 @@ const Landing = (props: any) => {
                 the data to the Internet, or just nearby base station for local
                 telemetry.
               </p>
+
+              <p className="text-lead text-white mt-3">
+                One of the goals of the project is to create a cost-effective
+                and open-source design for the core parts of the Hardware and
+                Software making it easy even students to replicate and build
+                their own device to make it part of the network which increases
+                the scalability of the project in the process
+              </p>
+
+              <a
+                href="https://sagipinas.now.sh/docs/seantinel"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="btn btn-primary">Learn More</button>
+              </a>
             </div>
             <div>
               <img
@@ -189,8 +216,59 @@ const Landing = (props: any) => {
       </div>
 
       <div className="container">
-        <div className="mb-7">
-          <div className="container">
+        <div className="mb-2">
+          <div className="container  d-flex justify-content-center">
+            <div className="awards">
+              <h1 className="text-active fw-100">Awards</h1>
+              <br />
+              <br />
+              <div className="container d-flex">
+                <a
+                  href="https://www.facebook.com/oceana.ph/photos/a.820968671282627/3403955139650621"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <div className="text-center award-card">
+                    <div className="grad-bar top fade-in" />
+                    <div className="award-item">
+                      <h1 className="text-white">
+                        2nd Place <br /> Karagathon 2020
+                      </h1>
+                    </div>
+                    <span className="text-white text-center text-active">
+                      First ever Karagathon, A Hackathon to combat <br />
+                      illegal fishing in the Philippines
+                    </span>
+                    <br />
+                    <div className="row justify-content-center pt-3 ">
+                      <span
+                        className="avatar avatar-sm rounded-circle mx-1"
+                        title="Oceana Philippines"
+                      >
+                        <img
+                          alt="Image placeholder"
+                          src="https://pbs.twimg.com/profile_images/1137173613205835776/RynExFu9_400x400.png"
+                        />
+                      </span>
+
+                      <span
+                        className="avatar avatar-sm rounded-circle mx-1"
+                        title="BFAR"
+                      >
+                        <img
+                          alt="Image placeholder"
+                          src="https://dl.airtable.com/.attachments/510edead5b22b261e1b5ff6235ca42de/dd97bee0/49739143_1181398978677784_7454153271079337984_o.jpg"
+                        />
+                      </span>
+                    </div>
+                    <div className="mt-4 text-active learn-link fade-in-bottom">
+                      Learn more <i className="la la-chevron-circle-right" />
+                    </div>
+                    <div className="grad-bar bottom fade-in" />
+                  </div>
+                </a>
+              </div>
+            </div>
             <hr />
           </div>
         </div>

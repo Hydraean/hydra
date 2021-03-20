@@ -677,3 +677,89 @@ Usage
     }
   }
 }
+
+.award-item {
+  width: 300px;
+  height: 210px;
+  // border: 1px solid #fff;
+  background: url("/Ribbon1.svg") no-repeat;
+  background-size: contain;
+  display: grid;
+  margin: 0px 20px;
+
+  h1 {
+    margin: auto;
+    position: relative;
+    text-align: center;
+    filter: grayscale(90%);
+    font-weight: 100;
+    top: -20px;
+    font-size: 18px;
+  }
+}
+
+.fw-100 {
+  font-weight: 100;
+}
+
+.awards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.award-card {
+  // border: 1px solid #ddd;
+  padding: 30px 20px 35px;
+  border-radius: 10px;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0px 10px;
+
+  .grad-bar {
+    height: 8px;
+    width: 100%;
+    background: linear-gradient(to right, #f3a538, #edde5d);
+    position: absolute;
+    left: 0px;
+    display: none;
+    transition: 0.3s;
+  }
+
+  .learn-link {
+    border: 0.2px solid rgb(89, 190, 143) !important;
+    padding: 2px 20px;
+    border-radius: 50px;
+    display: inline-block;
+
+    i {
+      position: relative;
+      bottom: -1px;
+      transition: 0.3s;
+    }
+  }
+
+  &:hover {
+    background: #224370;
+    box-shadow: -1px 6px 16px 4px rgba(236, 175, 95, 0.329);
+
+    transition: 0.3s;
+
+    .learn-link {
+      visibility: visible;
+      transition: 0.3s;
+
+      i {
+        margin-left: 10px;
+        transition: 0.3s;
+      }
+    }
+
+    .grad-bar {
+      display: block;
+      transition: 0.3s;
+    }
+  }
+}
