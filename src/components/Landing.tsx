@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Landing.scss";
 import Footer from "./Footer";
 import Button from "./Button";
-import { loadChart } from "./utils";
+import { loadChart, publishedList } from "./utils";
 import MobileNav from "./MobileNav";
 
 const Landing = (props: any) => {
@@ -236,8 +236,8 @@ const Landing = (props: any) => {
                       </h1>
                     </div>
                     <span className="text-white text-center text-active">
-                      First ever Karagathon, A Hackathon to combat <br />
-                      illegal fishing in the Philippines
+                      First ever Karagathon, A Hackathon to combat illegal
+                      fishing in the Philippines
                     </span>
                     <br />
                     <div className="row justify-content-center pt-3 ">
@@ -249,6 +249,13 @@ const Landing = (props: any) => {
                           alt="Image placeholder"
                           src="https://pbs.twimg.com/profile_images/1137173613205835776/RynExFu9_400x400.png"
                         />
+                      </span>
+
+                      <span
+                        className="avatar avatar-sm rounded-circle mx-1"
+                        title="Karagatan Patrol"
+                      >
+                        <img alt="Image placeholder" src="/kp.png" />
                       </span>
 
                       <span
@@ -269,6 +276,52 @@ const Landing = (props: any) => {
                 </a>
               </div>
             </div>
+
+            <div className="ml-5 bg-default" style={{ width: "900px" }}>
+              <div className="card-header bg-transparent border-0">
+                <h3 className="text-white mb-0">
+                  <i className="la la-link text-active" /> Related Links
+                </h3>
+                <small className="text-muted">
+                  Links and Publications related to the project.
+                </small>
+              </div>
+              <div className="table-responsive">
+                <table className="table align-items-center table-dark table-flush">
+                  <thead className="thead-dark">
+                    <tr>
+                      <th scope="col" className="sort" data-sort="name">
+                        Name
+                      </th>
+                      <th scope="col" className="sort" data-sort="name">
+                        Link
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="link-set">
+                    {publishedList.map((x, index) => {
+                      return (
+                        <tr
+                          className="link-item"
+                          key={index}
+                          onClick={() => {
+                            window.open(x.url, "_blank");
+                          }}
+                        >
+                          <td>{x.title}</td>
+                          <td>
+                            <span>
+                              Learn More <i className="la la-angle-right" />
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
             <hr />
           </div>
         </div>

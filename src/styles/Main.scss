@@ -763,3 +763,28 @@ Usage
     }
   }
 }
+
+.link-set {
+  .link-item {
+    border: unset !important;
+    border: 1px solid rgb(236, 125, 125) !important;
+    transition: 0.3s;
+
+    i {
+      transition: 0.3s;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: #88e9e1;
+      background: rgb(49, 84, 124) !important;
+      border-left: 5px #28cfc1 !important;
+      transition: 0.3s;
+
+      i {
+        margin-left: 10px;
+        transition: 0.3s;
+      }
+    }
+  }
+}
