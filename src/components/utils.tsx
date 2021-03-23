@@ -159,6 +159,14 @@ export const clearEventLinePath = () => {
 
 export const currentIncident = global.currentIncident;
 
+export const fetchUser = () => {
+  if (localStorage.user) {
+    return JSON.parse(localStorage.user);
+  } else {
+    return {};
+  }
+};
+
 export const publishedList = [
   {
     title: "Presented potential use of Seantinel for Maritime Surveillance",
@@ -183,3 +191,8 @@ export const publishedList = [
     url: "https://sagipinas.now.sh/docs/seantinel",
   },
 ];
+
+export const clearSession = () => {
+  localStorage.removeItem("user");
+  window.location.reload();
+};

@@ -256,3 +256,15 @@ $event-card-bg: rgb(29, 28, 28);
     color: rgba(255, 255, 255, 0.74);
   }
 }
+
+// fma cards
+
+.fma-card {
+  img {
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    border: 5px solid #283042;
+    border-radius: 5px;
+  }
+}

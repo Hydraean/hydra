@@ -8,6 +8,7 @@ import "./styles/Map.scss";
 import "./styles/Cards.scss";
 import "./styles/Main.scss";
 import "./styles/Modal.scss";
+import "./styles/Users.scss";
 import "./styles/Animations.scss";
 import Advisories from "./components/Advisories";
 import Devices from "./components/Devices";

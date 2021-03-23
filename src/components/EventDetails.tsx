@@ -12,6 +12,7 @@ import nprogress from "nprogress";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import LocationUpdates from "./LocationUpdates";
 import EventMast from "./EventMast";
+import FmaCard from "./FmaCard";
 
 const EventDetails = (props: any) => {
   const event = props.data;
@@ -144,6 +145,8 @@ const EventDetails = (props: any) => {
             <strong>Latitude:</strong> {event.coordinates.lat}
           </span>
         </div>
+
+        <FmaCard />
 
         {event.updates && <LocationUpdates data={event.updates} />}
       </div>
