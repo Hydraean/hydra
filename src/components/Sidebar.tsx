@@ -36,6 +36,10 @@ const Links = [
 ];
 
 const Sidebar = (props: any) => {
+  const toggleProfile = () => {
+    alert("lol");
+  };
+
   return (
     <>
       <div className="sidebar">
@@ -59,7 +63,7 @@ const Sidebar = (props: any) => {
           })}
         </div>
 
-        <div className="user-profile">
+        <div className="user-profile" onClick={toggleProfile}>
           <img
             src={fetchUser().imageUrl ? fetchUser().imageUrl : "hlogo.png"}
             alt="Profile"
@@ -67,30 +71,32 @@ const Sidebar = (props: any) => {
         </div>
       </div>
 
-      <div className="modal-card fade-in-bottom">
-        <div className="row">
-          <img
-            className="avatar"
-            src={fetchUser().imageUrl ? fetchUser().imageUrl : "hlogo.png"}
-            alt="profile"
-          />
-          <span className="ml-3 text-white">
-            {fetchUser().name ? fetchUser().name : "Public User"} <br />
-            <small className="text-active">
-              {fetchUser().name
-                ? "Verified User"
-                : "All the data is available to everyone."}
+      {fetchUser().name && (
+        <div className="modal-card fade-in-bottom">
+          <div className="row">
+            <img
+              className="avatar"
+              src={fetchUser().imageUrl ? fetchUser().imageUrl : "hlogo.png"}
+              alt="profile"
+            />
+            <span className="ml-3 text-white">
+              {fetchUser().name ? fetchUser().name : "Public User"} <br />
+              <small className="text-active">
+                {fetchUser().name
+                  ? "Verified User"
+                  : "All the data is available to everyone."}
 
-              <div
-                className="badge btn-default px-2 ml-1 btn-sm fade-in"
-                onClick={clearSession}
-              >
-                Login Out
-              </div>
-            </small>
-          </span>
+                <div
+                  className="badge btn-default px-2 ml-1 btn-sm fade-in"
+                  onClick={clearSession}
+                >
+                  Log Out
+                </div>
+              </small>
+            </span>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
