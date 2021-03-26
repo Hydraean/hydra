@@ -17,8 +17,9 @@ const Mapbox = (props) => {
 
     // inspect fma data
     // let fmaDelta: any = fma_data;
-    // let fmaTarget = fmaDelta.features[11];
+    // let fmaTarget = fmaDelta.features[7];
     // alert(fmaTarget.properties.FMA);
+    // console.log(fma_data);
 
     const updateIncidentLayer = () => {
       let newlayerData = fetchIncidentGeoJSON();
@@ -301,24 +302,23 @@ const Mapbox = (props) => {
       addTrack();
       // AddOceanDepthData();
 
-      // fma polygon test:
-      //   map.addSource("maine", {
-      //     type: "geojson",
-      //     data: {
-      //       type: "Feature",
-      //       geometry: fmaTarget.geometry,
-      //     },
-      //   });
-      //   map.addLayer({
-      //     id: "maine",
-      //     type: "fill",
-      //     source: "maine",
-      //     layout: {},
-      //     paint: {
-      //       "fill-color": "#57b8f0",
-      //       "fill-opacity": 0.5,
-      //     },
-      //   });
+      // map.addSource("maine", {
+      //   type: "geojson",
+      //   data: {
+      //     type: "Feature",
+      //     geometry: fmaTarget.geometry,
+      //   },
+      // });
+      // map.addLayer({
+      //   id: "maine",
+      //   type: "fill",
+      //   source: "maine",
+      //   layout: {},
+      //   paint: {
+      //     "fill-color": "#57b8f0",
+      //     "fill-opacity": 0.5,
+      //   },
+      // });
     });
 
     // test get coordinates of every click

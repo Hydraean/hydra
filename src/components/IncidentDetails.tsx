@@ -6,6 +6,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import nprogress from "nprogress";
 import LocationUpdates from "./LocationUpdates";
 import EventMast from "./EventMast";
+import FmaCard from "./FmaCard";
 
 const IncidentDetails = (props: any) => {
   const event = props.data;
@@ -101,6 +102,13 @@ const IncidentDetails = (props: any) => {
               </span>
             )}
           </div>
+
+          {event.fma && (
+            <FmaCard
+              data={event.fma}
+              location={locationData && locationData.plus_code.compound_code}
+            />
+          )}
 
           {event && (
             <div className="event-details-card">

@@ -147,7 +147,12 @@ const EventDetails = (props: any) => {
           </span>
         </div>
 
-        {/* <FmaCard /> */}
+        {event.fma && (
+          <FmaCard
+            data={event.fma}
+            location={locationData && locationData.plus_code.compound_code}
+          />
+        )}
 
         {event.updates && <LocationUpdates data={event.updates} />}
       </div>
