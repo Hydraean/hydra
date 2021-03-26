@@ -64,6 +64,21 @@ export const Toast = (message, url) => {
   }).showToast();
 };
 
+export const ErrorToast = (message) => {
+  Toastify({
+    text: message,
+    duration: 2000,
+    destination: "/analytics",
+    newWindow: false,
+    close: true,
+    gravity: "bottom", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    backgroundColor: "linear-gradient(to right, #c91821, #c91)",
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    onClick: function () {}, // Callback after click
+  }).showToast();
+};
+
 export const eventSpike = () => {
   let sbtn = document.getElementById("activityBtn") as HTMLButtonElement;
   sbtn.click();

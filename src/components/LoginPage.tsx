@@ -2,11 +2,35 @@ import React from "react";
 import "../styles/Landing.scss";
 import Footer from "./Footer";
 import { GoogleLogin } from "react-google-login";
+import axios from "axios";
+import { API_URL, ErrorToast } from "./utils";
+import nprogress from "nprogress";
 
 const LoginPage = (props: any) => {
   const responseGoogle = (response) => {
-    localStorage.user = JSON.stringify(response.profileObj);
-    window.location.href = "/Map";
+    nprogress.start();
+
+    axios({
+      url: `${API_URL}/auth/checkAccess`,
+      method: "post",
+      data: {
+        email: response.profileObj.email,
+      },
+    })
+      .then((res) => {
+        nprogress.done();
+        if (res.data.message === "Access Granted") {
+          localStorage.user = JSON.stringify(response.profileObj);
+          window.location.href = "/map";
+        } else {
+          ErrorToast("You have no Admin rights to the system.");
+        }
+      })
+      .catch((err) => {
+        nprogress.done();
+        ErrorToast("Login Failed. Please Try again later");
+        console.log(err);
+      });
   };
 
   return (
@@ -56,7 +80,6 @@ const LoginPage = (props: any) => {
                     className={"px-3"}
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
-                    // cookiePolicy={"single_host_origin"}
                   />
                 </div>
                 <div className="text-muted text-center mt-4 mb-0">
