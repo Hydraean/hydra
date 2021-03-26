@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import { mapbox_key, getCurrentLocation, fetchIncidentGeoJSON } from "./utils";
 import moment from "moment";
+// import fma_data from "../dataset/fma.json";
 
 mapboxgl.accessToken = mapbox_key;
 
@@ -13,6 +14,11 @@ const Mapbox = (props) => {
       center: [getCurrentLocation().long, getCurrentLocation().lat],
       zoom: 9.5,
     });
+
+    // inspect fma data
+    // let fmaDelta: any = fma_data;
+    // let fmaTarget = fmaDelta.features[11];
+    // alert(fmaTarget.properties.FMA);
 
     const updateIncidentLayer = () => {
       let newlayerData = fetchIncidentGeoJSON();
@@ -293,7 +299,26 @@ const Mapbox = (props) => {
 
       InitReportLayer();
       addTrack();
-      AddOceanDepthData();
+      // AddOceanDepthData();
+
+      // fma polygon test:
+      //   map.addSource("maine", {
+      //     type: "geojson",
+      //     data: {
+      //       type: "Feature",
+      //       geometry: fmaTarget.geometry,
+      //     },
+      //   });
+      //   map.addLayer({
+      //     id: "maine",
+      //     type: "fill",
+      //     source: "maine",
+      //     layout: {},
+      //     paint: {
+      //       "fill-color": "#57b8f0",
+      //       "fill-opacity": 0.5,
+      //     },
+      //   });
     });
 
     // test get coordinates of every click
@@ -356,6 +381,8 @@ const Mapbox = (props) => {
           ],
         },
       });
+
+      // add fma data
     }
 
     function updateEventLinePath() {
@@ -384,7 +411,7 @@ const Mapbox = (props) => {
     };
 
     document.getElementById("incidents-btn").onclick = () => {
-      // updateIncidentLayer();
+      updateIncidentLayer();
     };
 
     document.getElementById("incident-track").onclick = () => {

@@ -6,6 +6,7 @@ import { GoogleLogin } from "react-google-login";
 const LoginPage = (props: any) => {
   const responseGoogle = (response) => {
     localStorage.user = JSON.stringify(response.profileObj);
+    window.location.href = "/Map";
   };
 
   return (
