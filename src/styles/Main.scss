@@ -687,14 +687,26 @@ Usage
   display: grid;
   margin: 0px 20px;
 
+  .award-ribbon {
+    display: none;
+  }
+
   h1 {
     margin: auto;
     position: relative;
     text-align: center;
     filter: grayscale(90%);
     font-weight: 100;
-    top: -20px;
+    top: -10px;
     font-size: 18px;
+  }
+
+  @media (max-width: 400px) {
+    background: none;
+
+    .award-ribbon {
+      display: block;
+    }
   }
 }
 
@@ -742,6 +754,30 @@ Usage
   }
 
   &:hover {
+    background: #224370;
+    box-shadow: -1px 6px 16px 4px rgba(236, 175, 95, 0.329);
+
+    transition: 0.3s;
+
+    .learn-link {
+      visibility: visible;
+      transition: 0.3s;
+
+      i {
+        margin-left: 10px;
+        transition: 0.3s;
+      }
+    }
+
+    .grad-bar {
+      display: block;
+      transition: 0.3s;
+    }
+  }
+
+  @media (max-width: 400px) {
+    width: 100%;
+    margin-bottom: 20px;
     background: #224370;
     box-shadow: -1px 6px 16px 4px rgba(236, 175, 95, 0.329);
 
@@ -813,5 +849,10 @@ Usage
 
   @media (max-width: 700px) {
     width: unset;
+    border-radius: 0;
+
+    button {
+      margin: 20px 20px !important;
+    }
   }
 }

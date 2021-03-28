@@ -231,6 +231,7 @@ const Landing = (props: any) => {
                   <div className="text-center award-card">
                     <div className="grad-bar top fade-in" />
                     <div className="award-item">
+                      <img src="/Ribbon1.svg" className="award-ribbon mb-4" />
                       <h1 className="text-white">
                         2nd Place <br /> Karagathon 2020
                       </h1>
