@@ -38,12 +38,18 @@ const LocationUpdates = (props: any) => {
                 <span>
                   <i className="la la-chevron-circle-right mr-2" />
                   <strong>from last point:</strong>{" "}
-                  {`${data.distanceFromOrigin.toFixed(3)} km`}
+                  {`${
+                    data.distanceFromOrigin &&
+                    data.distanceFromOrigin.toFixed(3)
+                  } km`}
                 </span>
                 <span>
                   <i className="la la-chevron-circle-right mr-2" />
                   <strong>from origin:</strong>{" "}
-                  {`${data.distanceFromLastPoint.toFixed(3)} km`}
+                  {`${
+                    data.distanceFromLastPoint &&
+                    data.distanceFromLastPoint.toFixed(3)
+                  } km`}
                 </span>
                 <span
                   className={`fma-tag ${data.fma_flagged ? "" : "flagged"}`}

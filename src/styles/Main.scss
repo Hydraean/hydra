@@ -810,4 +810,8 @@ Usage
       margin: 30px 0px 0px 50px;
     }
   }
+
+  @media (max-width: 700px) {
+    width: unset;
+  }
 }

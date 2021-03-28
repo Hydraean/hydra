@@ -59,3 +59,24 @@
 .text-lead {
   line-height: 30px;
 }
+
+.award-row {
+  display: flex;
+
+  .award-links {
+    width: 900px;
+  }
+
+  .award-item {
+    width: 92% !important;
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column !important;
+
+    .award-links {
+      width: 100%;
+      margin-left: 0px !important;
+    }
+  }
+}

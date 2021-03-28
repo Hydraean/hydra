@@ -201,7 +201,7 @@ const Landing = (props: any) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="btn btn-primary">Learn More</button>
+                <button className="btn btn-primary mb-5">Learn More</button>
               </a>
             </div>
             <div>
@@ -217,12 +217,12 @@ const Landing = (props: any) => {
 
       <div className="container">
         <div className="mb-2">
-          <div className="container  d-flex justify-content-center">
+          <div className="container award-row">
             <div className="awards">
               <h1 className="text-active fw-100">Award</h1>
               <br />
               <br />
-              <div className="container d-flex">
+              <div className="container d-flex award-card-container">
                 <a
                   href="https://www.facebook.com/oceana.ph/photos/a.820968671282627/3403955139650621"
                   target="_blank"
@@ -277,7 +277,7 @@ const Landing = (props: any) => {
               </div>
             </div>
 
-            <div className="ml-5 bg-default" style={{ width: "900px" }}>
+            <div className="ml-5 bg-default award-links">
               <div className="card-header bg-transparent border-0">
                 <h3 className="text-white mb-0">
                   <i className="la la-link text-active" /> Related Links
