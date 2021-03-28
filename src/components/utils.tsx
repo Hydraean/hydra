@@ -184,6 +184,10 @@ export const fetchUser = () => {
 
 export const publishedList = [
   {
+    title: "Progress Update: March 28, 2021",
+    url: "https://sagipinas.now.sh/docs/project-update-march-28-2021",
+  },
+  {
     title: "Presented potential use of Seantinel for Maritime Surveillance",
     url: "https://www.facebook.com/oceana.ph/videos/261932312161995",
   },
