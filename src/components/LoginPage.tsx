@@ -75,7 +75,7 @@ const LoginPage = (props: any) => {
               <div className="card-header bg-transparent py-5">
                 <div className="text-center">
                   <GoogleLogin
-                    clientId="451403226679-qhc12ctq9lfvqk3mo6sdv3hmigo8rt0l.apps.googleusercontent.com"
+                    clientId="451403226679-cnrqulmtvgteba8se5dkj33qqq5ufdq7.apps.googleusercontent.com"
                     buttonText="Login with Google"
                     className={"px-3"}
                     onSuccess={responseGoogle}
