@@ -11,25 +11,24 @@ import ShapeChart from "./ShapeChart";
 import FMASelector from "./FmaSelector";
 import AreaChartSkeleton from "./AreaChartSkeleton";
 import DateFilters from "./DateFilters";
-import moment from 'moment'
+import moment from "moment";
 
 const Analytics = () => {
-
   const [events, setEvents] = useState(null);
   const [currentEvent, setcurrentEvent] = useState(null);
   const [query, setQuery] = useState(null);
-  const [showSelector, setShowSelector] = useState(false)
-  const [analytics, setAnalytics] = useState({})
-  const [shapeChartData,setShapeChartData] = useState([])
-  const [fma,setFMA] = useState({
+  const [showSelector, setShowSelector] = useState(false);
+  const [analytics, setAnalytics] = useState({});
+  const [shapeChartData, setShapeChartData] = useState([]);
+  const [fma, setFMA] = useState({
     fma: "All Records",
-    description: "Displaying data from all FMAs"
-  })
+    description: "Displaying data from all FMAs",
+  });
   const [filterDates, setFilterDates] = useState({
     startDate: null,
     endDate: null,
-  })
-  const [dateSelector,showDateSelector] = useState(false)
+  });
+  const [dateSelector, showDateSelector] = useState(false);
 
   const fetchIncidents = () => {
     setEvents(null);
@@ -53,58 +52,54 @@ const Analytics = () => {
     // reset date filter
     setFilterDates({
       startDate: null,
-      endDate: null
-    })
+      endDate: null,
+    });
   };
 
+  const filterByDate = (start: any, end: any) => {
+    let noDataEntry = [{ date: Date.now(), activityCount: 0 }];
 
-const filterByDate = (start:any,end:any) => {
+    nprogress.set(0.4);
+    axios
+      .get(
+        `${API_URL}/analytics/incidents/date-search/?fma=${fma.fma}&startDate=${start}&endDate=${end}`
+      )
+      .then((res) => {
+        setShapeChartData([]);
 
-  let noDataEntry = [{date: Date.now(), activityCount: 0}]
+        setTimeout(() => {
+          if (res.data.results.length > 0) {
+            let results = [...res.data.results, ...noDataEntry];
+            setShapeChartData(results);
+          } else {
+            setShapeChartData([...noDataEntry, ...noDataEntry]);
+          }
+          nprogress.done();
+        }, 200);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
 
-  nprogress.set(0.4);
-  axios.get(`${API_URL}/analytics/incidents/date-search/?fma=${fma.fma}&startDate=${start}&endDate=${end}`).then((res) => {
-    setShapeChartData([])
+  const formatDate = (date: any) => {
+    return moment(date).format("MMM D, YYYY");
+  };
 
-   setTimeout(() => {
-    if(res.data.results.length > 0){
-    let results = [...res.data.results, ...noDataEntry]
-    setShapeChartData(results);
-    }else{
-    setShapeChartData([...noDataEntry, ...noDataEntry]);
-    }
-    nprogress.done();
-   }, 200);
-
-  })
-  .catch(err=>{
-    alert(err)
-  })
-
-}
-
-
-const formatDate = (date:any)=>{
-  return moment(date).format("MMM D, YYYY")
-}
-
-
-  const setAllRecords = () =>{
-    setShapeChartData([])
-    setTimeout(()=>{
-      fetchIncidents()
-    },200)
-    setFMA(
-      {
-        fma: "All Records",
-        description: "Displaying data from all FMAs"
-      }
-    )
+  const setAllRecords = () => {
+    setShapeChartData([]);
+    setTimeout(() => {
+      fetchIncidents();
+    }, 200);
+    setFMA({
+      fma: "All Records",
+      description: "Displaying data from all FMAs",
+    });
     setFilterDates({
       startDate: null,
-      endDate: null
-    })
-  }
+      endDate: null,
+    });
+  };
 
   const searchEvents = () => {
     setEvents(null);
@@ -185,46 +180,56 @@ const formatDate = (date:any)=>{
         <div className="row table-content">
           <StatCards data={events} />
 
-          <div className="d-flex mb-4" style={{ width: "89%" }}>
-
+          <div className="analytics-chart">
             {shapeChartData.length > 0 ? (
-             <ShapeChart width={800} height={200} chartData={shapeChartData} />
-            ):(
-             <AreaChartSkeleton/>
+              <ShapeChart width={800} height={200} chartData={shapeChartData} />
+            ) : (
+              <AreaChartSkeleton />
             )}
 
-                   <div className="area-card fade-in">
+            <div className="area-card fade-in">
+              <div className="card-content">
+                <small className="text-muted">
+                  <i className="la la-line-chart text-danger" /> Activiy
+                  Overview
+                </small>
+                <h1 className="mt-2">{fma.fma}</h1>
+                <small>{fma.description}</small>
+                <br />
+                <small className="text-muted mr-2">
+                  Historical Data on:
+                  <span className="text-active">
+                    {filterDates.startDate && filterDates.endDate
+                      ? ` ${formatDate(filterDates.startDate)} - ${formatDate(
+                          filterDates.endDate
+                        )}`
+                      : " All Dates"}
+                  </span>
+                </small>
+              </div>
 
-                   <div className="card-content">
-                   <small className="text-muted">
-                       <i className="la la-line-chart text-danger" /> Activiy Overview
-                     </small>
-                     <h1 className="mt-2">{fma.fma}</h1>
-                     <small>{fma.description}</small>
-                     <br />
-                     <small className="text-muted mr-2">
-                       Historical Data on:
-                       <span className="text-active">
-                         {filterDates.startDate && filterDates.endDate ? ` ${formatDate(filterDates.startDate)} - ${formatDate(filterDates.endDate)}` : " All Dates"}
-                         </span>
-                     </small>
-                   </div>
-
-                   <div className="fma-card-actions">
-                   <button onClick={setAllRecords}><i className="la la-calendar mr-2"/>All Records</button>
-                     <button
-                     onClick={()=>{
-                       setShowSelector(true)
-                     }}
-                     ><i className="la la-crosshairs mr-2"/> Select FMA</button>
-                     <button onClick={()=>{
-                       showDateSelector(true)
-                     }}><i className="la la-calendar mr-2"/>Select Date</button>
-                   </div>
-
-
-                   </div>
-
+              <div className="fma-card-actions">
+                <button onClick={setAllRecords}>
+                  <i className="la la-calendar mr-2" />
+                  All Records
+                </button>
+                <button
+                  onClick={() => {
+                    setShowSelector(true);
+                  }}
+                >
+                  <i className="la la-crosshairs mr-2" /> Select FMA
+                </button>
+                <button
+                  onClick={() => {
+                    showDateSelector(true);
+                  }}
+                >
+                  <i className="la la-calendar mr-2" />
+                  Select Date
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className="col-md-11">
@@ -422,29 +427,29 @@ const formatDate = (date:any)=>{
         </div>
       </div>
 
-     {showSelector && (
-     <FMASelector
-      data={analytics}
-      onClose={()=>{
-        setShowSelector(false)
-      }}
-      setFMA={setFMA}
-      setShapeChartData={setShapeChartData}
-      currentFMA={fma}
-      setFilterDates={setFilterDates}
-     />
-     )}
+      {showSelector && (
+        <FMASelector
+          data={analytics}
+          onClose={() => {
+            setShowSelector(false);
+          }}
+          setFMA={setFMA}
+          setShapeChartData={setShapeChartData}
+          currentFMA={fma}
+          setFilterDates={setFilterDates}
+        />
+      )}
 
-     {dateSelector && (
-       <DateFilters
-       onClose={()=>{
-         showDateSelector(false)
-       }}
-       setFilterDates={setFilterDates}
-       filterDates={filterDates}
-       applyFilters={filterByDate}
-       />
-     )}
+      {dateSelector && (
+        <DateFilters
+          onClose={() => {
+            showDateSelector(false);
+          }}
+          setFilterDates={setFilterDates}
+          filterDates={filterDates}
+          applyFilters={filterByDate}
+        />
+      )}
     </>
   );
 };
