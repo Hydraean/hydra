@@ -18,11 +18,13 @@ const Links = [
     link: "/analytics",
     icon: "la-line-chart",
   },
+
   {
     name: "Devices",
     link: "/device-list",
     icon: "la-list",
   },
+
   // {
   //   name: "Device Registry",
   //   link: "/device-registry",
@@ -33,6 +35,19 @@ const Links = [
   //   link: "/report/demo",
   //   icon: "la-broadcast-tower",
   // },
+];
+
+const filterIcons = [
+  {
+    name: "Toggle Illegal Fishings points",
+    link: "#",
+    icon: "la-fish",
+  },
+  {
+    name: "Toggle Emergency Alert points",
+    link: "#",
+    icon: "la-bolt",
+  },
 ];
 
 const Sidebar = (props: any) => {
@@ -62,6 +77,23 @@ const Sidebar = (props: any) => {
             );
           })}
         </div>
+
+        {/* {props.active === "Map" && (
+          <div className="nav-items">
+            {filterIcons.map((item: any) => {
+              return (
+                <Link to={item.link}>
+                  <i
+                    className={`la la-1x nav-icon  ${item.icon} ${
+                      item.name === props.active ? "active" : ""
+                    }`}
+                    title={item.name}
+                  />
+                </Link>
+              );
+            })}
+          </div>
+        )} */}
 
         <div className="user-profile" onClick={toggleProfile}>
           <img
