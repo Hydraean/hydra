@@ -512,7 +512,7 @@ Usage
   }
 
   .fma-card-actions {
-    width: 150px;
+    width: auto;
     height: auto;
     display: flex;
     justify-content: center;
@@ -529,6 +529,16 @@ Usage
       padding: 5px 10px;
       background: linear-gradient(to right, #2e6aa1, #133a77);
       color: #fff;
+    }
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    width: 100% !important;
+    margin-left: 0px;
+
+    .fma-card-actions {
+      margin-top: 20px;
     }
   }
 }
@@ -660,6 +670,11 @@ Usage
   box-sizing: border-box;
   background: linear-gradient(to bottom, #051c3f, #3e4c525b);
   padding: 20px 30px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -667,6 +682,7 @@ Usage
 
   #event-thread {
     display: none;
+    background: rgb(22, 23, 37);
     width: 100% !important;
     bottom: 0px;
     height: 320px;
@@ -887,8 +903,8 @@ Usage
     flex-direction: column;
 
     svg {
-      width: 92%;
-      margin-left: 20px;
+      width: 100%;
+      margin-left: 0px;
       margin-bottom: 20px;
     }
   }
