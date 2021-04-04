@@ -128,11 +128,30 @@
 
 .event-mast {
   border: 5px solid #242831;
+  height: 250px;
+  width: 100%;
+
+  @media (max-width: 600px) {
+    height: auto;
+    display: flex;
+
+    .pulse-alert {
+      height: 30px;
+      width: 40px;
+      border-radius: 0px;
+      margin: unset;
+      i {
+        font-size: 20px;
+        position: relative;
+        top: -7px;
+      }
+    }
+  }
 }
 
 .event-alert {
-  height: 250px;
-  width: 100%;
+  // height: 250px;
+  // width: 100%;
   border-radius: 5px;
   background: linear-gradient(rgba(219, 119, 62, 0.5), rgba(99, 19, 9, 0.534)),
     url("../assets/mapbg.png");
@@ -146,8 +165,8 @@
 }
 
 .distress-alert {
-  height: 250px;
-  width: 100%;
+  // height: 250px;
+  // width: 100%;
   border-radius: 5px;
   background: linear-gradient(rgba(156, 24, 24, 0.5), rgba(117, 60, 175, 0.39)),
     url("../assets/mapbg.png");
