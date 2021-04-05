@@ -269,3 +269,21 @@ $event-card-bg: rgb(29, 28, 28);
     object-fit: cover;
   }
 }
+
+.report-card-alert {
+  background: #333;
+  border-radius: 7px;
+
+  padding: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to right, #23074d, #cc5333);
+  box-shadow: 0px 0px 5px 0px rgba(37, 37, 36, 0.849);
+
+  p {
+    font-weight: 500;
+    position: relative;
+    bottom: -23px;
+  }
+}

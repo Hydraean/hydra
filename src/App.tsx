@@ -47,7 +47,7 @@ function App() {
               <DeviceRegistry />
             </Route>
 
-            <Route path="/report/demo">
+            <Route path="/report/">
               <DeviceDemo />
             </Route>
 

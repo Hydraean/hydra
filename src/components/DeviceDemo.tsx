@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import { loadChart, guid, API_URL } from "./utils";
 import swal from "sweetalert2";
 import axios from "axios";
+import PulseLoader from "./PulseLoader";
+import { profile } from "console";
 
 const reportTypes = [
   {
@@ -96,6 +98,8 @@ const DeviceDemo = (props: any) => {
   };
 
   const [reportType, setreportType] = useState({ name: "", type: "" });
+  const [transmitting, setTransmit] = useState(false);
+  const [profile, setProfile] = useState(null);
 
   const submitReport = () => {
     if (!loc) {
@@ -148,21 +152,75 @@ const DeviceDemo = (props: any) => {
     }
   };
 
+  const setupProfile = () => {
+    swal
+      .mixin({
+        input: "text",
+        confirmButtonText: "Next &rarr;",
+        showCancelButton: true,
+        progressSteps: ["1", "2", "3"],
+      })
+      .queue([
+        {
+          title: "Profile Setup: Your Full Name",
+          text: "Please Provide your full name.",
+        },
+        {
+          title: "Profile Setup: Your Address",
+          text: "Please Provide your Adress / City / Municipality",
+        },
+
+        {
+          title: "Profile Setup: Position",
+          text: "example: Fisherman, Bantay Dagat, ...etc.",
+        },
+      ])
+      .then((result: any) => {
+        if (result.value) {
+          let profileData = {
+            name: result.value[0],
+            address: result.value[1],
+            postion: result.value[2],
+          };
+
+          let emptyCheck = false;
+
+          result.value.forEach((x) => {
+            if (x.trim() === "") {
+              emptyCheck = true;
+            }
+          });
+
+          if (!localStorage.reportProfile) {
+            if (!emptyCheck) {
+              localStorage.reportProfile = JSON.stringify(profileData);
+              swal.fire("Success", "you have create an account.", "success");
+              setProfile(profileData);
+            } else {
+              swal.fire(
+                "Error",
+                "you need to complete the form to create an account",
+                "error"
+              );
+            }
+          }
+        }
+      });
+  };
+
   return (
     <div className="landing-page">
       {/* Main content */}
       <div className="main-content">
         {/* Header */}
-        <div className="header bg-gradient-primary pt-5 pb-7 py-lg-8 pt-lg-9">
+        <div className="header bg-gradient-primary pt-5 pb-0 py-lg-8 pt-lg-9">
           <div className="container">
             <div className="header-body text-center mb-7">
               <div className="row justify-content-center">
                 <div className="col-xl-5 col-lg-6 col-md-8 px-5">
                   <img src="/hlogo.png" alt="h-logo" className="landing-logo" />
                   <h1 className="text-white">Seantinel</h1>
-                  <p className="text-lead text-active">
-                    Reporting Interface Demo
-                  </p>
+                  <p className="text-lead text-active">Reporting Interface</p>
                 </div>
               </div>
             </div>
@@ -185,15 +243,22 @@ const DeviceDemo = (props: any) => {
         </div>
       </div>
 
-      <div className="container mt--8 pb-5">
+      <div className="container pb-5" style={{ marginTop: "-200px" }}>
         {/* Table */}
         <div className="row justify-content-center">
           <div className="col-lg-6 col-md-8">
             <div className="card bg-secondary border-0">
               <div className="card-header bg-transparent pb-5">
+                {transmitting && (
+                  <div className="report-card-alert fade-in-bottom">
+                    <PulseLoader />
+                    <p>Transmitting Report...</p>
+                  </div>
+                )}
+
                 <div className="text-muted text-center mt-2 mb-4">
                   <small>
-                    Set your location, and complete the form before submitting
+                    Activate your location to proceed on using this feature.
                   </small>
                 </div>
                 <div className="text-center">
@@ -204,19 +269,29 @@ const DeviceDemo = (props: any) => {
                       <strong>Longitude: {loc.long}</strong>
                     </p>
                   ) : (
-                    <button
-                      className="btn btn-dark btn-icon"
-                      onClick={requestlocation}
-                    >
-                      <i className="la la-map-marker mr-2" />
-                      Set Location
-                    </button>
+                    <div>
+                      {/* <button
+                        className="btn btn-dark btn-icon"
+                        onClick={requestlocation}
+                      >
+                        <i className="la la-map-marker mr-2" />
+                        Set Location
+                      </button> */}
+
+                      <button
+                        className="btn btn-default btn-icon"
+                        onClick={setupProfile}
+                      >
+                        <i className="la la-user mr-2" />
+                        Edit Profile
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
               <div className="card-body px-lg-5 py-lg-3">
                 <div className="text-center mb-4">
-                  <strong>Specify Report Types</strong>
+                  <strong>Specify Report Type: </strong>
                 </div>
                 <ul className="incident-list">
                   {reportTypes.map((item: any, index: number) => {
@@ -246,7 +321,7 @@ const DeviceDemo = (props: any) => {
                   <strong>Report Details:</strong>
                 </div>
                 <form>
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <div className="input-group input-group-merge input-group-alternative mb-3">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
@@ -260,8 +335,8 @@ const DeviceDemo = (props: any) => {
                         type="text"
                       />
                     </div>
-                  </div>
-                  <div className="form-group">
+                  </div> */}
+                  {/* <div className="form-group">
                     <div className="input-group input-group-merge input-group-alternative mb-3">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
@@ -275,7 +350,7 @@ const DeviceDemo = (props: any) => {
                         type="text"
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="form-group">
                     <div className="input-group input-group-merge input-group-alternative">
                       <div className="input-group-prepend">
@@ -311,7 +386,7 @@ const DeviceDemo = (props: any) => {
                       className="btn btn-primary mt-4"
                       onClick={submitReport}
                     >
-                      <i className="la la-send mr-2" /> Submit Report
+                      <i className="la la-send mr-2" /> Start Report
                     </button>
                   </div>
                 </form>

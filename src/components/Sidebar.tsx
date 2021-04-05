@@ -30,11 +30,11 @@ const Links = [
   //   link: "/device-registry",
   //   icon: "la-layer-group",
   // },
-  // {
-  //   name: "Report Demo",
-  //   link: "/report/demo",
-  //   icon: "la-broadcast-tower",
-  // },
+  {
+    name: "Report Demo",
+    link: "/report/",
+    icon: "la-broadcast-tower",
+  },
 ];
 
 const filterIcons = [
