@@ -5,7 +5,6 @@ import { loadChart, guid, API_URL } from "./utils";
 import swal from "sweetalert2";
 import axios from "axios";
 import PulseLoader from "./PulseLoader";
-import { profile } from "console";
 
 const reportTypes = [
   {
@@ -35,8 +34,6 @@ const reportTypes = [
 ];
 
 const DeviceDemo = (props: any) => {
-  const [loc, setLoc] = useState(null);
-
   useEffect(() => {
     loadChart();
 
@@ -91,22 +88,22 @@ const DeviceDemo = (props: any) => {
             },
           };
 
-          console.log(payload);
+          // console.log(payload);
 
-          // axios({
-          //   method: "post",
-          //   url: `${API_URL}/add/report`,
-          //   data: payload,
-          // }).then((res) => {
-          //   if (res.data.status === "ok") {
-          //     swal.showLoading();
-          //     swal.fire(
-          //       "Report Sent!",
-          //       "your report has been sent.",
-          //       "success"
-          //     );
-          //   }
-          // });
+          axios({
+            method: "post",
+            url: `${API_URL}/add/report`,
+            data: payload,
+          }).then((res) => {
+            if (res.data.status === "ok") {
+              swal.showLoading();
+              swal.fire(
+                "Report Sent!",
+                "your report has been sent.",
+                "success"
+              );
+            }
+          });
         }
       }
     }
@@ -294,33 +291,17 @@ const DeviceDemo = (props: any) => {
                   </small>
                 </div>
                 <div className="text-center">
-                  {loc ? (
-                    <p>
-                      <strong>Latitude: {loc.lat}</strong>,
-                      <br />
-                      <strong>Longitude: {loc.long}</strong>
-                    </p>
-                  ) : (
-                    <div>
-                      {/* <button
-                        className="btn btn-dark btn-icon"
-                        onClick={requestlocation}
+                  <div>
+                    <div className={`${transmitting && "d-none"}`}>
+                      <button
+                        className="btn btn-default btn-icon"
+                        onClick={setupProfile}
                       >
-                        <i className="la la-map-marker mr-2" />
-                        Set Location
-                      </button> */}
-
-                      <div className={`${transmitting && "d-none"}`}>
-                        <button
-                          className="btn btn-default btn-icon"
-                          onClick={setupProfile}
-                        >
-                          <i className="la la-user mr-2" />
-                          Edit Profile
-                        </button>
-                      </div>
+                        <i className="la la-user mr-2" />
+                        Edit Profile
+                      </button>
                     </div>
-                  )}
+                  </div>
                 </div>
               </div>
               <div className="card-body px-lg-5 py-lg-3 ">
