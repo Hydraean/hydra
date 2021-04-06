@@ -96,12 +96,12 @@ const DeviceDemo = (props: any) => {
             data: payload,
           }).then((res) => {
             if (res.data.status === "ok") {
-              swal.showLoading();
-              swal.fire(
-                "Report Sent!",
-                "your report has been sent.",
-                "success"
-              );
+              // swal.showLoading();
+              // swal.fire(
+              //   "Report Sent!",
+              //   "your report has been sent.",
+              //   "success"
+              // );
             }
           });
         }
@@ -151,7 +151,7 @@ const DeviceDemo = (props: any) => {
         },
         {
           title: "Profile Setup: Your Address",
-          text: "Please Provide your Adress / City / Municipality",
+          text: "Please Provide your Address / City / Municipality",
         },
 
         {
