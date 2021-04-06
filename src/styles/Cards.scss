@@ -280,10 +280,38 @@ $event-card-bg: rgb(29, 28, 28);
   justify-content: center;
   background: linear-gradient(to right, #23074d, #cc5333);
   box-shadow: 0px 0px 5px 0px rgba(37, 37, 36, 0.849);
+  margin-bottom: 20px;
 
   p {
     font-weight: 500;
     position: relative;
-    bottom: -23px;
+    bottom: -13px;
+  }
+  small {
+    position: relative;
+    top: -10px;
+  }
+}
+
+.reportee-card {
+  border-radius: 5px;
+  display: flex;
+  margin-bottom: 10px;
+  background: #e7ecf8;
+  padding: 10px 15px;
+  box-shadow: 0px 0px 5px 0px rgba(104, 104, 103, 0.397);
+  border-left: 4px solid #4465c0;
+
+  i {
+    margin-right: 10px;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+
+    small {
+      color: #777c88;
+    }
   }
 }

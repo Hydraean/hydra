@@ -43,6 +43,17 @@ const DeviceDemo = (props: any) => {
     if (!localStorage.hnid) {
       localStorage.hnid = `HN-${guid()}`;
     }
+
+    if (localStorage.reportProfile) {
+      try {
+        let reportee_profile = JSON.parse(localStorage.reportProfile);
+        setProfile(reportee_profile);
+      } catch {
+        console.log("Reportee profile error");
+      }
+    } else {
+      setupProfile();
+    }
   }, []);
 
   const setPosition = (position) => {
@@ -51,16 +62,54 @@ const DeviceDemo = (props: any) => {
       long: position.coords.longitude,
     };
 
-    setLoc(newLocation);
+    if (!newLocation) {
+      swal.fire("Error", "You need to set your location!", "error");
+    } else {
+      if (reportType.name === "") {
+        swal.fire("Error", "You need select a report type!", "error");
+      } else {
+        let details = document.getElementById("rdetails") as HTMLInputElement;
 
-    swal.fire({
-      title: "Success",
-      text: "location set successfully!",
-      icon: "success",
-      showCancelButton: false,
-      showConfirmButton: false,
-      timer: 1200,
-    });
+        if (
+          (profile && profile.name.trim() === "") ||
+          profile.address.trim() === "" ||
+          details.value.trim() === ""
+        ) {
+          swal.fire("Error", "Complete report details to continue", "error");
+        } else {
+          let payload = {
+            details: details.value,
+            device_id: localStorage.hnid,
+            type: reportType.type,
+            name: reportType.name,
+            title: reportType.name,
+            address: profile.address.value,
+            reportee: profile.name.value,
+            coordinates: {
+              long: newLocation.long,
+              lat: newLocation.lat,
+            },
+          };
+
+          console.log(payload);
+
+          // axios({
+          //   method: "post",
+          //   url: `${API_URL}/add/report`,
+          //   data: payload,
+          // }).then((res) => {
+          //   if (res.data.status === "ok") {
+          //     swal.showLoading();
+          //     swal.fire(
+          //       "Report Sent!",
+          //       "your report has been sent.",
+          //       "success"
+          //     );
+          //   }
+          // });
+        }
+      }
+    }
   };
 
   const displayError = (error) => {
@@ -73,18 +122,6 @@ const DeviceDemo = (props: any) => {
   };
 
   const requestlocation = () => {
-    swal.fire({
-      title: "Requesting",
-      text:
-        "kindly accept to location prompt to pin down your current location.",
-      icon: "info",
-      showConfirmButton: false,
-      showCancelButton: true,
-      allowOutsideClick: false,
-    });
-
-    swal.showLoading();
-
     if (navigator.geolocation) {
       var timeoutVal = 10 * 1000 * 1000;
       navigator.geolocation.getCurrentPosition(setPosition, displayError, {
@@ -101,57 +138,6 @@ const DeviceDemo = (props: any) => {
   const [transmitting, setTransmit] = useState(false);
   const [profile, setProfile] = useState(null);
 
-  const submitReport = () => {
-    if (!loc) {
-      swal.fire("Error", "You need to set your location!", "error");
-    } else {
-      if (reportType.name === "") {
-        swal.fire("Error", "You need select a report type!", "error");
-      } else {
-        let username = document.getElementById("rname") as HTMLInputElement;
-        let address = document.getElementById("raddr") as HTMLInputElement;
-        let details = document.getElementById("rdetails") as HTMLInputElement;
-
-        if (
-          username.value.trim() === "" ||
-          address.value.trim() === "" ||
-          details.value.trim() === ""
-        ) {
-          swal.fire("Error", "Complete report details to continue", "error");
-        } else {
-          let payload = {
-            details: details.value,
-            device_id: localStorage.hnid,
-            type: reportType.type,
-            name: reportType.name,
-            title: reportType.name,
-            address: address.value,
-            reportee: username.value,
-            coordinates: {
-              long: loc.long,
-              lat: loc.lat,
-            },
-          };
-
-          axios({
-            method: "post",
-            url: `${API_URL}/add/report`,
-            data: payload,
-          }).then((res) => {
-            if (res.data.status === "ok") {
-              swal.showLoading();
-              swal.fire(
-                "Report Sent!",
-                "your report has been sent.",
-                "success"
-              );
-            }
-          });
-        }
-      }
-    }
-  };
-
   const setupProfile = () => {
     swal
       .mixin({
@@ -159,6 +145,7 @@ const DeviceDemo = (props: any) => {
         confirmButtonText: "Next &rarr;",
         showCancelButton: true,
         progressSteps: ["1", "2", "3"],
+        allowOutsideClick: false,
       })
       .queue([
         {
@@ -180,7 +167,7 @@ const DeviceDemo = (props: any) => {
           let profileData = {
             name: result.value[0],
             address: result.value[1],
-            postion: result.value[2],
+            position: result.value[2],
           };
 
           let emptyCheck = false;
@@ -194,7 +181,7 @@ const DeviceDemo = (props: any) => {
           if (!localStorage.reportProfile) {
             if (!emptyCheck) {
               localStorage.reportProfile = JSON.stringify(profileData);
-              swal.fire("Success", "you have create an account.", "success");
+              swal.fire("Success", "you have created an account.", "success");
               setProfile(profileData);
             } else {
               swal.fire(
@@ -203,9 +190,38 @@ const DeviceDemo = (props: any) => {
                 "error"
               );
             }
+          } else {
+            profileData = {
+              name:
+                result.value[0].trim() !== "" ? result.value[0] : profile.name,
+              address:
+                result.value[1].trim() !== ""
+                  ? result.value[1]
+                  : profile.address,
+              position:
+                result.value[2].trim() !== ""
+                  ? result.value[2]
+                  : profile.position,
+            };
+            localStorage.reportProfile = JSON.stringify(profileData);
+            setProfile(profileData);
           }
         }
       });
+  };
+
+  const startReport = () => {
+    let details = document.getElementById("rdetails") as HTMLInputElement;
+
+    if (reportType.name !== "" && profile && details.value.trim() !== "") {
+      setTransmit(true);
+
+      setInterval(() => {
+        requestlocation();
+      }, 4000);
+    } else {
+      swal.fire("Error!", `Please complete the form to continue.`, "error");
+    }
   };
 
   return (
@@ -243,7 +259,7 @@ const DeviceDemo = (props: any) => {
         </div>
       </div>
 
-      <div className="container pb-5" style={{ marginTop: "-200px" }}>
+      <div className="container" style={{ marginTop: "-200px" }}>
         {/* Table */}
         <div className="row justify-content-center">
           <div className="col-lg-6 col-md-8">
@@ -252,7 +268,23 @@ const DeviceDemo = (props: any) => {
                 {transmitting && (
                   <div className="report-card-alert fade-in-bottom">
                     <PulseLoader />
-                    <p>Transmitting Report...</p>
+                    <div>
+                      <p>Transmitting Report...</p>
+                      <small>
+                        {reportType.name} | {reportType.type}
+                      </small>
+                    </div>
+                  </div>
+                )}
+
+                {profile && (
+                  <div className="reportee-card">
+                    <i className="la la-user-circle la-4x"></i>
+                    <div className="user-info">
+                      <span>{profile.name}</span>
+                      <small>{profile.position}</small>
+                      <small>{profile.address}</small>
+                    </div>
                   </div>
                 )}
 
@@ -278,80 +310,55 @@ const DeviceDemo = (props: any) => {
                         Set Location
                       </button> */}
 
-                      <button
-                        className="btn btn-default btn-icon"
-                        onClick={setupProfile}
-                      >
-                        <i className="la la-user mr-2" />
-                        Edit Profile
-                      </button>
+                      <div className={`${transmitting && "d-none"}`}>
+                        <button
+                          className="btn btn-default btn-icon"
+                          onClick={setupProfile}
+                        >
+                          <i className="la la-user mr-2" />
+                          Edit Profile
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
               </div>
-              <div className="card-body px-lg-5 py-lg-3">
-                <div className="text-center mb-4">
-                  <strong>Specify Report Type: </strong>
+              <div className="card-body px-lg-5 py-lg-3 ">
+                <div className={`${transmitting && "d-none"}`}>
+                  <div className="text-center mb-4">
+                    <strong>Specify Report Type: </strong>
+                  </div>
+                  <ul className="incident-list">
+                    {reportTypes.map((item: any, index: number) => {
+                      return (
+                        <li
+                          key={index}
+                          className={`${
+                            reportType.name === item.name ? "selected" : ""
+                          }`}
+                          onClick={() => {
+                            setreportType(item);
+                          }}
+                        >
+                          <strong>
+                            <i
+                              className={`la la-${
+                                item.type === "emergency" ? "bolt" : "fish"
+                              } mr-2`}
+                            />{" "}
+                            {item.name}
+                          </strong>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
-                <ul className="incident-list">
-                  {reportTypes.map((item: any, index: number) => {
-                    return (
-                      <li
-                        key={index}
-                        className={`${
-                          reportType.name === item.name ? "selected" : ""
-                        }`}
-                        onClick={() => {
-                          setreportType(item);
-                        }}
-                      >
-                        <strong>
-                          <i
-                            className={`la la-${
-                              item.type === "emergency" ? "bolt" : "fish"
-                            } mr-2`}
-                          />{" "}
-                          {item.name}
-                        </strong>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <div className="text-center mb-4">
+
+                <div className={`text-center mb-4 ${transmitting && "d-none"}`}>
                   <strong>Report Details:</strong>
                 </div>
                 <form>
-                  {/* <div className="form-group">
-                    <div className="input-group input-group-merge input-group-alternative mb-3">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="la la-user" />
-                        </span>
-                      </div>
-                      <input
-                        id="rname"
-                        className="form-control"
-                        placeholder="Name"
-                        type="text"
-                      />
-                    </div>
-                  </div> */}
-                  {/* <div className="form-group">
-                    <div className="input-group input-group-merge input-group-alternative mb-3">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="la la-map" />
-                        </span>
-                      </div>
-                      <input
-                        id="raddr"
-                        className="form-control"
-                        placeholder="FMA Area / Location"
-                        type="text"
-                      />
-                    </div>
-                  </div> */}
-                  <div className="form-group">
+                  <div className={`form-group ${transmitting && "d-none"}`}>
                     <div className="input-group input-group-merge input-group-alternative">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
@@ -366,28 +373,44 @@ const DeviceDemo = (props: any) => {
                     </div>
                   </div>
 
-                  <div className="row my-4">
-                    <div className="col-12">
-                      <div className="text-center">
-                        <label>
-                          <small className="text-muted">
-                            <i className="la la-exclamation-circle text-danger" />{" "}
-                            For Demonstration purposes only. All provided
-                            information is this form will be deleted after a
-                            period of time.
-                          </small>
-                        </label>
+                  <div className={`${transmitting && "d-none"}`}>
+                    <div className="row my-4">
+                      <div className="col-12">
+                        <div className="text-center">
+                          <label>
+                            <small className="text-muted">
+                              <i className="la la-exclamation-circle text-danger" />{" "}
+                              For Demonstration purposes only. All provided
+                              information is this form will be deleted after a
+                              period of time.
+                            </small>
+                          </label>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div className="text-center mb-4">
-                    <button
-                      type="button"
-                      className="btn btn-primary mt-4"
-                      onClick={submitReport}
-                    >
-                      <i className="la la-send mr-2" /> Start Report
-                    </button>
+                    {!transmitting && (
+                      <button
+                        type="button"
+                        className="btn btn-primary mt-1"
+                        onClick={startReport}
+                      >
+                        <i className="la la-send mr-2" /> Start Report
+                      </button>
+                    )}
+
+                    {transmitting && (
+                      <button
+                        type="button"
+                        className="btn btn-default mt-1"
+                        onClick={() => {
+                          window.location.reload();
+                        }}
+                      >
+                        <i className="la la-stop mr-2" /> Stop Report
+                      </button>
+                    )}
                   </div>
                 </form>
               </div>
