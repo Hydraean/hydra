@@ -80,8 +80,8 @@ const DeviceDemo = (props: any) => {
             type: reportType.type,
             name: reportType.name,
             title: reportType.name,
-            address: profile.address.value,
-            reportee: profile.name.value,
+            address: profile.address,
+            reportee: profile.name,
             coordinates: {
               long: newLocation.long,
               lat: newLocation.lat,
