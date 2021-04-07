@@ -363,7 +363,7 @@ const Mapbox = (props) => {
         },
         paint: {
           "line-color": "#6ff",
-          "line-width": 4,
+          "line-width": 2,
           "line-gradient": [
             "interpolate",
             ["linear"],
