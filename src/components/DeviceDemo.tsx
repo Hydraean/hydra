@@ -34,8 +34,12 @@ const reportTypes = [
 ];
 
 const DeviceDemo = (props: any) => {
+  const [reportID, setReportID] = useState(null);
+
   useEffect(() => {
     loadChart();
+
+    setReportID(guid());
 
     if (!localStorage.hnid) {
       localStorage.hnid = `HN-${guid()}`;
@@ -75,6 +79,7 @@ const DeviceDemo = (props: any) => {
           swal.fire("Error", "Complete report details to continue", "error");
         } else {
           let payload = {
+            id: reportID,
             details: details.value,
             device_id: localStorage.hnid,
             type: reportType.type,
