@@ -220,7 +220,7 @@ const DeviceDemo = (props: any) => {
 
       setInterval(() => {
         requestlocation();
-      }, 4000);
+      }, 3000);
     } else {
       swal.fire("Error!", `Please complete the form to continue.`, "error");
     }
