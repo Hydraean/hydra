@@ -77,7 +77,7 @@ const LoginPage = (props: any) => {
                   <GoogleLogin
                     clientId="451403226679-cnrqulmtvgteba8se5dkj33qqq5ufdq7.apps.googleusercontent.com"
                     buttonText="Login with Google"
-                    className={"px-3"}
+                    className={"pr-3 py-1 pl-2 bg-default text-white"}
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                   />

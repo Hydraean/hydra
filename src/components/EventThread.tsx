@@ -16,6 +16,7 @@ const EventThread = (props: any) => {
   const [details, setDetails] = useState(false);
   const [report, setReport] = useState(null);
   const [events, setEvents] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const updateMapPoints = () => {
     let laterTrigger = document.getElementById(
@@ -59,6 +60,11 @@ const EventThread = (props: any) => {
     nprogress.set(0.4);
     axios.get(`${API_URL}/incidents`).then((res) => {
       setEvents(res.data);
+      if (res.data.length === 0) {
+        setLoading(false);
+      }
+      setLoading(false);
+
       nprogress.done();
       global.incidents = res.data;
       setTimeout(() => {
@@ -148,7 +154,8 @@ const EventThread = (props: any) => {
               </div>
             </div>
 
-            {events && events.length > 0 ? (
+            {events &&
+              events.length > 0 &&
               events
                 .filter((x) => x.status === "PENDING")
                 .map((event: any) => {
@@ -195,12 +202,11 @@ const EventThread = (props: any) => {
                       </span>
                     </div>
                   );
-                })
-            ) : (
-              <EventSkeleton />
-            )}
+                })}
           </>
         )}
+
+        {loading && <EventSkeleton />}
 
         {events && events.filter((x) => x.status === "PENDING").length === 0 && (
           <div className="empty-thread">
