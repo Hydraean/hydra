@@ -187,7 +187,25 @@
 
 // pulse dot
 
-@keyframes pulse-alert {
+@keyframes red-pulse {
+  0% {
+    box-shadow: 0px 0px 0px 0px rgba(218, 116, 98, 0.705);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 20px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes green-pulse {
+  0% {
+    box-shadow: 0px 0px 0px 0px rgba(123, 238, 175, 0.822);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 20px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes yellow-pulse {
   0% {
     box-shadow: 0px 0px 0px 0px rgba(245, 164, 59, 0.507);
   }
@@ -198,7 +216,7 @@
 
 .pulse-alert {
   border-radius: 100px;
-  animation: pulse-alert 1.5s infinite ease-out;
+  animation: red-pulse 1.5s infinite ease-out;
   background: rgba(192, 46, 46, 0.925);
   display: grid;
   margin: auto;
@@ -224,6 +242,7 @@
 
   &.fishing-bg {
     background: rgba(218, 178, 47, 0.925);
+    animation: yellow-pulse 1.5s infinite ease-out;
   }
 
   &.marker-selected {
@@ -231,6 +250,17 @@
     background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
     animation: pulse-selected 1s infinite ease-out;
     opacity: 1;
+  }
+
+  &.user_location_marker {
+    background: rgba(110, 230, 146, 0.925);
+    animation: green-pulse 1.5s infinite ease-out;
+    height: 25px;
+    width: 25px;
+    opacity: 1 !important;
+    i {
+      color: #444 !important;
+    }
   }
 
   &.mast {

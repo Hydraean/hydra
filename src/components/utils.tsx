@@ -121,6 +121,26 @@ export const fetchIncidentGeoJSON = () => {
     baseDataLayer.features.push(pointData);
   });
 
+  // add to marker for user location
+  if (localStorage.userLocation) {
+    let uLocation = JSON.parse(localStorage.userLocation);
+    let pointData = {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [uLocation.long, uLocation.lat],
+      },
+      properties: {
+        title: "CURRENT LOCATION",
+        uid: "1123121231231232",
+        type: "user_location",
+      },
+      locationUpdates: [],
+    };
+
+    baseDataLayer.features.push(pointData);
+  }
+
   return baseDataLayer;
 };
 

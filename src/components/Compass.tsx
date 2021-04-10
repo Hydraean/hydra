@@ -11,8 +11,13 @@ const Compass = (props: any) => {
   function tracking(pos) {
     var crd = pos.coords;
 
-    console.log(crd);
     const targetLocation = JSON.parse(localStorage.currentLocation);
+
+    // set user location
+    localStorage.userLocation = JSON.stringify({
+      lat: crd.latitude,
+      long: crd.longitude,
+    });
 
     let newBearing = getBearing(
       crd.latitude,
@@ -32,11 +37,15 @@ const Compass = (props: any) => {
     setBearing(newBearing);
     setDistance(newDistance);
 
-    // check if distance is less than 15 meters
-    if (parseFloat(newDistance) < 0.015) {
+    // check if distance is less than 12 meters
+    if (parseFloat(newDistance) < 0.012) {
       setReached(true);
     } else {
       setReached(false);
+    }
+
+    if (document.contains(document.getElementById("incidents-btn"))) {
+      document.getElementById("incidents-btn").click();
     }
   }
 
@@ -63,12 +72,19 @@ const Compass = (props: any) => {
     <div
       className={`compass-widget fade-in-bottom ${reached ? "reached" : ""}`}
     >
-      <div
-        className="compass-pointer"
-        style={{ transform: `rotate(${bearing}deg)` }}
-      >
-        <i className="la la-location-arrow text-white la-4x" />
-      </div>
+      {reached ? (
+        <div className="compass-pointer fade-in">
+          <i className="la la-check-circle text-success la-4x" />
+        </div>
+      ) : (
+        <div
+          className="compass-pointer fade-in"
+          style={{ transform: `rotate(${bearing}deg)` }}
+        >
+          <i className="la la-location-arrow text-white la-4x" />
+        </div>
+      )}
+
       <div className="degree-info">
         <small className="text-info">{bearing}°</small>
         <br />

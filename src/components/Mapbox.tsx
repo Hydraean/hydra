@@ -65,6 +65,11 @@ const Mapbox = (props) => {
           el.className = `pulse-alert map-icon ${
             marker.properties.type !== "emergency" ? "fishing-bg" : ""
           }
+          ${
+            marker.properties.type == "user_location"
+              ? "user_location_marker"
+              : ""
+          }
         %
         inm-${marker.properties.uid}
         `;
@@ -74,30 +79,34 @@ const Mapbox = (props) => {
 
           el.innerHTML = `<i class="la ${
             marker.properties.type === "emergency" ? "la-bolt" : "la-fish"
-          } text-white"></i>`;
+          } ${
+            marker.properties.type === "user_location" && "la-user-circle"
+          }  text-white"></i>`;
 
-          el.addEventListener("click", function () {
-            let xid = marker.properties.uid;
+          if (marker.properties.type !== "user_location") {
+            el.addEventListener("click", function () {
+              let xid = marker.properties.uid;
 
-            // open sidebar (for mobile view)
+              // open sidebar (for mobile view)
 
-            let sidebar = document.getElementById(
-              "event-thread"
-            ) as HTMLElement;
-            sidebar.style.display = "block";
+              let sidebar = document.getElementById(
+                "event-thread"
+              ) as HTMLElement;
+              sidebar.style.display = "block";
 
-            let cardInstance = document.getElementById(`ec-${xid}`);
+              let cardInstance = document.getElementById(`ec-${xid}`);
 
-            if (document.contains(cardInstance)) {
-              cardInstance.click();
-            } else {
-              document.getElementById("r-cancel").click();
-              setTimeout(() => {
-                let cardInstance = document.getElementById(`ec-${xid}`);
+              if (document.contains(cardInstance)) {
                 cardInstance.click();
-              }, 200);
-            }
-          });
+              } else {
+                document.getElementById("r-cancel").click();
+                setTimeout(() => {
+                  let cardInstance = document.getElementById(`ec-${xid}`);
+                  cardInstance.click();
+                }, 200);
+              }
+            });
+          }
 
           // add marker to map
           new mapboxgl.Marker(el)
@@ -334,6 +343,16 @@ const Mapbox = (props) => {
     //     date: Date.now(),
     //   };
     //   globalItem.testPath.push(nx);
+    // });
+
+    // for testing compas pointing feature
+    // map.on("click", (e: any) => {
+    //   let nx = {
+    //     long: e.lngLat.lng,
+    //     lat: e.lngLat.lat,
+    //   };
+
+    //   localStorage.currentLocation = JSON.stringify(nx);
     // });
 
     function addTrack() {
