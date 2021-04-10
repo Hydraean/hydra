@@ -73,9 +73,11 @@ const Compass = (props: any) => {
         <small className="text-info">{bearing}°</small>
         <br />
         <small className="text-info">DISTANCE: {distance} km</small>
-        <small className="badge badge-success py-2 px- mt-4">
-          Target Location Reached
-        </small>
+        {reached && (
+          <small className="badge badge-success py-2 px-2 mt-4 fade-in">
+            Target Location Reached
+          </small>
+        )}
       </div>
     </div>
   );
