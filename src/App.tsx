@@ -10,6 +10,7 @@ import "./styles/Main.scss";
 import "./styles/Modal.scss";
 import "./styles/Users.scss";
 import "./styles/Animations.scss";
+import "./styles/Compass.scss";
 import Advisories from "./components/Advisories";
 import Devices from "./components/Devices";
 import DeviceDemo from "./components/DeviceDemo";

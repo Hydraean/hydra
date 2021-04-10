@@ -40,6 +40,12 @@
         background: rgb(9, 74, 148);
         border-radius: 2px;
       }
+
+      &.active-tool {
+        color: rgb(41, 35, 29);
+        background: rgb(236, 184, 86);
+        border-radius: 2px;
+      }
     }
   }
 

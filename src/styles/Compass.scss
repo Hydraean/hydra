@@ -1,0 +1,42 @@
+.compass-widget {
+  position: fixed;
+  z-index: 999;
+  height: 220px;
+  width: 350px;
+  background: rgba(0, 0, 0, 0.418);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  left: 60px;
+  bottom: 110px;
+  border-top: 4px solid rgb(88, 167, 241);
+  display: grid;
+
+  .compass-pointer {
+    $size: 90px;
+    margin: auto;
+    height: $size;
+    width: $size;
+    border: 0.1px dashed turquoise;
+    border-radius: 100%;
+    display: grid;
+    transition: 0.3s;
+    text-align: center;
+
+    i {
+      margin: auto;
+    }
+  }
+}
+
+.degree-info {
+  // background: red;
+  display: flex;
+  height: auto;
+
+  span {
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2px;
+  }
+}
