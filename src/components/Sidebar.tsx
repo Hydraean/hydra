@@ -76,27 +76,27 @@ const Sidebar = (props: any) => {
           })}
         </div>
 
-        {/* {props.active === "Map" && ( */}
-        <div className="nav-items">
-          {actionIcons.map((item: any) => {
-            return (
-              <i
-                className={`la la-1x nav-icon  ${item.icon} ${
-                  item.name === selectedTool ? "active-tool" : ""
-                }`}
-                title={item.name}
-                onClick={() => {
-                  if (selectedTool === item.name) {
-                    selectTool("");
-                  } else {
-                    selectTool(item.name);
-                  }
-                }}
-              />
-            );
-          })}
-        </div>
-        {/*  )} */}
+        {props.active === "Map" && (
+          <div className="nav-items">
+            {actionIcons.map((item: any) => {
+              return (
+                <i
+                  className={`la la-1x nav-icon  ${item.icon} ${
+                    item.name === selectedTool ? "active-tool" : ""
+                  }`}
+                  title={item.name}
+                  onClick={() => {
+                    if (selectedTool === item.name) {
+                      selectTool("");
+                    } else {
+                      selectTool(item.name);
+                    }
+                  }}
+                />
+              );
+            })}
+          </div>
+        )}
 
         <div className="user-profile" onClick={toggleProfile}>
           <img
