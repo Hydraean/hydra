@@ -159,7 +159,7 @@ const Landing = (props: any) => {
 
               <p className="text-lead text-white">
                 The device can operate with low power requirements and does not
-                rey primarily on internet connection in order to operate.
+                rely primarily on internet connection in order to operate.
               </p>
             </div>
 
