@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getBearing, measureCoordDistance } from "./utils";
+import { getBearing, measureCoordDistance, degToCompass } from "./utils";
 
 const Compass = (props: any) => {
   const [bearing, setBearing] = useState<any>(0);
@@ -86,7 +86,10 @@ const Compass = (props: any) => {
       )}
 
       <div className="degree-info">
-        <small className="text-info">{bearing}°</small>
+        <small className="text-info">
+          {bearing}°{" "}
+          <span className="text-active">{degToCompass(bearing)}</span>
+        </small>
         <br />
         <small className="text-info">DISTANCE: {distance} km</small>
         {reached && (
