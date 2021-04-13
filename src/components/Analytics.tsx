@@ -46,9 +46,11 @@ const Analytics = () => {
 
     nprogress.set(0.4);
     axios.get(`${API_URL}/analytics/incidents/all`).then((res) => {
+      console.log(res.data);
       setShapeChartData(res.data);
       nprogress.done();
     });
+
     // reset date filter
     setFilterDates({
       startDate: null,

@@ -30,6 +30,8 @@ const EventDetails = (props: any) => {
       url: `${API_URL}/report/confirm`,
       data: {
         id: reportID,
+        email: fetchUser().email,
+        name: fetchUser().name,
       },
     })
       .then((res) => {
@@ -47,6 +49,7 @@ const EventDetails = (props: any) => {
       .catch((error) => {
         nprogress.done();
         setVerify(false);
+        console.log(error);
       });
   };
 

@@ -8,7 +8,7 @@ export const API_URL = "https://kraken-demo.herokuapp.com";
 // export const API_URL = "http://localhost:7000";
 
 export const guid = () => {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+  return "xxxxxxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,
       v = c === "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);
