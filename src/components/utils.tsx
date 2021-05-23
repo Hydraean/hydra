@@ -338,3 +338,5 @@ export const gaPV = (title: string) => {
     });
   }
 };
+
+export const Tagline = "Connecting people that protects our oceans";
