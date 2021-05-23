@@ -204,8 +204,12 @@ export const fetchUser = () => {
 
 export const publishedList = [
   {
+    title: "Progress Update: April 2021",
+    url: "https://sagipinas.vercel.app/docs/project-update-april-2021",
+  },
+  {
     title: "Progress Update: March 28, 2021",
-    url: "https://sagipinas.now.sh/docs/project-update-march-28-2021",
+    url: "https://sagipinas.vercel.app/docs/project-update-march-28-2021",
   },
   {
     title: "Presented potential use of Seantinel for Maritime Surveillance",
@@ -223,11 +227,11 @@ export const publishedList = [
   {
     title: "Seantinel December 2020, Progress udpdate ",
     url:
-      "https://sagipinas.now.sh/docs/seantinel#project-update-december-14-2020",
+      "https://sagipinas.vercel.app/docs/seantinel#project-update-december-14-2020",
   },
   {
     title: "Seantinel Project Documentation",
-    url: "https://sagipinas.now.sh/docs/seantinel",
+    url: "https://sagipinas.vercel.app/docs/seantinel",
   },
 ];
 

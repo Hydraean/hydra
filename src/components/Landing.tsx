@@ -80,7 +80,7 @@ const Landing = (props: any) => {
 
               <li className="nav-item">
                 <a
-                  href="https://sagipinas.now.sh/docs/seantinel"
+                  href="https://sagipinas.vercel.app/docs/seantinel"
                   className="nav-link"
                 >
                   <span className="nav-link-inner--text">Blog</span>
@@ -197,7 +197,7 @@ const Landing = (props: any) => {
               </p>
 
               <a
-                href="https://sagipinas.now.sh/docs/seantinel"
+                href="https://sagipinas.vercel.app/docs/seantinel"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -220,9 +220,7 @@ const Landing = (props: any) => {
           <div className="container award-row">
             <div className="awards">
               <h1 className="text-active fw-100">Award</h1>
-              <br />
-              <br />
-              <div className="container d-flex award-card-container">
+              <div className="container d-flex award-card-container mt-2">
                 <a
                   href="https://www.facebook.com/oceana.ph/photos/a.820968671282627/3403955139650621"
                   target="_blank"
@@ -236,7 +234,11 @@ const Landing = (props: any) => {
                         2nd Place <br /> Karagathon 2020
                       </h1>
                     </div>
-                    <span className="text-white text-center text-active">
+                    <br />
+                    <span
+                      className="text-white text-center text-active"
+                      // style={{ width: "100px" }}
+                    >
                       First ever Karagathon, A Hackathon to combat illegal
                       fishing in the Philippines
                     </span>
@@ -325,6 +327,9 @@ const Landing = (props: any) => {
 
             <hr />
           </div>
+
+          <br />
+          <br />
 
           <div className="containter mt-5 note-banner row">
             <div className="col-lg-8">
