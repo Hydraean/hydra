@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getBearing, measureCoordDistance, degToCompass } from "./utils";
+import { getBearing, measureCoordDistance, degToCompass, gaPV } from "./utils";
 
 const Compass = (props: any) => {
   const [bearing, setBearing] = useState<any>(0);
@@ -66,6 +66,7 @@ const Compass = (props: any) => {
 
   useEffect(() => {
     id = navigator.geolocation.watchPosition(tracking, error, options);
+    gaPV("Compass");
   }, []);
 
   return (

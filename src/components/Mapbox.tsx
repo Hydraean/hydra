@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-import { mapbox_key, getCurrentLocation, fetchIncidentGeoJSON } from "./utils";
+import {
+  mapbox_key,
+  getCurrentLocation,
+  fetchIncidentGeoJSON,
+  gaPV,
+} from "./utils";
 import moment from "moment";
 // import fma_data from "../dataset/fma.json";
 
@@ -8,6 +13,7 @@ mapboxgl.accessToken = mapbox_key;
 
 const Mapbox = (props) => {
   useEffect(() => {
+    gaPV("Map");
     const map = new mapboxgl.Map({
       container: document.getElementById("map"),
       style: "mapbox://styles/bryce06/ckaupxv3j2chg1ip6lnzupz8b",

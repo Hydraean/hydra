@@ -321,3 +321,20 @@ export function degToCompass(num) {
   ];
   return arr[val % 16];
 }
+
+declare global {
+  interface Window {
+    safari: string;
+    gtag: any;
+  }
+}
+
+export const gaPV = (title: string) => {
+  if (window.gtag) {
+    window.gtag("event", "page_view", {
+      page_location: window.location.href,
+      page_path: window.location.pathname,
+      page_title: title,
+    });
+  }
+};

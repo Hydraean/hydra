@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Landing.scss";
 import Footer from "./Footer";
-import { loadChart, guid, API_URL } from "./utils";
+import { loadChart, guid, API_URL, gaPV } from "./utils";
 import swal from "sweetalert2";
 import axios from "axios";
 import PulseLoader from "./PulseLoader";
@@ -55,6 +55,8 @@ const DeviceDemo = (props: any) => {
     } else {
       setupProfile();
     }
+
+    gaPV("report");
   }, []);
 
   const setPosition = (position) => {

@@ -12,6 +12,9 @@
       name="description"
       content="Connecting the people that connects our oceans"
     />
+    <title>Seantinel | Demo</title>
+
+    <meta property="og:title" content={"Seantinel | Demo"} />
     <meta property="og:image" content="https://mist.now.sh/mist/s1.png" />
     <meta property="og:url" content="https://seantinel-demo-blue.vercel.app/" />
     <meta
@@ -42,8 +45,22 @@
       href="https://demos.creative-tim.com/argon-dashboard/assets/css/argon.min.css?v=1.2.0"
       rel="stylesheet"
     />
-    <title>Seantinel | Demo</title>
   </head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-153524072-1"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "UA-153524072-1");
+  </script>
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

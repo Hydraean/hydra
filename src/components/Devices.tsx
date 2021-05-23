@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Map.scss";
 import Sidebar from "./Sidebar";
-import { loadChart, API_URL } from "./utils";
+import { loadChart, API_URL, gaPV } from "./utils";
 import axios from "axios";
 import moment from "moment";
 import nprogress from "nprogress";
@@ -54,6 +54,7 @@ const Devices = (props: any) => {
     loadChart();
 
     fetchDevices();
+    gaPV("Devices");
   }, []);
 
   return (
