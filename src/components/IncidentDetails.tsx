@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-import { googleMapsAPIKEY } from "./utils";
+import { gaPV, googleMapsAPIKEY, slugify } from "./utils";
 import axios from "axios";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import nprogress from "nprogress";
@@ -26,6 +26,11 @@ const IncidentDetails = (props: any) => {
           setlocationData(res.data);
           nprogress.done();
         });
+
+      gaPV(
+        "Seantinel Event",
+        `/analytics/incident/${slugify(event.type)}/${event.id}`
+      );
     }
   }, [props]);
 

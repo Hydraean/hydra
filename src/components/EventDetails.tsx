@@ -8,6 +8,8 @@ import {
   getCurrentLocation,
   clearEventLinePath,
   fetchUser,
+  gaPV,
+  slugify,
 } from "./utils";
 import nprogress from "nprogress";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -73,6 +75,7 @@ const EventDetails = (props: any) => {
   };
 
   useEffect(() => {
+    gaPV("Seantinel Event", `/map/incident/${slugify(event.type)}/${event.id}`);
     fetchLocationDetails();
   }, []);
 
