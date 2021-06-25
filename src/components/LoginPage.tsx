@@ -88,7 +88,7 @@ const LoginPage = (props: any) => {
                     Seantinel. If you wish to gain access, reach out via email
                     to:{" "}
                     <span className="text-primary">
-                      (bryce.mercines@gmail.com)
+                      (seantinel.project@gmail.com)
                     </span>
                   </small>
                 </div>

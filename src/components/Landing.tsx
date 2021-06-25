@@ -297,12 +297,12 @@ const Landing = (props: any) => {
 
             <div className="col-md-4 d-grid">
               <a
-                href="mailto:bryce.mercines@gmail.com"
+                href="mailto:seantinel.project@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <button className="btn btn-default">
-                  bryce.mercines@gmail.com
+                  seantinel.project@gmail.com
                 </button>
               </a>
             </div>
