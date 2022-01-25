@@ -27,7 +27,7 @@ const Landing = (props: any) => {
 
       <nav
         id="navbar-main"
-        className="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light"
+        className="navbar navbar-horizontal py-1 navbar-transparent navbar-expand-lg navbar-dark"
       >
         <div className="container">
           <a className="navbar-brand" href="/map">
@@ -37,7 +37,6 @@ const Landing = (props: any) => {
             className="navbar-toggler"
             type="button"
             data-toggle="collapse"
-            data-target="#navbar-collapse"
             aria-controls="navbar-collapse"
             aria-expanded="false"
             aria-label="Toggle navigation"
@@ -48,7 +47,7 @@ const Landing = (props: any) => {
             <span className="navbar-toggler-icon" />
           </button>
           <div
-            className="navbar-collapse navbar-custom-collapse collapse"
+            className="navbar-collapse  collapse text-dark"
             id="navbar-collapse"
           >
             <div className="navbar-collapse-header">
@@ -70,10 +69,10 @@ const Landing = (props: any) => {
                 </div>
               </div>
             </div>
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav mr-auto text-dark">
               <li className="nav-item">
                 <a href="/map" className="nav-link">
-                  <span className="nav-link-inner--text">Dashboard</span>
+                  <span className="nav-link-inner--text ta">Dashboard</span>
                 </a>
               </li>
               <li className="nav-item">
