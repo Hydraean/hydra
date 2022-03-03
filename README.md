@@ -4,6 +4,8 @@
 
 > The Web Application for Project Seantinel Cloud-based Admin Dashboard
 
+> [NOTE] This project is no longer update. A new version of the system is currently under development.
+
 ### Features
 
 - Draw line paths of reports with multiple geolocation details
