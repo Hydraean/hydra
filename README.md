@@ -4,7 +4,7 @@
 
 > The Web Application for Project Seantinel Cloud-based Admin Dashboard
 
-> [NOTE] This project is no longer update. A new version of the system is currently under development.
+> [NOTE] This project is no longer updated. A new version of the system is currently under development.
 
 ### Features
 
